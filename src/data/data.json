@@ -1,0 +1,263 @@
+{
+  "mandate": {
+    "organization": "NIMO Association",
+    "status": "Apolitical, Non-Religious, Non-Profit Community Organization",
+    "registration": "Officially Registered in Cameroon",
+    "geographicFocus": "South West Region & Beyond"
+  },
+  "quickNav": [
+    { "label": "Who We Are", "href": "#about" },
+    { "label": "Strategic Approach", "href": "#strategy" },
+    { "label": "Key Pillars", "href": "#pillars" },
+    { "label": "Field Impact", "href": "#impact" },
+    { "label": "Partners", "href": "#partners" }
+  ],
+  "about": {
+    "title": "About NIMO",
+    "tagline": "People-Centered, Community-Driven Development",
+    "paragraphs": [
+      "NIMO Association is an apolitical, non-religious, community-driven, and non-profit organization officially registered in Cameroon, dedicated to promoting the sustainable development, empowerment, and well-being of local communities and their people across the South West Region and beyond.",
+      "We seek to contribute to the edification and advancement of communities through research, development, monitoring, and evidence-based interventions that respond to their specific needs and aspirations. In carrying out our activities, NIMO recognizes and respects the rich diversity that characterizes different communities, including their cultures, traditions, values, and ways of life.",
+      "At NIMO, we believe that meaningful and sustainable development can only be achieved when communities are actively involved in identifying their challenges, defining their priorities, and shaping solutions that directly affect their lives. Therefore, the interests, voices, and well-being of communities remain at the center of our actions, partnerships, and interventions, with the ultimate goal of building resilient, inclusive, empowered, and sustainable communities."
+    ],
+    "coreValues": [
+      "People-Centered",
+      "Evidence-Based Action",
+      "Cultural Respect",
+      "Community Ownership",
+      "Sustainable Resilience"
+    ]
+  },
+  "impactMetrics": [
+    {
+      "id": "communities",
+      "label": "Communities Reached",
+      "value": "35+",
+      "description": "Rural and peri-urban settlements"
+    },
+    {
+      "id": "sensitization",
+      "label": "People Sensitized",
+      "value": "25,000+",
+      "description": "Through grassroots awareness drives"
+    },
+    {
+      "id": "children",
+      "label": "Children Reached",
+      "value": "10,000+",
+      "description": "Educational & protection initiatives"
+    },
+    {
+      "id": "youth",
+      "label": "Youth Impacted",
+      "value": "8,500+",
+      "description": "Empowered with skills & leadership"
+    },
+    {
+      "id": "cities",
+      "label": "Cities & Municipalities",
+      "value": "6",
+      "description": "Active operational intervention zones"
+    }
+  ],
+  "strategyPillars": [
+    {
+      "step": "01",
+      "title": "Participatory Community Research",
+      "subtitle": "Listening, Mapping & Grounded Evidence",
+      "description": "We begin with deep participatory inquiry. Rather than imposing top-down agendas, NIMO researchers work side-by-side with local community members, traditional leaders, and educators to diagnose core bottlenecks, map vulnerability patterns, and identify indigenous coping mechanisms.",
+      "highlights": [
+        "Community-led needs assessments & vulnerability mapping",
+        "MHPSS referral toolkit development with local health centers",
+        "Contextual evidence informing district and regional policy"
+      ],
+      "image": "/posts/MHPSS_Referral_Toolkit1.jpeg"
+    },
+    {
+      "step": "02",
+      "title": "Evidence-Based Child Protection",
+      "subtitle": "Safe Spaces & Multi-Tier Case Management",
+      "description": "In crisis-affected zones, protecting vulnerable children is paramount. We deploy evidence-based child protection pathways, establish community Child Friendly Spaces (CFS), and train local focal points in PSEA safeguarding and rapid response.",
+      "highlights": [
+        "10+ Child Friendly Spaces supporting recreational and psychosocial healing",
+        "Comprehensive child case identification, tracking, and referral pathways",
+        "Grassroots training for teachers, parents, and community vigilance groups"
+      ],
+      "image": "/posts/cfs_activities.jpeg"
+    },
+    {
+      "step": "03",
+      "title": "Youth & Women Livelihood Resilience",
+      "subtitle": "Economic Agency & Vocational Empowerment",
+      "description": "Sustainable self-reliance transforms vulnerable households. NIMO delivers hands-on vocational workshops in production, financial literacy, and entrepreneurship, enabling women and youth to break dependency cycles and support their families.",
+      "highlights": [
+        "Practical skill workshops in local soap, detergent, and craft production",
+        "Seed grant advisory and micro-enterprise mentorship for mothers",
+        "Financial literacy and cooperative savings groups (Njangi models)"
+      ],
+      "image": "/posts/emp3.jpeg"
+    },
+    {
+      "step": "04",
+      "title": "Multi-Stakeholder Civic Cooperation",
+      "subtitle": "Alliances for Long-Term Systemic Change",
+      "description": "Lasting impact requires cross-sector synergy. NIMO serves as a bridge between grassroots beneficiaries, regional government delegations, municipal councils, and international humanitarian clusters to align resources and maximize reach.",
+      "highlights": [
+        "Joint coordination with Regional Health & Social Affairs Delegations",
+        "Active participation in protection, education, and health working groups",
+        "Institutional policy briefs and public advocacy on World Humanitarian Days"
+      ],
+      "image": "/posts/gbv_case_management_training.jpeg"
+    }
+  ],
+  "partners": [
+    {
+      "name": "United Nations Population Fund (UNFPA)",
+      "category": "Multilateral UN Agency",
+      "role": "Field assessments, GBV response & adolescent health",
+      "logo": "/partners/unfpa.svg"
+    },
+    {
+      "name": "German International Cooperation (GIZ)",
+      "category": "International Cooperation",
+      "role": "Sustainable development & community resilience",
+      "logo": "/partners/giz.svg"
+    },
+    {
+      "name": "United Nations Children's Fund (UNICEF)",
+      "category": "Multilateral UN Agency",
+      "role": "Education in Emergencies & Child Friendly Spaces",
+      "logo": "/partners/unicef.svg"
+    },
+    {
+      "name": "MINPROFF & Regional Delegations",
+      "category": "Government Institutional Partner",
+      "role": "Civic protection, gender equality & family advancement",
+      "logo": "/partners/cameroon_emblem.svg"
+    },
+    {
+      "name": "TeenAlive Organization",
+      "category": "Youth & Child Protection",
+      "role": "Child-centered interventions & educational kits",
+      "logo": "/partners/teenalive.svg"
+    },
+    {
+      "name": "Rural Women's Action for Sustainability & Justice",
+      "category": "Grassroots Women's Alliance",
+      "role": "Community mobilization, crisis relief & advocacy",
+      "logo": "/partners/rwasj.svg"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "1",
+      "quote": "Thanks to NIMO's education program, our children continued learning even during crisis periods. The community has never felt more supported.",
+      "author": "Community Elder & Parent",
+      "location": "South West Region"
+    },
+    {
+      "id": "2",
+      "quote": "The child protection initiatives and safe spaces have made our schools secure. Children now know their rights and feel empowered to speak up.",
+      "author": "Local Educator & CFS Facilitator",
+      "location": "Buea Municipality"
+    },
+    {
+      "id": "3",
+      "quote": "NIMO's action research has helped us understand our community's needs better and design grassroots programs that genuinely work.",
+      "author": "Civic Health Advocate",
+      "location": "South West Region"
+    }
+  ],
+  "socialLinks": [
+    {
+      "name": "LinkedIn",
+      "url": "https://linkedin.com/company/nimo-association",
+      "handle": "nimo-association"
+    },
+    {
+      "name": "Facebook",
+      "url": "https://facebook.com/nimoassociation",
+      "handle": "nimoassociation"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://instagram.com/nimoassociation",
+      "handle": "@nimoassociation"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://x.com/nimoassociation",
+      "handle": "@nimoassociation"
+    }
+  ],
+  "areasOfIntervention": [
+    {
+      "id": "education",
+      "title": "Education",
+      "description": "We focus on Education in Emergencies (EiE) and development to ensure continuous learning opportunities for all. Our programs address educational needs in crisis situations and promote long-term educational growth.",
+      "image": "/posts/cfs_activities.jpeg"
+    },
+    {
+      "id": "protection",
+      "title": "Protection",
+      "description": "We are committed to protecting vulnerable groups by addressing gender-based violence (GBV) and ensuring child protection. Our initiatives provide safe environments and support systems for those in need.",
+      "image": "/posts/gbv_case_management_training.jpeg"
+    },
+    {
+      "id": "research",
+      "title": "Research",
+      "description": "Our research efforts include data collection, program development, and report writing to inform and enhance our initiatives. We strive to base our programs on solid evidence and thorough reviews.",
+      "image": "/posts/MHPSS_Referral_Toolkit1.jpeg"
+    }
+  ],
+  "fieldGallery": [
+    {
+      "title": "Child Friendly Spaces (CFS)",
+      "category": "Child Protection",
+      "image": "/posts/cfs_activities.jpeg"
+    },
+    {
+      "title": "Menstrual Hygiene & Safety Box",
+      "category": "Adolescent Girls",
+      "image": "/posts/menstrual_hygiene1.jpeg"
+    },
+    {
+      "title": "GBV Case Management Workshop",
+      "category": "Protection Capacity",
+      "image": "/posts/gbv_case_management_training.jpeg"
+    },
+    {
+      "title": "PSEA Safeguarding Sessions",
+      "category": "Safeguarding",
+      "image": "/posts/one_day_training_on_psea.jpeg"
+    },
+    {
+      "title": "Women & Youth Skills Empowerment",
+      "category": "Livelihoods",
+      "image": "/posts/emp3.jpeg"
+    },
+    {
+      "title": "Humanitarian Day Community Mobilization",
+      "category": "Community Outreach",
+      "image": "/posts/humanitarianday2.jpeg"
+    }
+  ],
+  "stats": [
+    {
+      "label": "Communities Reached",
+      "value": "25+"
+    },
+    {
+      "label": "Active Programs",
+      "value": "12"
+    },
+    {
+      "label": "Beneficiaries Supported",
+      "value": "15,000+"
+    },
+    {
+      "label": "Research Publications",
+      "value": "8"
+    }
+  ]
+}

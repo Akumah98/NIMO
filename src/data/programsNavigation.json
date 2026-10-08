@@ -1,0 +1,23 @@
+[
+  {
+    "id": "child-protection",
+    "title": "Child Safeguarding",
+    "href": "/programs?id=child-protection",
+    "badge": "Protection",
+    "description": "Child-friendly safe spaces, safeguarding protocols & prevention of harm"
+  },
+  {
+    "id": "education",
+    "title": "Inclusive Education",
+    "href": "/programs?id=education",
+    "badge": "Education",
+    "description": "Temporary learning spaces, emergency education & teacher capacity building"
+  },
+  {
+    "id": "gbv",
+    "title": "GBV & Protection",
+    "href": "/programs?id=gbv",
+    "badge": "Empowerment",
+    "description": "Gender-based violence prevention, youth engagement & survivor pathways"
+  }
+]

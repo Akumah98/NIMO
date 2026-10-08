@@ -1,0 +1,114 @@
+{
+  "values": [
+    {
+      "id": "grassroots-ownership",
+      "title": "Community Ownership",
+      "description": "Every program originates from grassroots listening. Local leaders and youth co-own the design, implementation, and long-term stewardship.",
+      "iconName": "users"
+    },
+    {
+      "id": "uncompromising-safeguarding",
+      "title": "Zero-Tolerance Safeguarding",
+      "description": "Strict adherence to PSEA standards. We maintain a non-negotiable duty of care to protect children, women, and vulnerable community members.",
+      "iconName": "shield"
+    },
+    {
+      "id": "integrity-transparency",
+      "title": "Operational Transparency",
+      "description": "Every dollar and humanitarian kit is accounted for through transparent procurement, community feedback mechanisms, and verified audits.",
+      "iconName": "scale"
+    },
+    {
+      "id": "inclusive-dignity",
+      "title": "Universal Human Dignity",
+      "description": "We uphold non-discriminatory service delivery, championing gender equity and psycho-social support for displaced and crisis-affected families.",
+      "iconName": "heart"
+    }
+  ],
+  "approachSteps": [
+    {
+      "step": "01",
+      "title": "Grassroots Needs Listening",
+      "description": "Conducting deep ethnographic surveys and focus group discussions with village elders, women's cooperatives, and displaced youth."
+    },
+    {
+      "step": "02",
+      "title": "Collaborative Co-Design",
+      "description": "Formulating tailored interventions together with local stakeholders rather than imposing foreign blueprints."
+    },
+    {
+      "step": "03",
+      "title": "Direct Humanitarian Action",
+      "description": "Deploying multidisciplinary field units to deliver classrooms, psychosocial kits, vocational apprenticeships, and dignity supplies."
+    },
+    {
+      "step": "04",
+      "title": "Resilience & Local Handover",
+      "description": "Equipping local community committees with ongoing management tools, ensuring impact continues long after project cycles close."
+    }
+  ],
+  "footprint": {
+    "headquarters": "Mile 18 Junction, Buea, Southwest Region, Cameroon",
+    "email": "contact@nimo.africa",
+    "phone": "+237 651 868 764",
+    "image": "/posts/humanitarian Day 1.jpeg",
+    "divisions": [
+      {
+        "division": "Fako Division",
+        "hub": "Buea, Limbe & Tiko",
+        "focus": "Vocational Empowerment, Education in Emergencies & Youth Civic Engagement"
+      },
+      {
+        "division": "Meme Division",
+        "hub": "Kumba & Surroundings",
+        "focus": "Protection Casework, Psychosocial First Aid & Child Safe Spaces"
+      },
+      {
+        "division": "Manyu & Ndian",
+        "hub": "Mamfe & Coastal Belts",
+        "focus": "Crisis Response Outreach, Dignity Interventions & WASH Supplies"
+      },
+      {
+        "division": "North West Belts",
+        "hub": "Mezam & Border Hubs",
+        "focus": "Participatory Community Research, Peacebuilding & Agricultural Resilience"
+      }
+    ]
+  },
+  "compliance": [
+    {
+      "id": "psea",
+      "standard": "PSEA Compliant",
+      "detail": "Annual mandatory training and zero-tolerance reporting hotline active across all project operational zones."
+    },
+    {
+      "id": "legal",
+      "standard": "Legally Registered NGO",
+      "detail": "Officially recognized non-governmental organization adhering to national civil society regulations in Cameroon."
+    },
+    {
+      "id": "meal",
+      "standard": "Dedicated MEAL Unit",
+      "detail": "Independent monitoring, evaluation, accountability, and learning framework tracking real-time outcome indicators."
+    },
+    {
+      "id": "audit",
+      "standard": "Annual Financial Reviews",
+      "detail": "Transparent financial bookkeeping with rigorous audits ensuring donor accountability and resource integrity."
+    }
+  ],
+  "staffCapacities": [
+    { "id": "gender-dev", "title": "Gender & Development", "icon": "users" },
+    { "id": "education", "title": "Education in Emergencies", "icon": "book" },
+    { "id": "facilitation", "title": "Community Facilitators", "icon": "chat" },
+    { "id": "analytics", "title": "Data & M&E Analysts", "icon": "chart" },
+    { "id": "protection", "title": "Child Protection Officers", "icon": "shield" },
+    { "id": "psychosocial", "title": "Psychosocial Specialists", "icon": "heart" },
+    { "id": "project-mgmt", "title": "Project & Field Managers", "icon": "briefcase" },
+    { "id": "educators", "title": "Field Teachers & Trainers", "icon": "academic" },
+    { "id": "wash-crisis", "title": "WASH & Crisis Outreach", "icon": "water" },
+    { "id": "vocational", "title": "Vocational Empowerment", "icon": "tools" },
+    { "id": "peacebuilding", "title": "Peace & Community Dialogue", "icon": "scale" },
+    { "id": "safeguarding", "title": "PSEA Safeguarding Leads", "icon": "lock" }
+  ]
+}

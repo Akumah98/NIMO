@@ -1,0 +1,454 @@
+[
+  {
+    "id": "child-protection",
+    "title": "NIMO Child Protection Program",
+    "pillars": "Prevent · Protect · Respond · Restore",
+    "subtitle": "Safeguarding Every Child's Right to Safety, Dignity and Protection",
+    "badge": "Child Safeguarding",
+    "overview": "Child protection is a fundamental right and a shared community responsibility. In Cameroon's South West Region, ongoing conflict, displacement and recurrent crises have heightened children's exposure to violence, abuse, exploitation, neglect and family separation. NIMO CARE works with communities, schools, families, local actors and other stakeholders to prevent harm to children, strengthen community-based protection mechanisms and ensure that children affected by protection concerns can access appropriate care and support. Through safeguarding integrated into every program, case identification and referral, capacity building and community engagement, NIMO CARE seeks to contribute to communities where every child can grow up safe, valued and protected from harm.",
+    "goal": "To contribute to the prevention of and response to violence, abuse, exploitation and neglect against children, while strengthening community-based child protection systems, safeguarding practices and children's access to essential services.",
+    "objectives": [
+      "Increase awareness and knowledge of child rights, protection risks and prevention mechanisms among children, families and communities.",
+      "Strengthen community-based child protection mechanisms by engaging community leaders, parents, teachers, youth and other key actors.",
+      "Integrate child safeguarding into all NIMO CARE programming, including education, health and community activities.",
+      "Promote safe identification, reporting and referral pathways for children who are victims of or at risk of violence, abuse, exploitation and neglect.",
+      "Provide psychosocial support and case management support to children affected by protection concerns, including gender-based violence and family separation.",
+      "Strengthen the capacity of frontline actors, facilitators and volunteers to identify, prevent and appropriately respond to child protection concerns.",
+      "Promote the meaningful participation of children in decisions and activities that affect their wellbeing.",
+      "Generate and use community-level evidence to strengthen child protection prevention, response and programming."
+    ],
+    "activities": [
+      {
+        "title": "1. Community Awareness and Sensitization",
+        "description": "NIMO CARE conducts community awareness sessions on child rights, protection risks, safeguarding and available services.",
+        "items": [
+          "Community dialogues on child rights and protection",
+          "Awareness campaigns on abuse, exploitation, neglect and harmful practices",
+          "Information, Education and Communication (IEC) activities and community outreach",
+          "Commemorative campaigns such as the Day of the African Child and Universal Children's Day"
+        ],
+        "image": "/posts/humanitarianday3.jpeg"
+      },
+      {
+        "title": "2. Protection within Child Friendly Spaces (CFS/TLS)",
+        "description": "Every NIMO CARE learning space is a protective space designed to provide safety and healing.",
+        "items": [
+          "Integration of safeguarding into weekly CFS/TLS sessions",
+          "Safe, welcoming and child-friendly environments",
+          "Psychosocial support and recreational activities",
+          "Session monitoring, feedback and consent processes"
+        ],
+        "image": "/posts/cfs_activities1.jpeg"
+      },
+      {
+        "title": "3. Case Identification, Referral and Response",
+        "description": "NIMO CARE promotes a survivor-centred approach based on safety, confidentiality, dignity and informed choice.",
+        "items": [
+          "Identification of children at risk of or affected by violence, abuse, exploitation and neglect",
+          "Safe referral pathways to health, psychosocial, legal and specialized protection services",
+          "Follow-up and monitoring of referred cases, where appropriate"
+        ],
+        "image": "/posts/MHPSS_Referral_Toolkit1.jpeg"
+      },
+      {
+        "title": "4. Capacity Building for Frontline Actors",
+        "description": "Investing in frontline actors who protect children every day in vulnerable zones.",
+        "items": [
+          "Training of facilitators, teachers, volunteers and community actors on child protection and safeguarding",
+          "GBV Case Management restitution (step-down) training for staff and partner networks",
+          "Mentorship and supervision of facilitators",
+          "Community Mapping training to identify protection risks and safe spaces"
+        ],
+        "image": "/posts/gbv_case_management_training4.jpeg"
+      },
+      {
+        "title": "5. Prevention of Sexual Exploitation and Abuse (PSEA)",
+        "description": "Upholding uncompromising safeguarding standards across all operations and activities.",
+        "items": [
+          "PSEA sensitization sessions for children, caregivers and community members",
+          "Integration of PSEA into Gender Clubs and CFS/TLS programming",
+          "Feedback and complaint mechanisms accessible to children and communities",
+          "Promotion of codes of conduct and safeguarding standards among staff and volunteers"
+        ],
+        "image": "/posts/one_day_training_on_psea.jpeg"
+      },
+      {
+        "title": "6. Family and Community Engagement",
+        "description": "Building protective environments around children with families and community leaders.",
+        "items": [
+          "Engagement of parents and caregivers on positive parenting and child protection",
+          "Community leader and traditional authority engagement",
+          "Support for family reunification and reintegration, where appropriate",
+          "Strengthening informal community protection networks"
+        ],
+        "image": "/posts/humanitarianday4.jpeg"
+      },
+      {
+        "title": "7. Emergency and Crisis Response",
+        "description": "Safeguarding children during rapid-onset shocks and crises facing our communities.",
+        "items": [
+          "Rapid child protection response during floods, landslides, lockdowns and insecurity",
+          "Contingency planning to safeguard children during disruptions",
+          "Coordination with other protection and humanitarian actors",
+          "Monitoring and reporting of protection risks during emergencies"
+        ],
+        "image": "/posts/flood_in_limbe1.jpeg"
+      }
+    ],
+    "outcomes": [
+      "Increased Awareness: Children, families and community members have improved knowledge of child rights, protection risks and available support services.",
+      "Stronger Community Protection Mechanisms: Community structures and frontline actors are better equipped to identify and respond to protection concerns.",
+      "Safer Learning and Community Spaces: Children benefit from environments that integrate safeguarding and psychosocial support.",
+      "Improved Access to Services: Children at risk of or affected by violence, abuse, exploitation and neglect access appropriate referral and support services.",
+      "Stronger Frontline Capacity: Facilitators, volunteers and partners are better equipped to prevent and respond to child protection concerns.",
+      "Increased Child Participation: Children participate more actively in decisions and activities that affect their wellbeing.",
+      "Improved Emergency Preparedness: Children are better protected during floods, lockdowns and other disruptions."
+    ],
+    "approaches": [
+      {
+        "title": "Child-Centred",
+        "description": "We place children's best interests, safety and wellbeing at the centre of every intervention."
+      },
+      {
+        "title": "Community-Based",
+        "description": "We work with communities and local actors to identify protection risks and co-develop solutions."
+      },
+      {
+        "title": "Survivor-Centred",
+        "description": "We promote approaches that respect the dignity, safety, confidentiality and choices of children and families."
+      },
+      {
+        "title": "Prevention-Focused",
+        "description": "We address the root causes and risk factors that expose children to harm."
+      },
+      {
+        "title": "Rights-Based",
+        "description": "We uphold children's rights to protection, participation and non-discrimination."
+      },
+      {
+        "title": "Do No Harm",
+        "description": "We ensure that all interventions safeguard children and avoid causing additional risk or harm."
+      },
+      {
+        "title": "Partnership-Based",
+        "description": "We work with government institutions, schools, service providers and partners to strengthen collective child protection action."
+      }
+    ],
+    "commitment": [
+      "At NIMO CARE, we are committed to protecting every child from violence, abuse, exploitation and neglect, and to ensuring their safety, dignity and wellbeing in every space we work.",
+      "Together, we can build communities where children are protected, heard and empowered to thrive."
+    ],
+    "heroImage": "/posts/cfs_activities2.jpeg",
+    "activityImages": [
+      "/posts/cfs_activities.jpeg",
+      "/posts/one_day_training_on_psea.jpeg"
+    ]
+  },
+  {
+    "id": "education",
+    "title": "NIMO Education Program",
+    "pillars": "Learn · Protect · Empower · Sustain",
+    "subtitle": "Ensuring Every Child's Right to Safe, Inclusive and Quality Education",
+    "badge": "Inclusive Education",
+    "overview": "Education is a fundamental right and one of the most powerful tools for protecting children, building resilience and breaking cycles of poverty and vulnerability. In Cameroon's South West Region, ongoing conflict, displacement and recurrent disruptions have left many children without access to safe and consistent learning opportunities. NIMO CARE works with communities, schools, families, local actors and other stakeholders to restore and protect access to education, strengthen child protection within learning spaces and support children's holistic development. Through Child Friendly Spaces, Temporary Learning Spaces, facilitator capacity building, community engagement and safeguarding, NIMO CARE seeks to contribute to communities where every child, regardless of circumstance, can learn, grow and thrive in a safe and nurturing environment.",
+    "goal": "To contribute to increased access to safe, inclusive and quality education for children affected by crisis and displacement, while strengthening community-based learning structures, child protection and positive early childhood development.",
+    "objectives": [
+      "Increase access to safe and structured learning opportunities for children affected by conflict, displacement and disruption to formal education.",
+      "Promote inclusive, child-centred and quality teaching and learning practices across General Education and Early Childhood Development (ECD) programming.",
+      "Strengthen the capacity of facilitators, teachers, volunteers and community actors to deliver safe, effective and protection-sensitive education.",
+      "Integrate child protection, safeguarding and psychosocial support within all learning spaces.",
+      "Promote gender equality, inclusion and safe learning environments through Gender Clubs and related initiatives.",
+      "Engage parents, caregivers, community and traditional leaders as partners in supporting children's education and wellbeing.",
+      "Strengthen preparedness and continuity planning so that children's learning can continue during emergencies, lockdowns and other disruptions.",
+      "Generate and use community-level evidence and data to improve education programming and reporting."
+    ],
+    "activities": [
+      {
+        "title": "1. Child Friendly Spaces (CFS) & Temporary Learning Spaces (TLS)",
+        "description": "Our flagship response to interrupted learning, providing safe, structured, and nurturing learning spaces amid crises.",
+        "items": [
+          "Weekly CFS/TLS sessions combining structured learning, play and psychosocial support",
+          "General Education and Early Childhood Development (ECD) syllabi",
+          "Session reporting, feedback and consent processes",
+          "Safe, welcoming and child-friendly learning environments"
+        ],
+        "image": "/posts/cfs_activities5.jpeg"
+      },
+      {
+        "title": "2. Facilitator and Community Capacity Building",
+        "description": "Strengthening the knowledge, methods, and delivery capacity of educational personnel.",
+        "items": [
+          "The Humanitarian Education Facilitator Training (8 modules covering Foundations, Child Development, Protection/Safeguarding, Teaching Methodologies, TLS/Inclusive Education, Cross-Cutting Themes, Project Management/MEAL, Community Facilitation, and Field Practicum)",
+          "Supplementary training on Community Mapping (participatory, hazard/safe-route, and digital mapping)",
+          "Restitution and refresher training for facilitators and volunteers",
+          "Mentorship and structured supervision of facilitators"
+        ],
+        "image": "/posts/gender_transformative_approaches_training3.jpeg"
+      },
+      {
+        "title": "3. Child Protection & Safeguarding in Learning Spaces",
+        "description": "Ensuring every NIMO CARE learning space is inherently protective.",
+        "items": [
+          "Integration of safeguarding practices into all education activities",
+          "Psychosocial support for children affected by conflict and displacement",
+          "Referral pathways to specialized protection, health and psychosocial services",
+          "Feedback and complaint mechanisms for children and caregivers"
+        ],
+        "image": "/posts/cfs_activities6.jpeg"
+      },
+      {
+        "title": "4. Gender Clubs and Inclusive Learning",
+        "description": "Promoting equality, dignity, and confidence for every learner.",
+        "items": [
+          "Creation and management of Gender Clubs in schools and learning spaces",
+          "Integration with Protection from Sexual Exploitation and Abuse (PSEA) programming",
+          "Promotion of menstrual hygiene management and girls' empowerment",
+          "Engagement of boys as partners in promoting respectful, inclusive relationships"
+        ],
+        "image": "/posts/menstrual_hygiene2.jpeg"
+      },
+      {
+        "title": "5. Community Awareness and Engagement",
+        "description": "Mobilizing parents and communities to protect learning continuity.",
+        "items": [
+          "Sensitization on the right to education and the importance of learning continuity",
+          "Engagement of parents, caregivers and community leaders",
+          "Back-to-School initiatives and support for vulnerable children",
+          "Community dialogues on education access and barriers"
+        ],
+        "image": "/posts/humanitarianday7.jpeg"
+      },
+      {
+        "title": "6. Emergency Preparedness & Education Continuity",
+        "description": "Proactive planning to keep children learning during recurrent crises.",
+        "items": [
+          "Contingency and lockdown education planning",
+          "Rapid response to disruptions such as floods, landslides and insecurity",
+          "Distribution and coordination of learning materials during emergencies",
+          "Coordination with other education and protection actors"
+        ],
+        "image": "/posts/cfs_activities4.jpeg"
+      },
+      {
+        "title": "7. Monitoring, Reporting and Advocacy",
+        "description": "Tracking outcomes and driving advocacy for children's educational rights.",
+        "items": [
+          "Weekly and periodic session and activity reporting",
+          "Data collection and documentation for organizational learning",
+          "Advocacy for children's right to education with partners and stakeholders",
+          "Contribution to annual reports and institutional documentation"
+        ],
+        "image": "/posts/MHPSS_Referral_Toolkit2.jpeg"
+      }
+    ],
+    "outcomes": [
+      "Increased Access to Learning: Children affected by displacement benefit from safe and consistent access to structured learning.",
+      "Stronger Facilitator Capacity: Facilitators and teachers are equipped to deliver safe, quality, and protection-sensitive education.",
+      "Safer Learning Environments: Children benefit from learning spaces integrating safeguarding, psychosocial support, and protection.",
+      "Improved Early Childhood Development: Younger children benefit from age-appropriate ECD programming supporting holistic development.",
+      "Greater Gender Equality and Inclusion: Girls and boys benefit from more inclusive, respectful, and equitable learning environments.",
+      "Stronger Community Engagement: Parents, caregivers, and leaders are actively involved in supporting education.",
+      "Improved Preparedness: Communities and learning spaces are better prepared to sustain learning through emergencies."
+    ],
+    "approaches": [
+      {
+        "title": "Child-Centred",
+        "description": "We place children's needs, safety and development at the centre of all education programming."
+      },
+      {
+        "title": "Community-Based",
+        "description": "We work with communities, schools and local actors to identify education barriers and co-develop solutions."
+      },
+      {
+        "title": "Protection-Sensitive",
+        "description": "We integrate safeguarding, psychosocial support and child protection into every learning space and activity."
+      },
+      {
+        "title": "Inclusive",
+        "description": "We ensure programming is accessible to girls, boys, children with disabilities and other vulnerable groups."
+      },
+      {
+        "title": "Quality-Focused",
+        "description": "We apply structured syllabi, trained facilitators and consistent monitoring to ensure meaningful learning."
+      },
+      {
+        "title": "Resilience-Building",
+        "description": "We strengthen the capacity of communities and learning structures to sustain education through emergencies."
+      },
+      {
+        "title": "Partnership-Based",
+        "description": "We work with government institutions, schools, service providers and other partners to strengthen collective action."
+      }
+    ],
+    "commitment": [
+      "At NIMO CARE, we are committed to ensuring that every child, regardless of circumstance, has the opportunity to learn, grow and thrive in a safe and supportive environment.",
+      "Together, we can protect children's right to education, strengthen community-based learning and build a future where no child is left behind."
+    ],
+    "heroImage": "/posts/cfs_activities3.jpeg",
+    "activityImages": [
+      "/posts/cfs_activities4.jpeg",
+      "/posts/humanitarianday2.jpeg"
+    ]
+  },
+  {
+    "id": "gbv",
+    "title": "NIMO Gender Based Violence Program",
+    "pillars": "Prevent · Protect · Empower · Respond",
+    "subtitle": "Building Safe, Inclusive and Resilient Communities",
+    "badge": "GBV & Protection",
+    "overview": "Gender-Based Violence (GBV) is a serious protection, human rights and public health concern that affects individuals, families and communities. NIMO CARE works with communities, schools, families, local actors and other stakeholders to prevent GBV, strengthen protection mechanisms, promote gender equality and ensure that survivors can access appropriate support and service. Through community-based awareness, prevention, education, referral and engagement activities, NIMO CARE seeks to contribute to communities where women, girls, men and boys can live with dignity, safety and equal opportunities.",
+    "goal": "To contribute to the prevention and reduction of gender-based violence while strengthening community-based protection, survivor support and positive social norms that promote dignity, equality and respect.",
+    "objectives": [
+      "Increase awareness and knowledge of GBV, its causes, forms, consequences and prevention mechanisms among community members.",
+      "Promote positive social norms that reject violence, discrimination, exploitation and harmful gender stereotypes.",
+      "Strengthen community protection mechanisms by engaging community leaders, teachers, parents, youth, women's groups and other key actors.",
+      "Promote safe reporting and referral pathways so that survivors and persons at risk can access appropriate protection, health, psychosocial, legal and other available services.",
+      "Engage men and boys as positive partners and advocates in the prevention of GBV and the promotion of gender equality.",
+      "Strengthen the capacity of frontline actors to identify, prevent and appropriately respond to GBV and protection concerns.",
+      "Promote the protection of children and adolescents from violence, abuse, exploitation and other forms of harm.",
+      "Generate and use community-level evidence to improve GBV prevention, protection and response programming."
+    ],
+    "activities": [
+      {
+        "title": "1. Community Awareness and Sensitization",
+        "description": "Conducting dialogue and public campaigns to shift norms and prevent violence.",
+        "items": [
+          "Community dialogues and sensitization sessions",
+          "Awareness campaigns and outreach drives",
+          "Information, Education and Communication (IEC) materials distribution",
+          "Radio and social media awareness campaigns",
+          "Commemorative campaigns such as the 16 Days of Activism Against Gender-Based Violence"
+        ],
+        "image": "/posts/stregnthenin_gbv_prevention_&_response.jpeg"
+      },
+      {
+        "title": "2. School and Youth Engagement",
+        "description": "Empowering young people and adolescent girls in schools and safe community spaces.",
+        "items": [
+          "Creation and management of Gender Clubs in schools",
+          "Promotion of proper menstrual hygiene management in schools with the 'MY SAFETY BOX' project, empowering adolescent girls to feel safe and dignified",
+          "GBV prevention education and healthy relationship discussions",
+          "Child protection, safeguarding awareness, and girls' empowerment activities",
+          "Boys' and male student engagement, peer education, and life-skills talks"
+        ],
+        "image": "/posts/menstrual_hygiene.jpeg"
+      },
+      {
+        "title": "3. Men and Boys as Partners for Change",
+        "description": "Mobilizing men and boys as active champions against violence.",
+        "items": [
+          "Promoting positive masculinity and non-violent conflict resolution",
+          "Cultivating respectful relationships and shared decision-making",
+          "Challenging harmful gender norms through community conversations",
+          "Mentoring male champions for grassroots GBV prevention"
+        ],
+        "image": "/posts/MHPSS_Referral_Toolkit3.jpeg"
+      },
+      {
+        "title": "4. Community Capacity Building",
+        "description": "Equipping key community gatekeepers to recognize and address GBV risks.",
+        "items": [
+          "Capacity building for community leaders, traditional authorities, and religious leaders",
+          "Training teachers, education personnel, and youth leaders",
+          "Supporting women's groups, community volunteers, and civil society actors",
+          "Strengthening collaboration with health and social service providers"
+        ],
+        "image": "/posts/gender_transformative_approaches_training.jpeg"
+      },
+      {
+        "title": "5. Survivor-Centred Referral and Support",
+        "description": "Connecting survivors safely and confidentially to vital specialized services.",
+        "items": [
+          "Facilitating referral pathways to health and medical services",
+          "Coordination for psychosocial support and counseling",
+          "Referral to legal assistance and specialized protection services",
+          "Child protection and emergency support linkages"
+        ],
+        "image": "/posts/gbv_case_management_training7.jpeg"
+      },
+      {
+        "title": "6. Prevention of Harmful Practices",
+        "description": "Challenging traditions that violate bodily autonomy and human rights.",
+        "items": [
+          "Community dialogues on ending harmful practices, including Female Genital Mutilation (FGM)",
+          "Promoting informed community action and bodily autonomy",
+          "Advocating for the rights, safety, and health of women and girls"
+        ],
+        "image": "/posts/initiative_for_pregnant_women1.jpeg"
+      },
+      {
+        "title": "7. Advocacy and Community Mobilization",
+        "description": "Mobilizing broad public support and institutional accountability.",
+        "items": [
+          "Public dialogues and community-wide mobilization campaigns",
+          "Advocacy initiatives with regional stakeholders and policy leaders",
+          "Building multi-sectoral partnerships against gender-based violence"
+        ],
+        "image": "/posts/gbv_case_management_training1.jpeg"
+      },
+      {
+        "title": "8. GBV Internship Program",
+        "description": "Developing skilled, ethical young professionals in humanitarian GBV response.",
+        "items": [
+          "Structured professional field experience for university graduates",
+          "Strengthening local humanitarian and protection capacity",
+          "Mentorship in competent, ethical, and high-quality GBV prevention methods"
+        ]
+      }
+    ],
+    "outcomes": [
+      "Increased Awareness: Community stakeholders have improved knowledge of GBV, prevention, protection, and services.",
+      "Stronger Community Protection: Frontline actors are better equipped to identify risks and connect survivors to services.",
+      "Improved Attitudes & Social Norms: Community members reject harmful stereotypes, discrimination, and violence.",
+      "Increased Engagement of Men and Boys: Men and boys become active advocates for gender equality and non-violence.",
+      "Improved Access to Services: Survivors have safe awareness of and access to multi-sectoral referral pathways.",
+      "Safer Schools & Communities: Youth benefit from safeguarding, awareness, and dignified spaces like 'MY SAFETY BOX'.",
+      "Stronger Local Partnerships: Effective collaboration between grassroots groups, institutions, and service providers."
+    ],
+    "impacts": [
+      "Reduced tolerance of gender-based violence across community settlements",
+      "Stronger grassroots community ownership of GBV prevention initiatives",
+      "Improved protection of women, girls, and vulnerable children",
+      "Greater participation of men and boys in promoting gender equality",
+      "Stronger community-based referral and protection systems",
+      "Increased access to information and essential support services",
+      "More resilient families and communities living in dignity and safety",
+      "Greater respect for dignity, equality, and fundamental human rights"
+    ],
+    "approaches": [
+      {
+        "title": "Community-Centred",
+        "description": "We place communities at the centre of interventions to co-develop practical solutions."
+      },
+      {
+        "title": "Survivor-Centred",
+        "description": "We promote approaches respecting the dignity, safety, confidentiality and choices of survivors."
+      },
+      {
+        "title": "Inclusive",
+        "description": "We engage women, girls, men, boys, persons with disabilities, and vulnerable groups."
+      },
+      {
+        "title": "Prevention-Focused",
+        "description": "We address harmful attitudes, behaviours, social norms and systemic causes of violence."
+      },
+      {
+        "title": "Evidence-Informed",
+        "description": "We use community engagement, monitoring, and research to maximize intervention impact."
+      },
+      {
+        "title": "Partnership-Based",
+        "description": "We collaborate with schools, government institutions, and service providers for collective action."
+      }
+    ],
+    "commitment": [
+      "At NIMO CARE, we are committed to working alongside communities to create safer and more inclusive environments where every person can live with dignity and participate meaningfully in community life.",
+      "Together, we can prevent violence, strengthen protection and build communities where everyone is valued and respected."
+    ],
+    "heroImage": "/posts/menstrual_hygiene1.jpeg",
+    "activityImages": [
+      "/posts/gbv_case_management_training.jpeg",
+      "/posts/gender_transformative_approaches_training.jpeg"
+    ]
+  }
+]

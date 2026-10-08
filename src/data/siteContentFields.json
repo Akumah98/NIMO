@@ -1,0 +1,11 @@
+[
+  { "key": "hero_tagline", "label": "Hero Tagline", "type": "text" },
+  { "key": "hero_heading", "label": "Hero Heading", "type": "text" },
+  { "key": "hero_description", "label": "Hero Description", "type": "textarea" },
+  { "key": "vision", "label": "Vision Statement", "type": "textarea" },
+  { "key": "mission", "label": "Mission Statement", "type": "textarea" },
+  { "key": "objective_1", "label": "Objective 1", "type": "text" },
+  { "key": "objective_2", "label": "Objective 2", "type": "text" },
+  { "key": "objective_3", "label": "Objective 3", "type": "text" },
+  { "key": "objective_4", "label": "Objective 4", "type": "text" }
+]

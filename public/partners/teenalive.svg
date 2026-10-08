@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" fill="none">
+  <defs>
+    <linearGradient id="ta-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="50%" stop-color="#E11D48" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+    <linearGradient id="ta-grad-leaf" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+  </defs>
+
+  <!-- Circular Backdrop / Aura -->
+  <g transform="translate(10, 10)">
+    <circle cx="40" cy="40" r="38" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+    
+    <!-- Joyful Youth Silhouette leaping towards light -->
+    <!-- Head -->
+    <circle cx="40" cy="22" r="7.5" fill="url(#ta-grad-1)" />
+    
+    <!-- Body / Dynamic Arms -->
+    <path d="M40 32 C33 32 23 27 18 36 C16 39 19 41 22 39 C27 34 32 37 35 44 L37 62 C37 65 43 65 43 62 L45 44 C48 37 53 34 58 39 C61 41 64 39 62 36 C57 27 47 32 40 32 Z" fill="url(#ta-grad-1)" />
+
+    <!-- Protective Leaf Arc (Growth, Youth Flourishing) -->
+    <path d="M20 58 C22 47 31 38 43 38 C54 38 60 46 62 55 C54 53 45 53 36 57 C29 60 23 60 20 58 Z" fill="url(#ta-grad-leaf)" opacity="0.85" />
+    
+    <!-- Star of Hope -->
+    <polygon points="40,8 42,13 47,13 43,16 45,21 40,18 35,21 37,16 33,13 38,13" fill="#F59E0B" />
+  </g>
+
+  <!-- Brand Typography -->
+  <g transform="translate(102, 18)">
+    <text x="0" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" letter-spacing="1.5" fill="#1E1B4B">TEEN</text>
+    <text x="86" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" letter-spacing="1.5" fill="#E11D48">ALIVE</text>
+    <text x="1" y="52" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="9.5" letter-spacing="2.2" fill="#64748B">ORGANIZATION • CAMEROON</text>
+    <text x="1" y="66" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="8" letter-spacing="1" fill="#0D9488">CHILD &amp; YOUTH PROTECTION</text>
+  </g>
+</svg>

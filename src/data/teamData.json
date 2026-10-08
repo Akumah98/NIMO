@@ -1,0 +1,228 @@
+{
+  "hero": {
+    "badge": "Our People & Leadership",
+    "title": "The Dedicated People Powering NIMO's Mission",
+    "subtitle": "Community-embedded researchers, certified child protection specialists, and grassroots advocates working daily across the South West Region of Cameroon to build resilient, safer communities.",
+    "metrics": [
+      {
+        "value": "100%",
+        "label": "Grassroots Embedded",
+        "description": "Recruited directly from and living within target communities"
+      },
+      {
+        "value": "35+",
+        "label": "Communities Served",
+        "description": "Active field deployment in urban and remote settlements"
+      },
+      {
+        "value": "PSEA",
+        "label": "Strict Safeguarding",
+        "description": "Zero tolerance protection policy across all operations"
+      },
+      {
+        "value": "6",
+        "label": "Municipal Hubs",
+        "description": "Coordinated from Mile 18 Junction Buea headquarters"
+      }
+    ]
+  },
+  "principles": [
+    {
+      "title": "Do No Harm & Accountability",
+      "badge": "Core Standard",
+      "description": "Adhering strictly to IASC humanitarian guidelines and community feedback mechanisms in every intervention.",
+      "icon": "shield"
+    },
+    {
+      "title": "Survivor-Centred & Safeguarding",
+      "badge": "Child First",
+      "description": "Prioritizing dignity, confidentiality, and informed consent with rigorous PSEA protocols.",
+      "icon": "heart"
+    },
+    {
+      "title": "Community-Led Ownership",
+      "badge": "Sustainability",
+      "description": "Partnering with traditional rulers, women leaders, and youth champions rather than imposing outside solutions.",
+      "icon": "users"
+    },
+    {
+      "title": "Evidence-Driven Impact",
+      "badge": "Research",
+      "description": "Grounding all field programs in rigorous baseline surveys, vulnerability mapping, and participatory M&E.",
+      "icon": "chart"
+    }
+  ],
+  "categories": [
+    { "id": "all", "label": "All Members" },
+    { "id": "leadership", "label": "Executive Leadership" },
+    { "id": "protection", "label": "Child Protection" },
+    { "id": "education", "label": "Education in Emergencies" },
+    { "id": "gbv", "label": "GBV & Psychosocial Care" },
+    { "id": "research", "label": "Research & M&E" }
+  ],
+  "members": [
+    {
+      "id": "tm-1",
+      "name": "Dr. Sarah Mbella",
+      "role": "Executive Director & Founder",
+      "department": "Executive Leadership",
+      "departmentSlug": "leadership",
+      "location": "Mile 18 Junction, Buea",
+      "image": "/posts/gender_transformative_approaches_training3.jpeg",
+      "bio": "Over 14 years steering grassroots humanitarian action, institutional partnerships, and community-driven development across Central Africa.",
+      "credentials": ["Humanitarian Leadership", "PSEA Focal Point", "M&E Specialist"],
+      "email": "contact@nimo.africa"
+    },
+    {
+      "id": "tm-2",
+      "name": "Emmanuel Ngufor",
+      "role": "Head of Programs & Operations",
+      "department": "Executive Leadership",
+      "departmentSlug": "leadership",
+      "location": "South West Region",
+      "image": "/posts/gbv_case_management_training7.jpeg",
+      "bio": "Directs NIMO's cross-sectoral interventions, ensuring compliance with international emergency standards, safety protocols, and field logistics.",
+      "credentials": ["Operations Management", "Sphere Standards", "Crisis Coordination"],
+      "email": "contact@nimo.africa"
+    },
+    {
+      "id": "tm-3",
+      "name": "Grace Eposi Enanga",
+      "role": "Lead Child Protection Officer",
+      "department": "Child Protection & Wellbeing",
+      "departmentSlug": "protection",
+      "location": "Buea & Peri-Urban Outreaches",
+      "image": "/posts/cfs_activities5.jpeg",
+      "bio": "Oversees Child-Friendly Spaces (CFS), case management for separated and vulnerable minors, and community child protection committees.",
+      "credentials": ["CPIMS+ Certified", "Case Management", "Trauma-Informed Care"],
+      "email": "contact@nimo.africa"
+    },
+    {
+      "id": "tm-4",
+      "name": "David Tabi Ashu",
+      "role": "Education in Emergencies Coordinator",
+      "department": "Education & Development",
+      "departmentSlug": "education",
+      "location": "Fako Division",
+      "image": "/posts/cfs_activities2.jpeg",
+      "bio": "Coordinates accelerated learning initiatives, teacher psychosocial training, and scholastic support for out-of-school and displaced children.",
+      "credentials": ["INEE Minimum Standards", "Teacher Training", "Curriculum Adaptation"],
+      "email": "contact@nimo.africa"
+    },
+    {
+      "id": "tm-5",
+      "name": "Blandine Bih",
+      "role": "GBV & Psychosocial Support Specialist",
+      "department": "Gender & Protection",
+      "departmentSlug": "gbv",
+      "location": "Mile 18 & Southwest Hubs",
+      "image": "/posts/gbv_case_management_training3.jpeg",
+      "bio": "Leads survivor-centred clinical referral pathways, confidential case handling, and gender transformative community mobilization.",
+      "credentials": ["MHPSS Toolkit Certified", "GBV Case Management", "Safe Referrals"],
+      "email": "contact@nimo.africa"
+    },
+    {
+      "id": "tm-6",
+      "name": "Patrick Ndip",
+      "role": "Lead Research & M&E Analyst",
+      "department": "Research & Evaluation",
+      "departmentSlug": "research",
+      "location": "South West Region",
+      "image": "/posts/gender_transformative_approaches_training.jpeg",
+      "bio": "Designs quantitative and qualitative surveys, conducts community baseline vulnerability assessments, and measures longitudinal intervention impacts.",
+      "credentials": ["Data & Statistical Modeling", "Participatory M&E", "Survey Design"],
+      "email": "contact@nimo.africa"
+    },
+    {
+      "id": "tm-7",
+      "name": "Miriam Lum",
+      "role": "Community Mobilization & Safeguarding Officer",
+      "department": "Child Protection & Safeguarding",
+      "departmentSlug": "protection",
+      "location": "Buea Environs",
+      "image": "/posts/one_day_training_on_psea.jpeg",
+      "bio": "Builds active community feedback mechanisms and ensures local ownership of child safety networks and safeguarding reporting lines.",
+      "credentials": ["Community Engagement", "PSEA Trainer", "Facilitation"],
+      "email": "contact@nimo.africa"
+    },
+    {
+      "id": "tm-8",
+      "name": "Roland Eyong",
+      "role": "Livelihoods & Youth Empowerment Lead",
+      "department": "Education & Development",
+      "departmentSlug": "education",
+      "location": "South West Region",
+      "image": "/posts/dishwashing_liquid4.jpeg",
+      "bio": "Directs vocational apprenticeships, financial literacy workshops, and income-generating cooperative projects for vulnerable youth and women.",
+      "credentials": ["Vocational Training", "Youth Leadership", "Cooperative Mgmt"],
+      "email": "contact@nimo.africa"
+    },
+    {
+      "id": "tm-9",
+      "name": "Constance Ayuk",
+      "role": "Women's Safe Spaces & Menstrual Health Focal Point",
+      "department": "Gender & Protection",
+      "departmentSlug": "gbv",
+      "location": "Mile 18 Junction & Field Centers",
+      "image": "/posts/menstrual_hygiene.jpeg",
+      "bio": "Coordinates dignity kit distribution, safe spaces for teenage mothers, and sexual reproductive health education in rural communities.",
+      "credentials": ["MHM Trainer", "Safe Spaces Facilitator", "Adolescent Care"],
+      "email": "contact@nimo.africa"
+    }
+  ],
+  "fieldVoices": [
+    {
+      "quote": "When you establish a safe space in a conflict-affected area, you witness a child transition from constant hyper-vigilance to laughing, drawing, and dreaming again. That transformation is why we are on the ground every day.",
+      "author": "Grace Eposi Enanga",
+      "role": "Lead Child Protection Officer",
+      "location": "Child-Friendly Space Facilitator",
+      "image": "/posts/cfs_activities5.jpeg"
+    },
+    {
+      "quote": "True prevention of gender-based violence starts with traditional leaders, men, and youth having honest, courageous dialogues. When community elders champion women's safety, generational protection takes root.",
+      "author": "Blandine Bih",
+      "role": "GBV & Psychosocial Support Specialist",
+      "location": "Frontline Case Manager",
+      "image": "/posts/gbv_case_management_training3.jpeg"
+    },
+    {
+      "quote": "Rigorous community-level research ensures that every kit distributed and every classroom renovated directly corresponds to what families identified as their most urgent priority.",
+      "author": "Patrick Ndip",
+      "role": "Lead Research & M&E Analyst",
+      "location": "Field Survey Coordinator",
+      "image": "/posts/gender_transformative_approaches_training.jpeg"
+    }
+  ],
+  "actionSnapshots": [
+    {
+      "image": "/posts/gbv_case_management_training3.jpeg",
+      "title": "Frontline Case Management & Protection",
+      "caption": "Continuous technical training for local caseworkers and protection actors."
+    },
+    {
+      "image": "/posts/cfs_activities5.jpeg",
+      "title": "Child-Friendly Spaces Facilitation",
+      "caption": "Safe, structured recreational and psychosocial environments for vulnerable children."
+    },
+    {
+      "image": "/posts/gender_transformative_approaches_training3.jpeg",
+      "title": "Community Dialogue & Gender Leadership",
+      "caption": "Facilitating dialogue with grassroots gatekeepers to transform protective social norms."
+    },
+    {
+      "image": "/posts/one_day_training_on_psea.jpeg",
+      "title": "PSEA & Safeguarding Compliance",
+      "caption": "Mandatory prevention of sexual exploitation and abuse workshops for all team members."
+    },
+    {
+      "image": "/posts/dishwashing_liquid4.jpeg",
+      "title": "Hands-On Vocational Empowerment",
+      "caption": "Equipping youth and female heads of households with viable livelihood skills."
+    },
+    {
+      "image": "/posts/menstrual_hygiene.jpeg",
+      "title": "Dignity & Health Interventions",
+      "caption": "Distributing dignity essentials and promoting adolescent health education."
+    }
+  ]
+}

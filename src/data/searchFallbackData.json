@@ -1,0 +1,72 @@
+[
+  {
+    "id": "p-1",
+    "title": "Community Health & Nutrition Outreach",
+    "snippet": "Improving Maternal and Child Health in Rural Communities across Southwest Region.",
+    "category": "program",
+    "url": "/programs",
+    "date": "2026-01-15"
+  },
+  {
+    "id": "p-2",
+    "title": "Youth Empowerment & Skills Workshop",
+    "snippet": "Providing vocational and digital skills training for unemployed youth in Buea.",
+    "category": "program",
+    "url": "/programs",
+    "date": "2026-02-10"
+  },
+  {
+    "id": "e-1",
+    "title": "Annual Health Fair & Free Screening 2026",
+    "snippet": "Free blood pressure, diabetes, and wellness screenings at Mile 18 Junction, Buea.",
+    "category": "event",
+    "url": "/events",
+    "date": "2026-04-20"
+  },
+  {
+    "id": "e-2",
+    "title": "Clean Water Infrastructure Initiative",
+    "snippet": "Community launch of new clean water boreholes in rural villages.",
+    "category": "event",
+    "url": "/events",
+    "date": "2026-03-05"
+  },
+  {
+    "id": "t-1",
+    "title": "Dr. Sarah Mbella - Executive Director",
+    "snippet": "Leading strategic development, research, and international partnerships at NIMO.",
+    "category": "team",
+    "url": "/team"
+  },
+  {
+    "id": "t-2",
+    "title": "Emmanuel Nkem - Programs Director",
+    "snippet": "Overseeing community outreach, field operations, and program execution.",
+    "category": "team",
+    "url": "/team"
+  },
+  {
+    "id": "r-1",
+    "title": "Annual Community Impact Report 2025",
+    "snippet": "Comprehensive analysis of health initiatives, beneficiary metrics, and financial audit.",
+    "category": "report",
+    "url": "/reports",
+    "date": "2025-12-31"
+  },
+  {
+    "id": "r-2",
+    "title": "Rural Healthcare Access Assessment",
+    "snippet": "Research whitepaper evaluating healthcare barrier factors in Southwest Cameroon.",
+    "category": "report",
+    "url": "/reports",
+    "date": "2025-10-14"
+  },
+  {
+    "id": "a-1",
+    "title": "Sustainable Community Healthcare Model",
+    "snippet": "Insights on building resilient community-driven healthcare initiatives.",
+    "category": "article",
+    "url": "/blog",
+    "date": "2026-02-01"
+  }
+]
