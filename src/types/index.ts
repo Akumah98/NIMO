@@ -86,3 +86,5 @@ export interface ProgramNavItem {
   badge: string;
   description: string;
 }
+
+export type { LanguageItem } from "./translation";

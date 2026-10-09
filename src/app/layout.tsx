@@ -5,8 +5,10 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import NavigationProgressBar from "@/components/ui/NavigationProgressBar";
 import ScrollToTopProgress from "@/components/ui/ScrollToTopProgress";
+import GoogleTranslateScript from "@/components/layout/GoogleTranslateScript";
 import { SITE_NAME, SITE_TAGLINE, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 import "./globals.css";
+import "./translate.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,6 +59,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <ScrollToTopProgress />
         <Footer />
+        <GoogleTranslateScript />
       </body>
     </html>
   );

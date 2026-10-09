@@ -1,0 +1,72 @@
+[
+  {
+    "code": "en",
+    "name": "English",
+    "nativeName": "English",
+    "flag": "🇬🇧",
+    "isPrimary": true
+  },
+  {
+    "code": "fr",
+    "name": "French",
+    "nativeName": "Français",
+    "flag": "🇫🇷",
+    "isPrimary": true
+  },
+  {
+    "code": "es",
+    "name": "Spanish",
+    "nativeName": "Español",
+    "flag": "🇪🇸",
+    "isPrimary": false
+  },
+  {
+    "code": "de",
+    "name": "German",
+    "nativeName": "Deutsch",
+    "flag": "🇩🇪",
+    "isPrimary": false
+  },
+  {
+    "code": "ar",
+    "name": "Arabic",
+    "nativeName": "العربية",
+    "flag": "🇸🇦",
+    "isPrimary": false
+  },
+  {
+    "code": "zh-CN",
+    "name": "Chinese",
+    "nativeName": "中文",
+    "flag": "🇨🇳",
+    "isPrimary": false
+  },
+  {
+    "code": "pt",
+    "name": "Portuguese",
+    "nativeName": "Português",
+    "flag": "🇵🇹",
+    "isPrimary": false
+  },
+  {
+    "code": "sw",
+    "name": "Swahili",
+    "nativeName": "Kiswahili",
+    "flag": "🇰🇪",
+    "isPrimary": false
+  },
+  {
+    "code": "it",
+    "name": "Italian",
+    "nativeName": "Italiano",
+    "flag": "🇮🇹",
+    "isPrimary": false
+  },
+  {
+    "code": "nl",
+    "name": "Dutch",
+    "nativeName": "Nederlands",
+    "flag": "🇳🇱",
+    "isPrimary": false
+  }
+]

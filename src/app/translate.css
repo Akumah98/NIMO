@@ -1,0 +1,27 @@
+/* Google Translate Widget & Iframe Clean Overrides */
+.goog-te-banner-frame,
+.skiptranslate > iframe,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-te-gadget {
+  display: none !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
