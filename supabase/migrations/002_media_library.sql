@@ -13,28 +13,33 @@ CREATE TABLE IF NOT EXISTS media (
 -- Row Level Security for Media table
 ALTER TABLE media ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Public can read media" ON media;
 CREATE POLICY "Public can read media"
   ON media FOR SELECT
   USING (true);
 
+DROP POLICY IF EXISTS "Admin full access media" ON media;
 CREATE POLICY "Admin full access media"
   ON media FOR ALL TO authenticated
   USING (auth.role() = 'authenticated')
   WITH CHECK (auth.role() = 'authenticated');
 
--- Storage Bucket setup
+-- Storage Bucket setup (Public)
 INSERT INTO storage.buckets (id, name, public)
 VALUES ('media', 'media', true)
 ON CONFLICT (id) DO NOTHING;
 
+DROP POLICY IF EXISTS "Public read media objects" ON storage.objects;
 CREATE POLICY "Public read media objects"
   ON storage.objects FOR SELECT
   USING (bucket_id = 'media');
 
+DROP POLICY IF EXISTS "Admin insert media objects" ON storage.objects;
 CREATE POLICY "Admin insert media objects"
   ON storage.objects FOR INSERT TO authenticated
   WITH CHECK (bucket_id = 'media');
 
+DROP POLICY IF EXISTS "Admin delete media objects" ON storage.objects;
 CREATE POLICY "Admin delete media objects"
   ON storage.objects FOR DELETE TO authenticated
   USING (bucket_id = 'media');
