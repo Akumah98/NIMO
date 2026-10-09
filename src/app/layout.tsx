@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import NavigationProgressBar from "@/components/ui/NavigationProgressBar";
 import ScrollToTopProgress from "@/components/ui/ScrollToTopProgress";
 import GoogleTranslateScript from "@/components/layout/GoogleTranslateScript";
+import AutoTranslateDetector from "@/components/layout/AutoTranslateDetector";
 import { SITE_NAME, SITE_TAGLINE, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 import "./translate.css";
@@ -59,6 +60,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <ScrollToTopProgress />
         <Footer />
+        <AutoTranslateDetector />
         <GoogleTranslateScript />
       </body>
     </html>

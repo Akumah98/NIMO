@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { NAV_ITEMS } from "@/lib/constants";
 import MobileProgramsAccordion from "./MobileProgramsAccordion";
-import MobileLanguageBar from "./MobileLanguageBar";
 
 interface MobileNavProps {
   open: boolean;
@@ -54,8 +53,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
           </nav>
         </div>
 
-        <div className="pt-4 border-t border-border/40 space-y-3">
-          <MobileLanguageBar />
+        <div className="pt-6 border-t border-border/40">
           <Link
             href="/donate"
             onClick={onClose}
