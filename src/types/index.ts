@@ -88,3 +88,4 @@ export interface ProgramNavItem {
 }
 
 export type { LanguageItem } from "./translation";
+export type { MediaItem } from "./media";

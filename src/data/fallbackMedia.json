@@ -1,0 +1,82 @@
+[
+  {
+    "id": "med-1",
+    "name": "Hero Community Banner",
+    "file_path": "hero-bg.jpg",
+    "file_url": "/hero-bg.jpg",
+    "file_size": 720778,
+    "mime_type": "image/jpeg",
+    "category": "background",
+    "created_at": "2026-10-01T10:00:00Z"
+  },
+  {
+    "id": "med-2",
+    "name": "Alternative Hero Banner",
+    "file_path": "hero1-bg.jpg",
+    "file_url": "/hero1-bg.jpg",
+    "file_size": 252388,
+    "mime_type": "image/jpeg",
+    "category": "background",
+    "created_at": "2026-10-01T10:05:00Z"
+  },
+  {
+    "id": "med-3",
+    "name": "Partners Section Background",
+    "file_path": "partners-bg.jpg",
+    "file_url": "/partners-bg.jpg",
+    "file_size": 313237,
+    "mime_type": "image/jpeg",
+    "category": "background",
+    "created_at": "2026-10-01T10:10:00Z"
+  },
+  {
+    "id": "med-4",
+    "name": "MHPSS Referral Toolkit Session 1",
+    "file_path": "posts/MHPSS_Referral_Toolkit1.jpeg",
+    "file_url": "/posts/MHPSS_Referral_Toolkit1.jpeg",
+    "file_size": 206463,
+    "mime_type": "image/jpeg",
+    "category": "posts",
+    "created_at": "2026-10-02T08:30:00Z"
+  },
+  {
+    "id": "med-5",
+    "name": "CFS Community Outreach Activity",
+    "file_path": "posts/cfs_activities.jpeg",
+    "file_url": "/posts/cfs_activities.jpeg",
+    "file_size": 165035,
+    "mime_type": "image/jpeg",
+    "category": "events",
+    "created_at": "2026-10-02T09:00:00Z"
+  },
+  {
+    "id": "med-6",
+    "name": "Limbe Flood Relief Assistance",
+    "file_path": "posts/flood_in_limbe1.jpeg",
+    "file_url": "/posts/flood_in_limbe1.jpeg",
+    "file_size": 285236,
+    "mime_type": "image/jpeg",
+    "category": "events",
+    "created_at": "2026-10-03T11:20:00Z"
+  },
+  {
+    "id": "med-7",
+    "name": "GBV Case Management Workshop",
+    "file_path": "posts/gbv_case_management_training.jpeg",
+    "file_url": "/posts/gbv_case_management_training.jpeg",
+    "file_size": 269205,
+    "mime_type": "image/jpeg",
+    "category": "posts",
+    "created_at": "2026-10-03T14:15:00Z"
+  },
+  {
+    "id": "med-8",
+    "name": "Maternal Health Initiative",
+    "file_path": "posts/initiative_for_pregnant_women.jpeg",
+    "file_url": "/posts/initiative_for_pregnant_women.jpeg",
+    "file_size": 133718,
+    "mime_type": "image/jpeg",
+    "category": "events",
+    "created_at": "2026-10-04T12:00:00Z"
+  }
+]

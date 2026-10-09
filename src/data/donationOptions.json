@@ -1,0 +1,9 @@
+{
+  "amounts": [5000, 10000, 25000, 50000, 100000],
+  "causes": [
+    "General Fund",
+    "Education in Emergencies",
+    "GBV Protection",
+    "Water & Sanitation"
+  ]
+}
