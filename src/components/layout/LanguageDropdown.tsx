@@ -39,12 +39,12 @@ export default function LanguageDropdown({
     <div
       ref={ref}
       role="menu"
-      className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-border bg-bg p-1.5 shadow-lg z-50 animate-scale-in"
+      className="absolute right-0 top-full mt-2 w-44 rounded-xl border border-border bg-bg p-1.5 shadow-lg z-50 animate-scale-in"
     >
-      <div className="px-2 py-1 text-xs font-semibold uppercase tracking-wider text-text-light">
-        More Languages
+      <div className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-text-light">
+        Select Language
       </div>
-      <div className="max-h-60 overflow-y-auto space-y-0.5">
+      <div className="max-h-64 overflow-y-auto space-y-0.5">
         {languages.map((lang) => {
           const isSelected = currentLang === lang.code;
           return (
@@ -52,16 +52,13 @@ export default function LanguageDropdown({
               key={lang.code}
               role="menuitem"
               onClick={() => onSelect(lang.code)}
-              className={`min-h-[40px] w-full flex items-center justify-between rounded-lg px-2.5 py-1.5 text-xs text-left transition-colors ${
+              className={`min-h-[38px] w-full flex items-center justify-between rounded-lg px-2.5 py-1.5 text-xs text-left transition-colors ${
                 isSelected
                   ? "bg-primary-light font-bold text-primary"
                   : "text-text hover:bg-bg-alt hover:text-primary"
               }`}
             >
-              <span className="flex items-center gap-2">
-                <span className="text-sm">{lang.flag}</span>
-                <span>{lang.nativeName}</span>
-              </span>
+              <span>{lang.nativeName}</span>
               {isSelected && (
                 <span className="text-xs text-primary font-bold">✓</span>
               )}

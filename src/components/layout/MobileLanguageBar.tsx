@@ -16,27 +16,25 @@ export default function MobileLanguageBar() {
         <button
           type="button"
           onClick={() => changeLanguage("en")}
-          className={`min-h-[44px] flex items-center justify-center gap-2 rounded-xl text-sm font-bold transition-all active:scale-95 ${
+          className={`min-h-[44px] flex items-center justify-center rounded-xl text-sm font-bold transition-all active:scale-95 ${
             currentLang === "en"
-              ? "bg-primary text-white shadow-sm"
+              ? "bg-primary text-white shadow-xs"
               : "border border-border bg-bg text-text hover:bg-primary-light"
           }`}
         >
-          <span>🇬🇧</span>
-          <span>English</span>
+          English
         </button>
 
         <button
           type="button"
           onClick={() => changeLanguage("fr")}
-          className={`min-h-[44px] flex items-center justify-center gap-2 rounded-xl text-sm font-bold transition-all active:scale-95 ${
+          className={`min-h-[44px] flex items-center justify-center rounded-xl text-sm font-bold transition-all active:scale-95 ${
             currentLang === "fr"
-              ? "bg-primary text-white shadow-sm"
+              ? "bg-primary text-white shadow-xs"
               : "border border-border bg-bg text-text hover:bg-primary-light"
           }`}
         >
-          <span>🇫🇷</span>
-          <span>Français</span>
+          Français
         </button>
       </div>
 
@@ -51,7 +49,7 @@ export default function MobileLanguageBar() {
         </option>
         {allLanguages.map((l) => (
           <option key={l.code} value={l.code}>
-            {l.flag} {l.name} ({l.nativeName})
+            {l.name} ({l.nativeName})
           </option>
         ))}
       </select>
