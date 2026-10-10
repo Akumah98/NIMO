@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
-import { CONTACT_INFO, NAV_ITEMS, SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
+import { CONTACT_INFO, SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
 import FooterSocials from "./FooterSocials";
+import FooterNav from "./FooterNav";
 
 export default function Footer() {
   return (
@@ -28,21 +28,8 @@ export default function Footer() {
             <FooterSocials />
           </div>
 
-          {/* Quick Links column */}
-          <div className="md:col-span-4">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white">Navigation</h4>
-            <nav className="mt-3 flex flex-col gap-2">
-              {NAV_ITEMS.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm text-gray-400 transition-colors hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+          {/* Quick Links 2-column navigation */}
+          <FooterNav />
 
           {/* Contact details column */}
           <div className="md:col-span-4">
