@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { NAV_ITEMS } from "@/lib/constants";
 import MobileProgramsAccordion from "./MobileProgramsAccordion";
@@ -9,11 +11,30 @@ interface MobileNavProps {
   onClose: () => void;
 }
 
-export default function MobileNav({ open, onClose }: MobileNavProps) {
-  if (!open) return null;
+const emptySubscribe = () => () => {};
 
-  return (
-    <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true">
+export default function MobileNav({ open, onClose }: MobileNavProps) {
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [open]);
+
+  if (!open || !mounted) return null;
+
+  return createPortal(
+    <div className="fixed inset-0 z-9999 md:hidden" role="dialog" aria-modal="true">
       <div className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity" onClick={onClose} />
       <div className="fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-bg/95 backdrop-blur-2xl p-6 shadow-2xl flex flex-col justify-between border-l border-border/60">
         <div>
@@ -63,6 +84,7 @@ export default function MobileNav({ open, onClose }: MobileNavProps) {
           </Link>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

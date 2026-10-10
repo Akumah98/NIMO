@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import PostCard from "@/components/blog/PostCard";
+import BlogHero from "@/components/blog/BlogHero";
 import Pagination from "@/components/ui/Pagination";
 import { POSTS_PER_PAGE } from "@/lib/constants";
 
@@ -31,31 +32,28 @@ export default async function BlogPage({ searchParams }: Props) {
   const totalPages = Math.ceil((count || 0) / POSTS_PER_PAGE);
 
   return (
-    <div className="px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-text sm:text-4xl">News &amp; Updates</h1>
-          <p className="mt-2 text-text-light">
-            News, announcements, and articles from our team.
-          </p>
-        </div>
+    <div className="min-h-screen bg-bg">
+      <BlogHero />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {posts && posts.length > 0 ? (
-            posts.map((post) => <PostCard key={post.id} post={post} />)
-          ) : (
-            <p className="col-span-full text-center text-text-light">
-              No posts yet. Check back soon!
-            </p>
-          )}
-        </div>
+      <div className="px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {posts && posts.length > 0 ? (
+              posts.map((post) => <PostCard key={post.id} post={post} />)
+            ) : (
+              <p className="col-span-full py-12 text-center text-text-light">
+                No posts yet. Check back soon!
+              </p>
+            )}
+          </div>
 
-        <div className="mt-12">
-          <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            basePath="/blog"
-          />
+          <div className="mt-12">
+            <Pagination
+              currentPage={page}
+              totalPages={totalPages}
+              basePath="/blog"
+            />
+          </div>
         </div>
       </div>
     </div>
