@@ -3,6 +3,8 @@
 import { useSearchParams } from "next/navigation";
 import programsData from "@/data/programsData.json";
 import { ProgramItem } from "@/types/programs";
+import { ProgramTabsBar } from "./ProgramTabsBar";
+import { ProgramsOverviewGrid } from "./ProgramsOverviewGrid";
 import ProgramHeaderCard from "./ProgramHeaderCard";
 import ProgramObjectivesList from "./ProgramObjectivesList";
 import ProgramActivitiesGrid from "./ProgramActivitiesGrid";
@@ -13,15 +15,18 @@ export default function ProgramView() {
   const searchParams = useSearchParams();
   const queryId = searchParams.get("id");
   const isValidQuery = Boolean(queryId && programs.some((p) => p.id === queryId));
-  const activeId = (isValidQuery && queryId) ? queryId : programs[0]?.id || "child-protection";
+  const activeId = isValidQuery ? queryId : null;
 
-  const currentProgram = programs.find((p) => p.id === activeId) || programs[0];
+  const currentProgram = programs.find((p) => p.id === activeId);
 
   return (
-    <div className="space-y-16">
-      {/* Active Program View */}
-      {currentProgram && (
-        <>
+    <div className="space-y-12">
+      <ProgramTabsBar programs={programs} activeId={activeId} />
+
+      {!currentProgram ? (
+        <ProgramsOverviewGrid programs={programs} />
+      ) : (
+        <div className="space-y-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <ProgramHeaderCard program={currentProgram} />
           </div>
@@ -36,7 +41,7 @@ export default function ProgramView() {
               commitment={currentProgram.commitment}
             />
           </div>
-        </>
+        </div>
       )}
     </div>
   );

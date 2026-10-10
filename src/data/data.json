@@ -68,7 +68,7 @@
       "description": "We begin with deep participatory inquiry. Rather than imposing top-down agendas, NIMO researchers work side-by-side with local community members, traditional leaders, and educators to diagnose core bottlenecks, map vulnerability patterns, and identify indigenous coping mechanisms.",
       "highlights": [
         "Community-led needs assessments & vulnerability mapping",
-        "MHPSS referral toolkit development with local health centers",
+        "Mental Health and Psychosocial Support (MHPSS) referral toolkit development with local health centers",
         "Contextual evidence informing district and regional policy"
       ],
       "image": "/posts/MHPSS_Referral_Toolkit1.jpeg"
@@ -77,7 +77,7 @@
       "step": "02",
       "title": "Evidence-Based Child Protection",
       "subtitle": "Safe Spaces & Multi-Tier Case Management",
-      "description": "In crisis-affected zones, protecting vulnerable children is paramount. We deploy evidence-based child protection pathways, establish community Child Friendly Spaces (CFS), and train local focal points in PSEA safeguarding and rapid response.",
+      "description": "In crisis-affected zones, protecting vulnerable children is paramount. We deploy evidence-based child protection pathways, establish community Child Friendly Spaces (CFS), and train local focal points in Protection from Sexual Exploitation and Abuse (PSEA) safeguarding protocols and rapid response.",
       "highlights": [
         "10+ Child Friendly Spaces supporting recreational and psychosocial healing",
         "Comprehensive child case identification, tracking, and referral pathways",
@@ -101,7 +101,7 @@
       "step": "04",
       "title": "Multi-Stakeholder Civic Cooperation",
       "subtitle": "Alliances for Long-Term Systemic Change",
-      "description": "Lasting impact requires cross-sector synergy. NIMO serves as a bridge between grassroots beneficiaries, regional government delegations, municipal councils, and international humanitarian clusters to align resources and maximize reach.",
+      "description": "Lasting impact requires cross-sector synergy. NIMO serves as a bridge between frontline community members, regional government delegations, municipal councils, and international humanitarian clusters to align resources and maximize reach.",
       "highlights": [
         "Joint coordination with Regional Health & Social Affairs Delegations",
         "Active participation in protection, education, and health working groups",
@@ -115,37 +115,43 @@
       "name": "United Nations Population Fund (UNFPA)",
       "category": "Multilateral UN Agency",
       "role": "Field assessments, GBV response & adolescent health",
-      "logo": "/partners/unfpa.svg"
+      "logo": "/partners/unfpa.svg",
+      "website": "https://cameroon.unfpa.org"
     },
     {
       "name": "German International Cooperation (GIZ)",
       "category": "International Cooperation",
       "role": "Sustainable development & community resilience",
-      "logo": "/partners/giz.svg"
+      "logo": "/partners/giz.svg",
+      "website": "https://www.giz.de/en/worldwide/344.html"
     },
     {
       "name": "United Nations Children's Fund (UNICEF)",
       "category": "Multilateral UN Agency",
       "role": "Education in Emergencies & Child Friendly Spaces",
-      "logo": "/partners/unicef.svg"
+      "logo": "/partners/unicef.svg",
+      "website": "https://www.unicef.org/cameroon"
     },
     {
       "name": "MINPROFF & Regional Delegations",
       "category": "Government Institutional Partner",
       "role": "Civic protection, gender equality & family advancement",
-      "logo": "/partners/cameroon_emblem.svg"
+      "logo": "/partners/cameroon_emblem.svg",
+      "website": "https://minas.cm"
     },
     {
       "name": "TeenAlive Organization",
       "category": "Youth & Child Protection",
       "role": "Child-centered interventions & educational kits",
-      "logo": "/partners/teenalive.svg"
+      "logo": "/partners/teenalive.svg",
+      "website": "https://teenalive.org"
     },
     {
       "name": "Rural Women's Action for Sustainability & Justice",
-      "category": "Grassroots Women's Alliance",
+      "category": "Frontline Women's Alliance",
       "role": "Community mobilization, crisis relief & advocacy",
-      "logo": "/partners/rwasj.svg"
+      "logo": "/partners/rwasj.svg",
+      "website": "https://rwasj.org"
     }
   ],
   "testimonials": [

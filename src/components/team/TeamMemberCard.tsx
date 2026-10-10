@@ -6,6 +6,12 @@ interface Props {
 }
 
 export default function TeamMemberCard({ member }: Props) {
+  const subject = encodeURIComponent(`Inquiry for ${member.name} (${member.role}) - NIMO`);
+  const body = encodeURIComponent(
+    `Hello NIMO Team,\n\nI would like to connect with ${member.name} (${member.role}, ${member.department}) regarding...\n\nBest regards,\n[Your Name]`
+  );
+  const mailtoUrl = `mailto:${member.email || "contact@nimo.africa"}?subject=${subject}&body=${body}`;
+
   return (
     <div className="group flex flex-col justify-between rounded-3xl border border-border/80 bg-bg p-6 sm:p-7 shadow-2xs transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl">
       <div>
@@ -62,13 +68,14 @@ export default function TeamMemberCard({ member }: Props) {
 
       <div className="mt-6 border-t border-border/60 pt-4 text-center">
         <a
-          href={`mailto:${member.email || "contact@nimo.africa"}`}
-          className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-primary hover:text-primary-dark transition-colors"
+          href={mailtoUrl}
+          className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold text-primary transition-colors hover:bg-primary-light hover:text-primary-dark"
+          aria-label={`Send inquiry regarding ${member.name}`}
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          <span>Connect via NIMO Hub</span>
+          <span>Connect with {member.name.split(" ")[0]}</span>
         </a>
       </div>
     </div>

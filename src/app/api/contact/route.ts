@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { sendInquiryEmail } from "@/lib/services/emailService";
 
 export async function POST(request: Request) {
   try {
@@ -24,6 +25,9 @@ export async function POST(request: Request) {
     if (error) {
       return NextResponse.json({ error: "Failed to save inquiry" }, { status: 500 });
     }
+
+    // Attempt to dispatch email notification
+    await sendInquiryEmail({ name, email, message, category });
 
     return NextResponse.json({ success: true });
   } catch {

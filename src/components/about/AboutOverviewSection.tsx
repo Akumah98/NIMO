@@ -15,7 +15,7 @@ export default function AboutOverviewSection() {
         </p>
         <p className="text-base sm:text-lg font-semibold leading-relaxed text-text">
           We operate across the South West and North West Regions of Cameroon,
-          leveraging local structures, grassroots competencies, and continuous
+          leveraging local structures, frontline competencies, and continuous
           community collaboration to foster inclusive, long-term growth.
         </p>
       </div>
@@ -50,7 +50,7 @@ export default function AboutOverviewSection() {
         <div className="group relative overflow-hidden rounded-3xl border border-border/80 p-6 sm:p-7 shadow-xs">
           <Image
             src="/posts/emp3.jpeg"
-            alt="NIMO Mission - Grassroots Community Growth"
+            alt="NIMO Mission - Community-Driven Growth"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -65,7 +65,7 @@ export default function AboutOverviewSection() {
               <h3 className="text-lg sm:text-xl font-bold text-white">Our Mission</h3>
             </div>
             <p className="mt-3 text-sm sm:text-base leading-relaxed text-gray-200">
-              To accompany meaningful community growth via grassroots engagement in sustainable development, environmental protection, participatory research, and strategic cooperation.
+              To accompany meaningful community growth via direct community engagement in sustainable development, environmental protection, participatory research, and strategic cooperation.
             </p>
           </div>
         </div>

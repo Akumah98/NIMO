@@ -22,7 +22,7 @@ export default function AboutApproachSection({ steps }: Props) {
           How We Work: Our 4-Stage Methodology
         </h2>
         <p className="mt-2 text-sm text-gray-300 sm:text-base">
-          A disciplined, grassroots-to-sustainability cycle designed to prevent aid dependency:
+          A disciplined, community-to-sustainability cycle designed to prevent aid dependency:
         </p>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">

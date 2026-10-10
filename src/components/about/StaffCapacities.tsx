@@ -23,7 +23,7 @@ export default function StaffCapacities() {
             Our Multidisciplinary Team
           </h2>
           <p className="mt-1.5 text-sm sm:text-base text-text-light">
-            Grassroots field professionals and technical specialists powering sustainable development:
+            Dedicated field professionals and technical specialists powering sustainable development:
           </p>
         </div>
 

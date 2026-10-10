@@ -1,5 +1,12 @@
 [
   {
+    "id": "overview",
+    "title": "All Programs Overview",
+    "href": "/programs",
+    "badge": "All Interventions",
+    "description": "General summary and strategic breakdown across all 3 key programs"
+  },
+  {
     "id": "child-protection",
     "title": "Child Safeguarding",
     "href": "/programs?id=child-protection",

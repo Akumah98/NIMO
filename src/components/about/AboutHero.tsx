@@ -24,7 +24,7 @@ export default function AboutHero() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg text-gray-200 leading-relaxed drop-shadow-xs">
-          Development, Research and Cooperation for Better Communities. A grassroots,
+          Development, Research and Cooperation for Better Communities. A community-anchored,
           people-centered organization dedicated to sustainable empowerment and human dignity across Cameroon.
         </p>
       </div>

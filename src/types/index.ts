@@ -77,6 +77,7 @@ export interface Partner {
   category: string;
   role: string;
   logo: string;
+  website?: string;
 }
 
 export interface ProgramNavItem {

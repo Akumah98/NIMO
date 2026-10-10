@@ -4,19 +4,28 @@ import { useState } from "react";
 
 export type ContactFormStatus = "idle" | "sending" | "success" | "error";
 
+export interface ContactData {
+  name: string;
+  email: string;
+  category: string;
+  message: string;
+}
+
 export function useContactForm() {
   const [status, setStatus] = useState<ContactFormStatus>("idle");
+  const [lastSubmission, setLastSubmission] = useState<ContactData | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      category: formData.get("category") as string,
-      message: formData.get("message") as string,
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data: ContactData = {
+      name: (formData.get("name") as string) || "",
+      email: (formData.get("email") as string) || "",
+      category: (formData.get("category") as string) || "general",
+      message: (formData.get("message") as string) || "",
     };
 
     try {
@@ -27,12 +36,13 @@ export function useContactForm() {
       });
 
       if (!res.ok) throw new Error("Failed to send");
+      setLastSubmission(data);
       setStatus("success");
-      (e.target as HTMLFormElement).reset();
+      form.reset();
     } catch {
       setStatus("error");
     }
   }
 
-  return { status, handleSubmit };
+  return { status, lastSubmission, handleSubmit };
 }

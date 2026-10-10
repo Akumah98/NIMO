@@ -26,7 +26,7 @@ export default function AboutFootprintSection({
               Where We Operate
             </h2>
             <p className="mt-2 text-sm sm:text-base text-text-light">
-              Grassroots presence anchored in Buea and deploying across Cameroon&apos;s vulnerable divisional corridors.
+              Operational field presence anchored in Buea and deploying across Cameroon&apos;s vulnerable divisional corridors.
             </p>
 
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">

@@ -3,7 +3,7 @@
     {
       "id": "grassroots-ownership",
       "title": "Community Ownership",
-      "description": "Every program originates from grassroots listening. Local leaders and youth co-own the design, implementation, and long-term stewardship.",
+      "description": "Every program originates from deep community listening. Local leaders and youth co-own the design, implementation, and long-term stewardship.",
       "iconName": "users"
     },
     {
@@ -28,7 +28,7 @@
   "approachSteps": [
     {
       "step": "01",
-      "title": "Grassroots Needs Listening",
+      "title": "Community-Led Needs Assessment",
       "description": "Conducting deep ethnographic surveys and focus group discussions with village elders, women's cooperatives, and displaced youth."
     },
     {

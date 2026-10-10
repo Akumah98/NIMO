@@ -4,7 +4,15 @@ import Button from "@/components/ui/Button";
 import { useContactForm } from "@/hooks/useContactForm";
 
 export default function ContactForm() {
-  const { status, handleSubmit } = useContactForm();
+  const { status, lastSubmission, handleSubmit } = useContactForm();
+
+  const mailtoUrl = lastSubmission
+    ? `mailto:contact@nimo.africa?subject=${encodeURIComponent(
+        `Inquiry from ${lastSubmission.name} [${lastSubmission.category}] - NIMO`
+      )}&body=${encodeURIComponent(
+        `Name: ${lastSubmission.name}\nEmail: ${lastSubmission.email}\nCategory: ${lastSubmission.category}\n\nMessage:\n${lastSubmission.message}`
+      )}`
+    : "mailto:contact@nimo.africa";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 rounded-3xl border border-border/80 bg-bg p-6 sm:p-8 shadow-xs">
@@ -17,7 +25,7 @@ export default function ContactForm() {
           name="name"
           required
           placeholder="e.g. Jane Doe"
-          className="rounded-xl border border-border bg-bg-alt/40 px-4 py-2.5 text-sm text-text placeholder:text-text-light/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="min-h-11 rounded-xl border border-border bg-bg-alt/40 px-4 py-2.5 text-sm text-text placeholder:text-text-light/60 focus:border-primary focus:outline-hidden"
         />
       </div>
 
@@ -31,7 +39,7 @@ export default function ContactForm() {
           type="email"
           required
           placeholder="jane@example.com"
-          className="rounded-xl border border-border bg-bg-alt/40 px-4 py-2.5 text-sm text-text placeholder:text-text-light/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="min-h-11 rounded-xl border border-border bg-bg-alt/40 px-4 py-2.5 text-sm text-text placeholder:text-text-light/60 focus:border-primary focus:outline-hidden"
         />
       </div>
 
@@ -42,7 +50,7 @@ export default function ContactForm() {
         <select
           id="category"
           name="category"
-          className="rounded-xl border border-border bg-bg px-4 py-2.5 text-sm text-text focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="min-h-11 rounded-xl border border-border bg-bg px-4 py-2.5 text-sm text-text focus:border-primary focus:outline-hidden"
         >
           <option value="general">General Inquiry</option>
           <option value="partnership">Institutional Partnership</option>
@@ -61,7 +69,7 @@ export default function ContactForm() {
           rows={4}
           required
           placeholder="How can we assist you or collaborate?"
-          className="rounded-xl border border-border bg-bg-alt/40 px-4 py-2.5 text-sm text-text placeholder:text-text-light/60 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="rounded-xl border border-border bg-bg-alt/40 px-4 py-2.5 text-sm text-text placeholder:text-text-light/60 focus:border-primary focus:outline-hidden"
         />
       </div>
 
@@ -70,7 +78,17 @@ export default function ContactForm() {
       </Button>
 
       {status === "success" && (
-        <p className="text-sm font-medium text-secondary">Thank you! Your message has been sent successfully.</p>
+        <div className="rounded-xl border border-secondary/30 bg-secondary-light/40 p-4 text-center">
+          <p className="text-xs font-semibold text-secondary">
+            Thank you! Your message has been received and registered.
+          </p>
+          <a
+            href={mailtoUrl}
+            className="mt-2 inline-flex min-h-11 items-center justify-center rounded-lg bg-secondary px-4 py-2 text-xs font-bold text-white transition hover:bg-green-700"
+          >
+            Open in Email Client ✉️
+          </a>
+        </div>
       )}
       {status === "error" && (
         <p className="text-sm font-medium text-red-500">Something went wrong. Please try again.</p>
