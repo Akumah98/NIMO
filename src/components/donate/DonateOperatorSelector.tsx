@@ -8,47 +8,30 @@ interface DonateOperatorSelectorProps {
 export function DonateOperatorSelector({ selected, onSelect }: DonateOperatorSelectorProps) {
   return (
     <div>
-      <label className="block text-sm font-semibold text-text mb-2">
-        Select Payment Network
+      <label htmlFor="payment-method-select" className="block text-sm font-semibold text-text mb-1.5">
+        Payment Method
       </label>
-      <div className="grid grid-cols-2 gap-3">
-        <button
-          type="button"
-          onClick={() => onSelect("mobile money")}
-          className={`min-h-11 rounded-lg border p-3 text-left transition-all flex items-center justify-between ${
-            selected === "mobile money"
-              ? "border-primary bg-primary-light/70 ring-2 ring-primary/20"
-              : "border-border bg-bg hover:border-primary/50"
-          }`}
+      <div className="relative">
+        <select
+          id="payment-method-select"
+          value={selected}
+          onChange={(e) => onSelect(e.target.value as "mobile money" | "orange money")}
+          className="min-h-11 w-full appearance-none rounded-lg border border-border bg-bg px-3.5 py-2.5 pr-10 text-sm font-medium text-text transition-colors focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/20"
         >
-          <div>
-            <p className="text-xs font-bold text-text">MTN MoMo</p>
-            <p className="text-2xs text-text-light">67, 650-654, 68</p>
-          </div>
-          <span className="h-3 w-3 rounded-full border border-primary flex items-center justify-center">
-            {selected === "mobile money" && <span className="h-1.5 w-1.5 rounded-full bg-primary" />}
-          </span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => onSelect("orange money")}
-          className={`min-h-11 rounded-lg border p-3 text-left transition-all flex items-center justify-between ${
-            selected === "orange money"
-              ? "border-primary bg-primary-light/70 ring-2 ring-primary/20"
-              : "border-border bg-bg hover:border-primary/50"
-          }`}
-        >
-          <div>
-            <p className="text-xs font-bold text-text">Orange Money</p>
-            <p className="text-2xs text-text-light">69, 655-659</p>
-          </div>
-          <span className="h-3 w-3 rounded-full border border-primary flex items-center justify-center">
-            {selected === "orange money" && <span className="h-1.5 w-1.5 rounded-full bg-primary" />}
-          </span>
-        </button>
+          <option value="mobile money">MTN Mobile Money (MoMo)</option>
+          <option value="orange money">Orange Money</option>
+        </select>
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-text-light">
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
       </div>
+      <p className="mt-1 text-2xs text-text-light">
+        {selected === "mobile money"
+          ? "Supports numbers starting with 67, 650–654, 68."
+          : "Supports numbers starting with 69, 655–659."}
+      </p>
     </div>
   );
 }
-

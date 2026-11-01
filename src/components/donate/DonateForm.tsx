@@ -80,7 +80,7 @@ export default function DonateForm() {
               </>
             ) : (
               <span>
-                Donate {form.numericAmount > 0 ? `${form.numericAmount.toLocaleString()} XAF` : "Now"} (Direct MoMo)
+                Donate {form.numericAmount > 0 ? `${form.numericAmount.toLocaleString()} XAF` : "Now"}
               </span>
             )}
           </button>
