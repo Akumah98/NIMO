@@ -1,13 +1,12 @@
 export type DonationFrequency = "one-time" | "monthly";
 export type DonationStatus = "pending" | "successful" | "failed" | "expired";
 export type PaymentMethod = "mobile money" | "orange money" | "card" | "";
-export type SupportedCurrency = "XAF" | "USD" | "EUR" | "GBP" | "CAD";
+export type SupportedCurrency = string;
 
 export interface CurrencyOption {
-  code: SupportedCurrency;
+  code: string;
   symbol: string;
   label: string;
-  minAmount: number;
   step: number;
   placeholder: string;
 }

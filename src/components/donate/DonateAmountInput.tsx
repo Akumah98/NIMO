@@ -27,14 +27,9 @@ export function DonateAmountInput({
 
   return (
     <div>
-      <div className="flex items-center justify-between">
-        <label htmlFor="donation-amount" className="text-sm font-semibold text-text">
-          Donation Amount & Currency
-        </label>
-        <span className="text-xs text-text-light">
-          Min. {activeCurrency.minAmount} {activeCurrency.code}
-        </span>
-      </div>
+      <label htmlFor="donation-amount" className="block text-sm font-semibold text-text">
+        Donation Amount & Currency
+      </label>
 
       <div className="mt-2 flex rounded-lg border border-border bg-bg transition-colors focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
         <div className="relative">
@@ -42,7 +37,7 @@ export function DonateAmountInput({
             id="donation-currency"
             aria-label="Currency"
             value={currency}
-            onChange={(e) => onCurrencyChange(e.target.value as SupportedCurrency)}
+            onChange={(e) => onCurrencyChange(e.target.value)}
             className="min-h-11 cursor-pointer appearance-none rounded-l-lg border-r border-border bg-bg-alt/70 px-3.5 pr-8 py-2.5 text-sm font-bold text-primary focus:outline-hidden"
           >
             {currencies.map((curr) => (
@@ -61,8 +56,8 @@ export function DonateAmountInput({
         <input
           id="donation-amount"
           type="number"
-          min={activeCurrency.minAmount}
-          step={activeCurrency.step}
+          min={1}
+          step="any"
           placeholder={`e.g. ${activeCurrency.placeholder}`}
           value={amount}
           onChange={(e) => onAmountChange(e.target.value)}
@@ -79,7 +74,7 @@ export function DonateAmountInput({
         </p>
       ) : (
         <p className="mt-1.5 text-xs text-text-light">
-          Select currency and enter the amount you wish to contribute.
+          Give whatever amount you wish to contribute in your chosen currency.
         </p>
       )}
     </div>

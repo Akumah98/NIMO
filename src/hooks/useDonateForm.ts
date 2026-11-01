@@ -23,14 +23,14 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
   const currencyState = useDonationCurrency();
   const modal = useDirectPayModal();
   const numericAmount = Number(amount) || 0;
-  const isValidAmount = numericAmount >= currencyState.activeCurrency.minAmount;
+  const isValidAmount = numericAmount > 0;
 
   const handleSubmit = async (e?: FormEvent) => {
     if (e) e.preventDefault();
     setError(null);
 
     if (!isValidAmount) {
-      setError(`Minimum donation is ${currencyState.activeCurrency.minAmount} ${currencyState.currency}.`);
+      setError("Please enter a donation amount.");
       return;
     }
     if (!paymentMethod) {
@@ -43,6 +43,10 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
     }
     if (paymentMethod === "card") {
       window.location.href = `/contact?subject=International+Card+Donation+(${currencyState.currency})`;
+      return;
+    }
+    if (currencyState.calculateXafEquivalent(numericAmount) < 100) {
+      setError("Mobile Money prompts require an amount equivalent to at least 100 XAF.");
       return;
     }
     if (!donorPhone.trim()) {

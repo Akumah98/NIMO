@@ -1,3 +1,4 @@
+
 {
   "causes": [
     "General Fund",
@@ -7,17 +8,39 @@
     "Health, Water & Sanitation"
   ],
   "currencies": [
-    { "code": "XAF", "symbol": "FCFA", "label": "XAF (FCFA)", "minAmount": 500, "step": 100, "placeholder": "5000" },
-    { "code": "USD", "symbol": "$", "label": "USD ($)", "minAmount": 5, "step": 5, "placeholder": "25" },
-    { "code": "EUR", "symbol": "€", "label": "EUR (€)", "minAmount": 5, "step": 5, "placeholder": "25" },
-    { "code": "GBP", "symbol": "£", "label": "GBP (£)", "minAmount": 5, "step": 5, "placeholder": "20" },
-    { "code": "CAD", "symbol": "CA$", "label": "CAD ($)", "minAmount": 5, "step": 5, "placeholder": "30" }
+    { "code": "XAF", "symbol": "FCFA", "label": "XAF - Central African CFA Franc (FCFA)", "step": 50, "placeholder": "5000" },
+    { "code": "USD", "symbol": "$", "label": "USD - US Dollar ($)", "step": 1, "placeholder": "25" },
+    { "code": "EUR", "symbol": "€", "label": "EUR - Euro (€)", "step": 1, "placeholder": "25" },
+    { "code": "GBP", "symbol": "£", "label": "GBP - British Pound (£)", "step": 1, "placeholder": "20" },
+    { "code": "CAD", "symbol": "CA$", "label": "CAD - Canadian Dollar ($)", "step": 1, "placeholder": "30" },
+    { "code": "AUD", "symbol": "AU$", "label": "AUD - Australian Dollar ($)", "step": 1, "placeholder": "35" },
+    { "code": "CHF", "symbol": "CHF", "label": "CHF - Swiss Franc (CHF)", "step": 1, "placeholder": "25" },
+    { "code": "ZAR", "symbol": "R", "label": "ZAR - South African Rand (R)", "step": 10, "placeholder": "400" },
+    { "code": "NGN", "symbol": "₦", "label": "NGN - Nigerian Naira (₦)", "step": 500, "placeholder": "20000" },
+    { "code": "KES", "symbol": "KSh", "label": "KES - Kenyan Shilling (KSh)", "step": 100, "placeholder": "3000" },
+    { "code": "GHS", "symbol": "GH₵", "label": "GHS - Ghanaian Cedi (GH₵)", "step": 10, "placeholder": "350" },
+    { "code": "SEK", "symbol": "kr", "label": "SEK - Swedish Krona (kr)", "step": 10, "placeholder": "250" },
+    { "code": "NOK", "symbol": "kr", "label": "NOK - Norwegian Krone (kr)", "step": 10, "placeholder": "250" },
+    { "code": "AED", "symbol": "AED", "label": "AED - UAE Dirham (AED)", "step": 5, "placeholder": "100" },
+    { "code": "JPY", "symbol": "¥", "label": "JPY - Japanese Yen (¥)", "step": 100, "placeholder": "3500" },
+    { "code": "CNY", "symbol": "¥", "label": "CNY - Chinese Yuan (¥)", "step": 10, "placeholder": "180" }
   ],
   "exchangeRatesToXaf": {
     "XAF": 1,
     "USD": 610,
     "EUR": 655.957,
     "GBP": 780,
-    "CAD": 445
+    "CAD": 445,
+    "AUD": 400,
+    "CHF": 690,
+    "ZAR": 34,
+    "NGN": 0.40,
+    "KES": 4.7,
+    "GHS": 40,
+    "SEK": 58,
+    "NOK": 56,
+    "AED": 166,
+    "JPY": 4.1,
+    "CNY": 85
   }
 }

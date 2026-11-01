@@ -9,8 +9,8 @@ export async function POST(request: Request) {
     const { amount, currency = "XAF", donorName, donorEmail, donorPhone, cause, frequency } = body;
 
     const parsedAmount = Number(amount);
-    if (!parsedAmount || parsedAmount < 500) {
-      return NextResponse.json({ error: "Minimum donation is 500 XAF" }, { status: 400 });
+    if (!parsedAmount || parsedAmount <= 0) {
+      return NextResponse.json({ error: "Please enter a valid donation amount" }, { status: 400 });
     }
     if (!donorName?.trim() || !donorEmail?.trim()) {
       return NextResponse.json({ error: "Name and email are required" }, { status: 400 });

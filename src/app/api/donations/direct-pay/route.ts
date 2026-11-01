@@ -12,12 +12,16 @@ export async function POST(request: Request) {
     const { amount, currency = "XAF", donorName, donorEmail, phone, medium, cause, frequency } = body;
 
     const parsedAmount = Number(amount);
+    if (!parsedAmount || parsedAmount <= 0) {
+      return NextResponse.json({ error: "Please enter a valid donation amount" }, { status: 400 });
+    }
+
     const rate = rates[currency] || 1;
     const chargeXaf = Math.round(parsedAmount * rate);
-
-    if (!parsedAmount || chargeXaf < 500) {
-      return NextResponse.json({ error: "Minimum donation is 500 XAF equivalent" }, { status: 400 });
+    if (chargeXaf < 100) {
+      return NextResponse.json({ error: "Mobile Money prompt requires at least 100 XAF" }, { status: 400 });
     }
+
     if (!donorName?.trim() || !donorEmail?.trim()) {
       return NextResponse.json({ error: "Name and email are required" }, { status: 400 });
     }
