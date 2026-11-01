@@ -56,14 +56,18 @@ export function DonateDonorFields({
       </div>
 
       <div>
-        <label htmlFor="donor-phone" className="block text-xs font-medium text-text-light mb-1">
-          Phone Number (Optional — For Mobile Money)
-        </label>
+        <div className="flex items-center justify-between mb-1">
+          <label htmlFor="donor-phone" className="block text-xs font-medium text-text-light">
+            Mobile Money Phone Number *
+          </label>
+          <span className="text-2xs text-text-light">e.g. 670000000</span>
+        </div>
         <input
           id="donor-phone"
           type="tel"
+          required
           autoComplete="tel"
-          placeholder="+237 6..."
+          placeholder="6..."
           value={donorPhone}
           onChange={(e) => onPhoneChange(e.target.value)}
           className="min-h-11 w-full rounded-lg border border-border bg-bg px-3.5 py-2 text-sm text-text placeholder:text-text-light/50 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/20"

@@ -1,3 +1,5 @@
+import { getFapshiBaseUrl, getFapshiHeaders } from "./fapshiConfig";
+
 interface InitiateParams {
   amount: number;
   email: string;
@@ -15,19 +17,8 @@ interface FapshiResponse {
   statusCode?: number;
 }
 
-const getBaseUrl = (): string =>
-  process.env.FAPSHI_ENV === "live"
-    ? "https://live.fapshi.com"
-    : "https://sandbox.fapshi.com";
-
-const getHeaders = () => ({
-  "Content-Type": "application/json",
-  apiuser: process.env.FAPSHI_API_USER || "",
-  apikey: process.env.FAPSHI_API_KEY || "",
-});
-
 export async function initiatePayment(params: InitiateParams): Promise<FapshiResponse> {
-  const url = `${getBaseUrl()}/initiate-pay`;
+  const url = `${getFapshiBaseUrl()}/initiate-pay`;
   try {
     const payload: Record<string, unknown> = {
       amount: Math.round(params.amount),
@@ -42,7 +33,7 @@ export async function initiatePayment(params: InitiateParams): Promise<FapshiRes
 
     const res = await fetch(url, {
       method: "POST",
-      headers: getHeaders(),
+      headers: getFapshiHeaders(),
       body: JSON.stringify(payload),
     });
 
@@ -66,9 +57,9 @@ export async function initiatePayment(params: InitiateParams): Promise<FapshiRes
 export async function getPaymentStatus(transId: string) {
   if (!transId || !/^[a-zA-Z0-9_-]{6,30}$/.test(transId)) return null;
   try {
-    const res = await fetch(`${getBaseUrl()}/payment-status/${transId}`, {
+    const res = await fetch(`${getFapshiBaseUrl()}/payment-status/${transId}`, {
       method: "GET",
-      headers: getHeaders(),
+      headers: getFapshiHeaders(),
     });
     if (!res.ok) return null;
     return await res.json();

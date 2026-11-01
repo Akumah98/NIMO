@@ -19,6 +19,23 @@ export interface Donation {
   completed_at?: string | null;
 }
 
+export interface DirectDonationPayload {
+  amount: number;
+  donorName: string;
+  donorEmail: string;
+  phone: string;
+  medium?: "mobile money" | "orange money";
+  cause: string;
+  frequency?: DonationFrequency;
+}
+
+export interface DirectDonationResponse {
+  success: boolean;
+  transId?: string;
+  externalId?: string;
+  error?: string;
+}
+
 export interface InitiateDonationPayload {
   amount: number;
   donorName: string;
@@ -35,4 +52,3 @@ export interface InitiateDonationResponse {
   externalId?: string;
   error?: string;
 }
-
