@@ -1,50 +1,87 @@
 "use client";
 
+import type { SupportedCurrency, CurrencyOption } from "@/types/donation";
+
 interface DonateAmountInputProps {
   amount: string;
-  onChange: (val: string) => void;
+  currency: SupportedCurrency;
+  currencies: CurrencyOption[];
+  activeCurrency: CurrencyOption;
+  approximateXaf: number;
+  onAmountChange: (val: string) => void;
+  onCurrencyChange: (curr: SupportedCurrency) => void;
   error?: string | null;
 }
 
 export function DonateAmountInput({
   amount,
-  onChange,
+  currency,
+  currencies,
+  activeCurrency,
+  approximateXaf,
+  onAmountChange,
+  onCurrencyChange,
   error,
 }: DonateAmountInputProps) {
+  const numAmount = Number(amount) || 0;
+
   return (
     <div>
       <div className="flex items-center justify-between">
         <label htmlFor="donation-amount" className="text-sm font-semibold text-text">
-          Donation Amount
+          Donation Amount & Currency
         </label>
-        <span className="text-xs text-text-light">Min. 500 XAF</span>
+        <span className="text-xs text-text-light">
+          Min. {activeCurrency.minAmount} {activeCurrency.code}
+        </span>
       </div>
 
-      <div className="relative mt-2">
-        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
-          <span className="text-sm font-bold text-primary">XAF</span>
+      <div className="mt-2 flex rounded-lg border border-border bg-bg transition-colors focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
+        <div className="relative">
+          <select
+            id="donation-currency"
+            aria-label="Currency"
+            value={currency}
+            onChange={(e) => onCurrencyChange(e.target.value as SupportedCurrency)}
+            className="min-h-11 cursor-pointer appearance-none rounded-l-lg border-r border-border bg-bg-alt/70 px-3.5 pr-8 py-2.5 text-sm font-bold text-primary focus:outline-hidden"
+          >
+            {currencies.map((curr) => (
+              <option key={curr.code} value={curr.code}>
+                {curr.code} ({curr.symbol})
+              </option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center text-text-light">
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </div>
+
         <input
           id="donation-amount"
           type="number"
-          min={500}
-          step={100}
-          placeholder="e.g. 5000"
+          min={activeCurrency.minAmount}
+          step={activeCurrency.step}
+          placeholder={`e.g. ${activeCurrency.placeholder}`}
           value={amount}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => onAmountChange(e.target.value)}
           required
-          className="min-h-11 w-full rounded-lg border border-border bg-bg pl-16 pr-4 py-2.5 text-base font-semibold text-text transition-colors placeholder:text-text-light/50 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/20"
+          className="min-h-11 w-full rounded-r-lg bg-transparent px-3.5 py-2.5 text-base font-semibold text-text placeholder:text-text-light/50 focus:outline-hidden"
         />
       </div>
 
       {error ? (
         <p className="mt-1.5 text-xs text-red-600 font-medium">{error}</p>
+      ) : currency !== "XAF" && numAmount > 0 ? (
+        <p className="mt-1.5 text-xs text-text-light">
+          ≈ <strong className="text-text">{approximateXaf.toLocaleString()} XAF</strong> (estimated conversion for local settlement)
+        </p>
       ) : (
         <p className="mt-1.5 text-xs text-text-light">
-          Enter any amount you wish to contribute in Central African Francs (XAF).
+          Select currency and enter the amount you wish to contribute.
         </p>
       )}
     </div>
   );
 }
-

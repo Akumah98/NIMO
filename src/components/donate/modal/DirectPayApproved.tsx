@@ -21,7 +21,7 @@ export function DirectPayApproved({ donation, onClose }: DirectPayApprovedProps)
         Payment Successful!
       </h3>
       <p className="mt-1 text-xs text-text-light">
-        Thank you for your generous gift of <strong>{Number(donation.amount).toLocaleString()} XAF</strong>.
+        Thank you for your generous gift of <strong>{Number(donation.amount).toLocaleString()} {donation.currency || "XAF"}</strong>.
       </p>
 
       <div className="mt-4 rounded-lg bg-bg-alt p-3.5 border border-border text-left space-y-1.5 text-xs">

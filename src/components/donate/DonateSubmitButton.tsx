@@ -1,25 +1,33 @@
 "use client";
 
-import type { PaymentMethod } from "@/types/donation";
+import type { PaymentMethod, SupportedCurrency } from "@/types/donation";
 
 interface DonateSubmitButtonProps {
   paymentMethod: PaymentMethod;
   loading: boolean;
   amount: number;
+  currency: SupportedCurrency;
+  isValidAmount: boolean;
 }
 
-export function DonateSubmitButton({ paymentMethod, loading, amount }: DonateSubmitButtonProps) {
+export function DonateSubmitButton({
+  paymentMethod,
+  loading,
+  amount,
+  currency,
+  isValidAmount,
+}: DonateSubmitButtonProps) {
   if (!paymentMethod) return null;
 
   const isCard = paymentMethod === "card";
   const label = isCard
     ? "Request Card / Wire Transfer Info"
-    : `Donate ${amount > 0 ? `${amount.toLocaleString()} XAF` : "Now"}`;
+    : `Donate ${amount > 0 ? `${amount.toLocaleString()} ${currency}` : "Now"}`;
 
   return (
     <button
       type="submit"
-      disabled={loading || (!isCard && amount < 500)}
+      disabled={loading || (!isCard && !isValidAmount)}
       className="min-h-11 w-full rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white shadow-xs transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center gap-2"
     >
       {loading ? (
@@ -36,4 +44,3 @@ export function DonateSubmitButton({ paymentMethod, loading, amount }: DonateSub
     </button>
   );
 }
-

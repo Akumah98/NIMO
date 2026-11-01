@@ -16,6 +16,7 @@ const { causes } = donationData;
 
 export default function DonateForm() {
   const form = useDonateForm({ initialCause: causes[0] });
+  const equivXaf = form.currencyState.calculateXafEquivalent(form.numericAmount);
 
   return (
     <>
@@ -28,7 +29,12 @@ export default function DonateForm() {
 
           <DonateAmountInput
             amount={form.amount}
-            onChange={form.setAmount}
+            currency={form.currencyState.currency}
+            currencies={form.currencyState.currencies}
+            activeCurrency={form.currencyState.activeCurrency}
+            approximateXaf={equivXaf}
+            onAmountChange={form.setAmount}
+            onCurrencyChange={form.currencyState.setCurrency}
           />
 
           <DonateCausesSelector
@@ -42,7 +48,6 @@ export default function DonateForm() {
             onSelect={form.setPaymentMethod}
           />
 
-          {/* Progressive Disclosure: Only revealed when a payment method is chosen */}
           {form.paymentMethod && (
             <>
               <DonateMethodFields
@@ -57,8 +62,10 @@ export default function DonateForm() {
 
               <DonateSummary
                 amount={form.numericAmount}
+                currency={form.currencyState.currency}
                 cause={form.cause}
                 frequency={form.frequency}
+                approximateXaf={equivXaf}
               />
 
               {form.error && (
@@ -71,6 +78,8 @@ export default function DonateForm() {
                 paymentMethod={form.paymentMethod}
                 loading={form.loading}
                 amount={form.numericAmount}
+                currency={form.currencyState.currency}
+                isValidAmount={form.isValidAmount}
               />
             </>
           )}
@@ -79,7 +88,7 @@ export default function DonateForm() {
 
       <DonateDirectPayModal
         status={form.modal.status}
-        amount={form.numericAmount}
+        amount={equivXaf}
         phone={form.donorPhone}
         donation={form.modal.donation}
         errorMessage={form.modal.errorMessage}

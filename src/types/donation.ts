@@ -1,6 +1,16 @@
 export type DonationFrequency = "one-time" | "monthly";
 export type DonationStatus = "pending" | "successful" | "failed" | "expired";
 export type PaymentMethod = "mobile money" | "orange money" | "card" | "";
+export type SupportedCurrency = "XAF" | "USD" | "EUR" | "GBP" | "CAD";
+
+export interface CurrencyOption {
+  code: SupportedCurrency;
+  symbol: string;
+  label: string;
+  minAmount: number;
+  step: number;
+  placeholder: string;
+}
 
 export interface Donation {
   id: string;
@@ -22,6 +32,7 @@ export interface Donation {
 
 export interface DirectDonationPayload {
   amount: number;
+  currency?: SupportedCurrency;
   donorName: string;
   donorEmail: string;
   phone: string;
@@ -39,6 +50,7 @@ export interface DirectDonationResponse {
 
 export interface InitiateDonationPayload {
   amount: number;
+  currency?: SupportedCurrency;
   donorName: string;
   donorEmail: string;
   donorPhone?: string;

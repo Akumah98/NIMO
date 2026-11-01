@@ -5,5 +5,19 @@
     "Child Protection & GBV",
     "Youth Empowerment",
     "Health, Water & Sanitation"
-  ]
+  ],
+  "currencies": [
+    { "code": "XAF", "symbol": "FCFA", "label": "XAF (FCFA)", "minAmount": 500, "step": 100, "placeholder": "5000" },
+    { "code": "USD", "symbol": "$", "label": "USD ($)", "minAmount": 5, "step": 5, "placeholder": "25" },
+    { "code": "EUR", "symbol": "€", "label": "EUR (€)", "minAmount": 5, "step": 5, "placeholder": "25" },
+    { "code": "GBP", "symbol": "£", "label": "GBP (£)", "minAmount": 5, "step": 5, "placeholder": "20" },
+    { "code": "CAD", "symbol": "CA$", "label": "CAD ($)", "minAmount": 5, "step": 5, "placeholder": "30" }
+  ],
+  "exchangeRatesToXaf": {
+    "XAF": 1,
+    "USD": 610,
+    "EUR": 655.957,
+    "GBP": 780,
+    "CAD": 445
+  }
 }

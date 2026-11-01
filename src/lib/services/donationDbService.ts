@@ -7,6 +7,7 @@ export interface InsertDonationParams {
   donorEmail: string;
   donorPhone?: string;
   amount: number;
+  currency?: string;
   cause: string;
   frequency?: string;
 }
@@ -19,7 +20,7 @@ export async function createPendingDonation(params: InsertDonationParams) {
     donor_email: params.donorEmail,
     donor_phone: params.donorPhone || null,
     amount: params.amount,
-    currency: "XAF",
+    currency: params.currency || "XAF",
     cause: params.cause,
     frequency: params.frequency || "one-time",
     status: "pending",

@@ -6,7 +6,7 @@ import { createPendingDonation, attachTransId } from "@/lib/services/donationDbS
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { amount, donorName, donorEmail, donorPhone, cause, frequency } = body;
+    const { amount, currency = "XAF", donorName, donorEmail, donorPhone, cause, frequency } = body;
 
     const parsedAmount = Number(amount);
     if (!parsedAmount || parsedAmount < 500) {
@@ -26,6 +26,7 @@ export async function POST(request: Request) {
       donorEmail: donorEmail.trim(),
       donorPhone: donorPhone?.trim(),
       amount: parsedAmount,
+      currency,
       cause: cause || "General Support",
       frequency: frequency || "one-time",
     });

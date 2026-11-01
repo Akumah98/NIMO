@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import type { DonationFrequency, PaymentMethod } from "@/types/donation";
+import { useDonationCurrency } from "./useDonationCurrency";
 import { useDirectPayModal } from "./useDirectPayModal";
 
 interface UseDonateFormProps {
@@ -19,15 +20,17 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
+  const currencyState = useDonationCurrency();
   const modal = useDirectPayModal();
   const numericAmount = Number(amount) || 0;
+  const isValidAmount = numericAmount >= currencyState.activeCurrency.minAmount;
 
   const handleSubmit = async (e?: FormEvent) => {
     if (e) e.preventDefault();
     setError(null);
 
-    if (numericAmount < 500) {
-      setError("Please enter a donation amount of at least 500 XAF.");
+    if (!isValidAmount) {
+      setError(`Minimum donation is ${currencyState.activeCurrency.minAmount} ${currencyState.currency}.`);
       return;
     }
     if (!paymentMethod) {
@@ -39,7 +42,7 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
       return;
     }
     if (paymentMethod === "card") {
-      window.location.href = "/contact?subject=International+Card+Donation";
+      window.location.href = `/contact?subject=International+Card+Donation+(${currencyState.currency})`;
       return;
     }
     if (!donorPhone.trim()) {
@@ -54,6 +57,7 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           amount: numericAmount,
+          currency: currencyState.currency,
           donorName: donorName.trim(),
           donorEmail: donorEmail.trim(),
           phone: donorPhone.trim(),
@@ -79,6 +83,7 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
   return {
     amount,
     numericAmount,
+    isValidAmount,
     cause,
     frequency,
     paymentMethod,
@@ -88,6 +93,7 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
     loading,
     error,
     modal,
+    currencyState,
     setAmount,
     setCause,
     setFrequency,

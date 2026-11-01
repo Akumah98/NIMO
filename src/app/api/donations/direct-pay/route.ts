@@ -1,16 +1,22 @@
 import { NextResponse } from "next/server";
 import { randomUUID } from "crypto";
+import donationOptions from "@/data/donationOptions.json";
 import { sendDirectPay, sanitizeCameroonPhone, detectMedium } from "@/lib/services/fapshiDirectPay";
 import { createPendingDonation, attachTransId } from "@/lib/services/donationDbService";
+
+const rates = donationOptions.exchangeRatesToXaf as Record<string, number>;
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { amount, donorName, donorEmail, phone, medium, cause, frequency } = body;
+    const { amount, currency = "XAF", donorName, donorEmail, phone, medium, cause, frequency } = body;
 
     const parsedAmount = Number(amount);
-    if (!parsedAmount || parsedAmount < 500) {
-      return NextResponse.json({ error: "Minimum donation is 500 XAF" }, { status: 400 });
+    const rate = rates[currency] || 1;
+    const chargeXaf = Math.round(parsedAmount * rate);
+
+    if (!parsedAmount || chargeXaf < 500) {
+      return NextResponse.json({ error: "Minimum donation is 500 XAF equivalent" }, { status: 400 });
     }
     if (!donorName?.trim() || !donorEmail?.trim()) {
       return NextResponse.json({ error: "Name and email are required" }, { status: 400 });
@@ -33,6 +39,7 @@ export async function POST(request: Request) {
       donorEmail: donorEmail.trim(),
       donorPhone: cleanPhone,
       amount: parsedAmount,
+      currency,
       cause: cause || "General Support",
       frequency: frequency || "one-time",
     });
@@ -42,7 +49,7 @@ export async function POST(request: Request) {
     }
 
     const payResult = await sendDirectPay({
-      amount: parsedAmount,
+      amount: chargeXaf,
       phone: cleanPhone,
       medium: selectedMedium,
       email: donorEmail.trim(),
@@ -66,4 +73,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
-

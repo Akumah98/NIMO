@@ -1,14 +1,22 @@
 "use client";
 
-import type { DonationFrequency } from "@/types/donation";
+import type { DonationFrequency, SupportedCurrency } from "@/types/donation";
 
 interface DonateSummaryProps {
   amount: number;
+  currency: SupportedCurrency;
   cause: string;
   frequency: DonationFrequency;
+  approximateXaf?: number;
 }
 
-export function DonateSummary({ amount, cause, frequency }: DonateSummaryProps) {
+export function DonateSummary({
+  amount,
+  currency,
+  cause,
+  frequency,
+  approximateXaf,
+}: DonateSummaryProps) {
   if (amount <= 0) return null;
 
   return (
@@ -19,7 +27,12 @@ export function DonateSummary({ amount, cause, frequency }: DonateSummaryProps) 
             Your Contribution
           </p>
           <p className="text-lg font-bold text-primary mt-0.5">
-            {amount.toLocaleString()} XAF
+            {amount.toLocaleString()} {currency}
+            {currency !== "XAF" && approximateXaf ? (
+              <span className="text-xs font-normal text-text-light ml-1.5">
+                (≈ {approximateXaf.toLocaleString()} XAF)
+              </span>
+            ) : null}
             {frequency === "monthly" && <span className="text-xs font-normal text-text-light"> / month</span>}
           </p>
         </div>
@@ -33,4 +46,3 @@ export function DonateSummary({ amount, cause, frequency }: DonateSummaryProps) 
     </div>
   );
 }
-
