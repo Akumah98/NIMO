@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import teamData from "@/data/teamData.json";
-import { TeamCategory, TeamDepartment, TeamMember } from "@/types/team";
+import { TeamCategory, TeamDepartment } from "@/types/team";
+import { fetchPublicTeamMembers } from "@/lib/services/teamService";
 import TeamHero from "@/components/team/TeamHero";
 import TeamValuesBar from "@/components/team/TeamValuesBar";
 import TeamDirectory from "@/components/team/TeamDirectory";
@@ -15,16 +16,13 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
-export default function TeamPage() {
+export default async function TeamPage() {
   const categories = teamData.categories.map((c) => ({
     ...c,
     id: c.id as TeamDepartment,
   })) as TeamCategory[];
 
-  const members = teamData.members.map((m) => ({
-    ...m,
-    departmentSlug: m.departmentSlug as TeamDepartment,
-  })) as TeamMember[];
+  const members = await fetchPublicTeamMembers();
 
   return (
     <main className="min-h-dvh bg-bg">

@@ -1,0 +1,33 @@
+[
+  {
+    "id": "rep-1",
+    "title": "Annual Community Impact & Safeguarding Report 2025",
+    "slug": "annual-community-impact-report-2025",
+    "description": "Comprehensive evaluation of NIMO's grassroots interventions, child protection outcomes, and community-driven development milestones across the South West Region.",
+    "file_url": "/reports/nimo_annual_impact_report_2025.pdf",
+    "category": "Annual Report",
+    "published": true,
+    "published_date": "2026-01-15T09:00:00Z"
+  },
+  {
+    "id": "rep-2",
+    "title": "Child Protection in Fragile Contexts: Baseline Assessment",
+    "slug": "child-protection-baseline-assessment",
+    "description": "Empirical survey of child wellbeing, separated minors, and community protection networks across 35 peri-urban and rural settlements.",
+    "file_url": "/reports/child_protection_baseline_assessment.pdf",
+    "category": "Research Study",
+    "published": true,
+    "published_date": "2025-11-20T10:00:00Z"
+  },
+  {
+    "id": "rep-3",
+    "title": "Gender-Transformative Approaches & GBV Case Pathways",
+    "slug": "gender-transformative-gbv-pathways",
+    "description": "Best practices, referral mechanisms, and community mobilization insights derived from clinical case management and survivor support outreaches.",
+    "file_url": "/reports/gbv_case_pathways_policy_brief.pdf",
+    "category": "Policy Brief",
+    "published": true,
+    "published_date": "2025-08-10T14:30:00Z"
+  }
+]
+

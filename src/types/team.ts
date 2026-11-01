@@ -4,7 +4,8 @@ export type TeamDepartment =
   | "protection"
   | "education"
   | "gbv"
-  | "research";
+  | "research"
+  | "other";
 
 export interface TeamMember {
   id: string;
@@ -18,6 +19,10 @@ export interface TeamMember {
   credentials: string[];
   email?: string;
   linkedin?: string;
+  display_order?: number;
+  visible?: boolean;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface TeamCategory {

@@ -58,7 +58,8 @@
     { "id": "protection", "label": "Child Protection" },
     { "id": "education", "label": "Education in Emergencies" },
     { "id": "gbv", "label": "GBV & Psychosocial Care" },
-    { "id": "research", "label": "Research & M&E" }
+    { "id": "research", "label": "Research & M&E" },
+    { "id": "other", "label": "Other Positions" }
   ],
   "members": [
     {

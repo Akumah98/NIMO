@@ -50,6 +50,8 @@ export interface Inquiry {
   created_at: string;
 }
 
+export type { Donation, DonationFrequency, DonationStatus, InitiateDonationPayload, InitiateDonationResponse } from "./donation";
+
 export interface Testimonial {
   id: string;
   quote: string;
@@ -90,3 +92,4 @@ export interface ProgramNavItem {
 
 export type { LanguageItem } from "./translation";
 export type { MediaItem } from "./media";
+export type { TeamMember, TeamDepartment } from "./team";

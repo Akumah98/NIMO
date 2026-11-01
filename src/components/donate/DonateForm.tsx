@@ -1,95 +1,80 @@
 "use client";
 
-import { useState } from "react";
 import Card from "@/components/ui/Card";
 import donationData from "@/data/donationOptions.json";
-import { DonateAmountSelector } from "./DonateAmountSelector";
+import { useDonateForm } from "@/hooks/useDonateForm";
+import { DonateAmountInput } from "./DonateAmountInput";
+import { DonateFrequencySelector } from "./DonateFrequencySelector";
+import { DonateCausesSelector } from "./DonateCausesSelector";
+import { DonateDonorFields } from "./DonateDonorFields";
+import { DonatePaymentBadges } from "./DonatePaymentBadges";
+import { DonateSummary } from "./DonateSummary";
 
-const { amounts, causes } = donationData;
+const { causes } = donationData;
 
 export default function DonateForm() {
-  const [amount, setAmount] = useState<number | null>(null);
-  const [customAmount, setCustomAmount] = useState("");
-  const [cause, setCause] = useState(causes[0]);
-  const [frequency, setFrequency] = useState<"one-time" | "monthly">("one-time");
-
-  const selectedAmount = amount || Number(customAmount) || 0;
+  const form = useDonateForm({ initialCause: causes[0] });
 
   return (
-    <Card className="mt-10">
-      <div className="space-y-8">
-        <div>
-          <h3 className="text-sm font-medium text-text">Frequency</h3>
-          <div className="mt-3 flex gap-3">
-            {(["one-time", "monthly"] as const).map((freq) => (
-              <button
-                key={freq}
-                type="button"
-                onClick={() => setFrequency(freq)}
-                className={`min-h-11 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                  frequency === freq
-                    ? "bg-primary text-white"
-                    : "border border-border text-text-light hover:border-primary"
-                }`}
-              >
-                {freq === "one-time" ? "One-time" : "Monthly"}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <DonateAmountSelector
-          amounts={amounts}
-          amount={amount}
-          customAmount={customAmount}
-          onSelectAmount={(a) => {
-            setAmount(a);
-            setCustomAmount("");
-          }}
-          onCustomAmountChange={(val) => {
-            setCustomAmount(val);
-            setAmount(null);
-          }}
+    <Card className="mt-8">
+      <form onSubmit={form.handleSubmit} className="space-y-6">
+        <DonateFrequencySelector
+          frequency={form.frequency}
+          onChange={form.setFrequency}
         />
 
-        <div>
-          <h3 className="text-sm font-medium text-text">Direct your support</h3>
-          <div className="mt-3 grid gap-2 sm:grid-cols-2">
-            {causes.map((c) => (
-              <button
-                key={c}
-                type="button"
-                onClick={() => setCause(c)}
-                className={`min-h-11 rounded-lg px-4 py-3 text-left text-sm font-medium transition-colors ${
-                  cause === c
-                    ? "border-2 border-primary bg-primary-light text-primary"
-                    : "border border-border text-text-light hover:border-primary"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-        </div>
+        <DonateAmountInput
+          amount={form.amount}
+          onChange={form.setAmount}
+        />
 
-        {selectedAmount > 0 && (
-          <div className="rounded-lg bg-bg-alt p-4">
-            <p className="text-sm text-text-light">
-              You&apos;re donating{" "}
-              <span className="font-semibold text-text">{selectedAmount.toLocaleString()} XAF</span>{" "}
-              {frequency === "monthly" && "monthly "}to{" "}
-              <span className="font-semibold text-text">{cause}</span>.
-            </p>
+        <DonateCausesSelector
+          causes={causes}
+          selectedCause={form.cause}
+          onSelectCause={form.setCause}
+        />
+
+        <DonateDonorFields
+          donorName={form.donorName}
+          donorEmail={form.donorEmail}
+          donorPhone={form.donorPhone}
+          onNameChange={form.setDonorName}
+          onEmailChange={form.setDonorEmail}
+          onPhoneChange={form.setDonorPhone}
+        />
+
+        <DonateSummary
+          amount={form.numericAmount}
+          cause={form.cause}
+          frequency={form.frequency}
+        />
+
+        <DonatePaymentBadges />
+
+        {form.error && (
+          <div className="rounded-lg bg-red-50 border border-red-200 p-3.5 text-xs text-red-700">
+            {form.error}
           </div>
         )}
 
-        <div className="rounded-lg border-2 border-dashed border-border p-6 text-center">
-          <p className="text-sm font-medium text-text-light">Payment integration coming soon.</p>
-          <p className="mt-1 text-xs text-text-light">
-            Mobile Money (MTN/Orange) and card payment options will be available here.
-          </p>
-        </div>
-      </div>
+        <button
+          type="submit"
+          disabled={form.loading || form.numericAmount < 500}
+          className="min-h-11 w-full rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white shadow-xs transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center gap-2"
+        >
+          {form.loading ? (
+            <>
+              <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+              <span>Connecting to Fapshi Gateway...</span>
+            </>
+          ) : (
+            <span>Proceed to Secure Payment</span>
+          )}
+        </button>
+      </form>
     </Card>
   );
 }
