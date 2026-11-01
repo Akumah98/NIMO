@@ -28,3 +28,4 @@ export function useDonationCurrency(initialCurrency: SupportedCurrency = "XAF") 
     calculateXafEquivalent,
   };
 }
+
