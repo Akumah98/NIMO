@@ -51,3 +51,4 @@ export function DonateOperatorSelector({ selected, onSelect }: DonateOperatorSel
     </div>
   );
 }
+

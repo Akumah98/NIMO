@@ -48,3 +48,4 @@ export function DirectPayFailed({ message, onRetry, onClose }: DirectPayFailedPr
     </div>
   );
 }
+

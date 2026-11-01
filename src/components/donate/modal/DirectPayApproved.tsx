@@ -58,3 +58,4 @@ export function DirectPayApproved({ donation, onClose }: DirectPayApprovedProps)
     </div>
   );
 }
+

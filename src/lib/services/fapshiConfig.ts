@@ -8,3 +8,4 @@ export const getFapshiHeaders = () => ({
   apiuser: process.env.FAPSHI_API_USER || "",
   apikey: process.env.FAPSHI_API_KEY || "",
 });
+
