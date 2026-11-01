@@ -7,9 +7,9 @@ import { DonateAmountInput } from "./DonateAmountInput";
 import { DonateFrequencySelector } from "./DonateFrequencySelector";
 import { DonateCausesSelector } from "./DonateCausesSelector";
 import { DonateOperatorSelector } from "./DonateOperatorSelector";
-import { DonateDonorFields } from "./DonateDonorFields";
-import { DonatePaymentBadges } from "./DonatePaymentBadges";
+import { DonateMethodFields } from "./DonateMethodFields";
 import { DonateSummary } from "./DonateSummary";
+import { DonateSubmitButton } from "./DonateSubmitButton";
 import { DonateDirectPayModal } from "./modal/DonateDirectPayModal";
 
 const { causes } = donationData;
@@ -38,52 +38,42 @@ export default function DonateForm() {
           />
 
           <DonateOperatorSelector
-            selected={form.operator}
-            onSelect={form.setOperator}
+            selected={form.paymentMethod}
+            onSelect={form.setPaymentMethod}
           />
 
-          <DonateDonorFields
-            donorName={form.donorName}
-            donorEmail={form.donorEmail}
-            donorPhone={form.donorPhone}
-            onNameChange={form.setDonorName}
-            onEmailChange={form.setDonorEmail}
-            onPhoneChange={form.setDonorPhone}
-          />
+          {/* Progressive Disclosure: Only revealed when a payment method is chosen */}
+          {form.paymentMethod && (
+            <>
+              <DonateMethodFields
+                paymentMethod={form.paymentMethod}
+                donorName={form.donorName}
+                donorEmail={form.donorEmail}
+                donorPhone={form.donorPhone}
+                onNameChange={form.setDonorName}
+                onEmailChange={form.setDonorEmail}
+                onPhoneChange={form.setDonorPhone}
+              />
 
-          <DonateSummary
-            amount={form.numericAmount}
-            cause={form.cause}
-            frequency={form.frequency}
-          />
+              <DonateSummary
+                amount={form.numericAmount}
+                cause={form.cause}
+                frequency={form.frequency}
+              />
 
-          <DonatePaymentBadges />
+              {form.error && (
+                <div className="rounded-lg bg-red-50 border border-red-200 p-3.5 text-xs text-red-700">
+                  {form.error}
+                </div>
+              )}
 
-          {form.error && (
-            <div className="rounded-lg bg-red-50 border border-red-200 p-3.5 text-xs text-red-700">
-              {form.error}
-            </div>
+              <DonateSubmitButton
+                paymentMethod={form.paymentMethod}
+                loading={form.loading}
+                amount={form.numericAmount}
+              />
+            </>
           )}
-
-          <button
-            type="submit"
-            disabled={form.loading || form.numericAmount < 500}
-            className="min-h-11 w-full rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white shadow-xs transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center gap-2"
-          >
-            {form.loading ? (
-              <>
-                <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                </svg>
-                <span>Sending prompt to phone...</span>
-              </>
-            ) : (
-              <span>
-                Donate {form.numericAmount > 0 ? `${form.numericAmount.toLocaleString()} XAF` : "Now"}
-              </span>
-            )}
-          </button>
         </form>
       </Card>
 

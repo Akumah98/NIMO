@@ -1,6 +1,7 @@
 "use client";
 
-interface DonateDonorFieldsProps {
+interface DonateMoMoFieldsProps {
+  operator: "mobile money" | "orange money";
   donorName: string;
   donorEmail: string;
   donorPhone: string;
@@ -9,25 +10,37 @@ interface DonateDonorFieldsProps {
   onPhoneChange: (val: string) => void;
 }
 
-export function DonateDonorFields({
+export function DonateMoMoFields({
+  operator,
   donorName,
   donorEmail,
   donorPhone,
   onNameChange,
   onEmailChange,
   onPhoneChange,
-}: DonateDonorFieldsProps) {
-  return (
-    <div className="space-y-4">
-      <h3 className="text-sm font-semibold text-text">Your Information</h3>
+}: DonateMoMoFieldsProps) {
+  const isMTN = operator === "mobile money";
+  const opLabel = isMTN ? "MTN Mobile Money" : "Orange Money";
+  const placeholder = isMTN ? "670000000" : "690000000";
 
-      <div className="grid gap-4 sm:grid-cols-2">
+  return (
+    <div className="space-y-4 rounded-xl border border-primary/20 bg-primary-light/30 p-4 sm:p-5">
+      <div className="flex items-center justify-between border-b border-primary/10 pb-2">
+        <h4 className="text-xs font-bold text-primary uppercase tracking-wider">
+          {opLabel} Donor Details
+        </h4>
+        <span className="rounded-full bg-white px-2 py-0.5 text-2xs font-semibold text-primary border border-primary/20">
+          Direct Push Prompt
+        </span>
+      </div>
+
+      <div className="grid gap-3.5 sm:grid-cols-2">
         <div>
-          <label htmlFor="donor-name" className="block text-xs font-medium text-text-light mb-1">
+          <label htmlFor="momo-donor-name" className="block text-xs font-medium text-text-light mb-1">
             Full Name *
           </label>
           <input
-            id="donor-name"
+            id="momo-donor-name"
             type="text"
             required
             autoComplete="name"
@@ -39,11 +52,11 @@ export function DonateDonorFields({
         </div>
 
         <div>
-          <label htmlFor="donor-email" className="block text-xs font-medium text-text-light mb-1">
+          <label htmlFor="momo-donor-email" className="block text-xs font-medium text-text-light mb-1">
             Email Address * (For Receipt)
           </label>
           <input
-            id="donor-email"
+            id="momo-donor-email"
             type="email"
             required
             autoComplete="email"
@@ -57,21 +70,24 @@ export function DonateDonorFields({
 
       <div>
         <div className="flex items-center justify-between mb-1">
-          <label htmlFor="donor-phone" className="block text-xs font-medium text-text-light">
-            Mobile Money Phone Number *
+          <label htmlFor="momo-donor-phone" className="block text-xs font-medium text-text">
+            {opLabel} Phone Number *
           </label>
-          <span className="text-2xs text-text-light">e.g. 670000000</span>
+          <span className="text-2xs text-text-light">9 digits (e.g. {placeholder})</span>
         </div>
         <input
-          id="donor-phone"
+          id="momo-donor-phone"
           type="tel"
           required
           autoComplete="tel"
-          placeholder="6..."
+          placeholder={placeholder}
           value={donorPhone}
           onChange={(e) => onPhoneChange(e.target.value)}
           className="min-h-11 w-full rounded-lg border border-border bg-bg px-3.5 py-2 text-sm text-text placeholder:text-text-light/50 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary/20"
         />
+        <p className="mt-1 text-2xs text-text-light">
+          A USSD authorization prompt will appear on this phone screen to enter your PIN.
+        </p>
       </div>
     </div>
   );

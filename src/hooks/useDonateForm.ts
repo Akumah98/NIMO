@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import type { DonationFrequency } from "@/types/donation";
+import type { DonationFrequency, PaymentMethod } from "@/types/donation";
 import { useDirectPayModal } from "./useDirectPayModal";
 
 interface UseDonateFormProps {
@@ -12,7 +12,7 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
   const [amount, setAmount] = useState<string>("");
   const [cause, setCause] = useState<string>(initialCause);
   const [frequency, setFrequency] = useState<DonationFrequency>("one-time");
-  const [operator, setOperator] = useState<"mobile money" | "orange money">("mobile money");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("");
   const [donorName, setDonorName] = useState<string>("");
   const [donorEmail, setDonorEmail] = useState<string>("");
   const [donorPhone, setDonorPhone] = useState<string>("");
@@ -30,12 +30,20 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
       setError("Please enter a donation amount of at least 500 XAF.");
       return;
     }
+    if (!paymentMethod) {
+      setError("Please select a payment method above to continue.");
+      return;
+    }
     if (!donorName.trim() || !donorEmail.trim()) {
       setError("Please provide your full name and email address.");
       return;
     }
+    if (paymentMethod === "card") {
+      window.location.href = "/contact?subject=International+Card+Donation";
+      return;
+    }
     if (!donorPhone.trim()) {
-      setError("Please enter your Mobile Money phone number to receive the prompt.");
+      setError("Please enter your mobile phone number to receive the prompt.");
       return;
     }
 
@@ -49,7 +57,7 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
           donorName: donorName.trim(),
           donorEmail: donorEmail.trim(),
           phone: donorPhone.trim(),
-          medium: operator,
+          medium: paymentMethod,
           cause,
           frequency,
         }),
@@ -60,7 +68,6 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
         throw new Error(data.error || "Failed to trigger payment prompt");
       }
 
-      // Keep user on NIMO — open the live push prompt modal
       modal.startPrompting(data.externalId);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
@@ -74,7 +81,7 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
     numericAmount,
     cause,
     frequency,
-    operator,
+    paymentMethod,
     donorName,
     donorEmail,
     donorPhone,
@@ -84,7 +91,7 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
     setAmount,
     setCause,
     setFrequency,
-    setOperator,
+    setPaymentMethod,
     setDonorName,
     setDonorEmail,
     setDonorPhone,

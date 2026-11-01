@@ -1,5 +1,6 @@
 export type DonationFrequency = "one-time" | "monthly";
 export type DonationStatus = "pending" | "successful" | "failed" | "expired";
+export type PaymentMethod = "mobile money" | "orange money" | "card" | "";
 
 export interface Donation {
   id: string;
