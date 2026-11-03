@@ -5,6 +5,6 @@ export interface MediaItem {
   file_url: string;
   file_size?: number;
   mime_type?: string;
-  category?: "general" | "background" | "posts" | "events" | "reports";
+  category?: string;
   created_at: string;
 }

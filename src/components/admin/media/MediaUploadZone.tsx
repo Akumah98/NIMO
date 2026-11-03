@@ -36,20 +36,27 @@ export function MediaUploadZone({ uploading, error, onUpload }: MediaUploadZoneP
       >
         <div className="mb-3 rounded-full bg-primary-light p-3 text-primary">
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+            />
           </svg>
         </div>
 
         <p className="text-sm font-semibold text-text">
-          {uploading ? "Uploading images to storage..." : "Drag & drop your images here"}
+          {uploading ? "Uploading files to storage..." : "Drag & drop your images or documents here"}
         </p>
-        <p className="mt-1 text-xs text-text-light">PNG, JPG, WebP, or SVG up to 10MB</p>
+        <p className="mt-1 text-xs text-text-light">
+          Images (JPG, PNG, WebP) or Files (PDF, DOC, XLSX) up to 25MB
+        </p>
 
-        <label className="mt-4 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-primary-dark">
+        <label className="mt-4 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-xs font-semibold text-white shadow-xs transition hover:bg-primary-dark">
           {uploading ? "Uploading..." : "Browse Local Files"}
           <input
             type="file"
-            accept="image/*"
+            accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
             multiple
             disabled={uploading}
             onChange={(e) => e.target.files && onUpload(e.target.files)}

@@ -2,21 +2,14 @@
 
 import Button from "@/components/ui/Button";
 import { useReportForm } from "@/hooks/useReportForm";
+import { ReportFileInput } from "./ReportFileInput";
 
 export default function ReportForm() {
   const {
-    title,
-    setTitle,
-    description,
-    setDescription,
-    category,
-    setCategory,
-    publishedDate,
-    setPublishedDate,
-    setFile,
-    saving,
-    error,
-    handleSubmit,
+    title, setTitle, description, setDescription,
+    category, setCategory, publishedDate, setPublishedDate,
+    file, setFile, selectedFileUrl, setSelectedFileUrl,
+    saving, error, handleSubmit,
   } = useReportForm();
 
   return (
@@ -53,6 +46,7 @@ export default function ReportForm() {
             <option value="research">Research</option>
             <option value="annual-report">Annual Report</option>
             <option value="policy">Policy Brief</option>
+            <option value="toolkit">Toolkit / Resource</option>
             <option value="other">Other</option>
           </select>
         </div>
@@ -68,25 +62,20 @@ export default function ReportForm() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label className="text-sm font-medium text-text">PDF File</label>
-        <input
-          type="file"
-          accept=".pdf,.doc,.docx"
-          onChange={(e) => setFile(e.target.files?.[0] || null)}
-          className="min-h-11 rounded-lg border border-border px-4 py-2 text-sm file:mr-4 file:rounded file:border-0 file:bg-primary-light file:px-3 file:py-1 file:text-sm file:font-medium file:text-primary"
-        />
-      </div>
+      <ReportFileInput
+        file={file}
+        onFileChange={setFile}
+        selectedUrl={selectedFileUrl}
+        onSelectUrl={setSelectedFileUrl}
+      />
 
       {error && <p className="text-sm text-red-500">{error}</p>}
 
       <div className="flex items-center gap-3">
         <Button type="submit" disabled={saving}>
-          {saving ? "Uploading..." : "Upload Report"}
+          {saving ? "Uploading..." : "Save & Publish Report"}
         </Button>
-        <Button variant="outline" href="/admin/reports">
-          Cancel
-        </Button>
+        <Button variant="outline" href="/admin/reports">Cancel</Button>
       </div>
     </form>
   );

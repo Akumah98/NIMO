@@ -23,13 +23,13 @@ export default function AdminMediaPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-text">Media Library</h1>
+          <h1 className="text-2xl font-bold text-text">Media & Files Library</h1>
           <p className="text-sm text-text-light">
-            Upload, manage, and retrieve website images for posts, events, and background banners.
+            Upload, manage, and retrieve website images, documents, reports, and resources.
           </p>
         </div>
-        <div className="text-xs text-text-light">
-          {media.length} {media.length === 1 ? "asset" : "assets"} available
+        <div className="text-xs font-medium text-text-light">
+          {media.length} {media.length === 1 ? "asset" : "assets"} found
         </div>
       </div>
 

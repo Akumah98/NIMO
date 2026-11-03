@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useAdminMedia } from "@/hooks/useAdminMedia";
 import { MediaCategoryFilter } from "./MediaCategoryFilter";
 import { MediaGrid } from "./MediaGrid";
@@ -9,9 +10,19 @@ interface MediaModalPickerProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectImage: (url: string) => void;
+  defaultCategory?: string;
+  title?: string;
+  subtitle?: string;
 }
 
-export function MediaModalPicker({ isOpen, onClose, onSelectImage }: MediaModalPickerProps) {
+export function MediaModalPicker({
+  isOpen,
+  onClose,
+  onSelectImage,
+  defaultCategory,
+  title = "Media & Files Library",
+  subtitle = "Select an existing asset or upload a new one",
+}: MediaModalPickerProps) {
   const {
     media,
     loading,
@@ -26,6 +37,12 @@ export function MediaModalPicker({ isOpen, onClose, onSelectImage }: MediaModalP
     copyUrl,
   } = useAdminMedia();
 
+  useEffect(() => {
+    if (isOpen && defaultCategory) {
+      setCategory(defaultCategory);
+    }
+  }, [isOpen, defaultCategory, setCategory]);
+
   if (!isOpen) return null;
 
   return (
@@ -34,8 +51,8 @@ export function MediaModalPicker({ isOpen, onClose, onSelectImage }: MediaModalP
       <div className="relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-border bg-bg shadow-2xl">
         <div className="flex items-center justify-between border-b border-border p-4">
           <div>
-            <h3 className="text-base font-bold text-text">Choose from Media Library</h3>
-            <p className="text-xs text-text-light">Select an existing image or upload a new one</p>
+            <h3 className="text-base font-bold text-text">{title}</h3>
+            <p className="text-xs text-text-light">{subtitle}</p>
           </div>
           <button
             type="button"

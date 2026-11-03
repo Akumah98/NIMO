@@ -1,0 +1,9 @@
+[
+  { "id": "all", "label": "All Assets" },
+  { "id": "files", "label": "📄 Files & Reports" },
+  { "id": "events", "label": "Events" },
+  { "id": "posts", "label": "Posts & News" },
+  { "id": "background", "label": "Backgrounds" },
+  { "id": "general", "label": "General" }
+]
+

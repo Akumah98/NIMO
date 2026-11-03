@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { createClient } from "@/lib/supabase/client";
+import { uploadMediaFile } from "@/lib/services/mediaService";
 import { MediaModalPicker } from "./media/MediaModalPicker";
 
 interface ImageUploaderProps {
@@ -21,22 +21,15 @@ export default function ImageUploader({ bucket, currentImage, onUpload }: ImageU
     if (!file) return;
 
     setUploading(true);
-    const supabase = createClient();
-    const fileExt = file.name.split(".").pop();
-    const filePath = `${Date.now()}-${Math.random().toString(36).slice(2)}.${fileExt}`;
-
-    const { error } = await supabase.storage.from(bucket).upload(filePath, file);
-
-    if (error) {
-      alert("Upload failed: " + error.message);
+    try {
+      const item = await uploadMediaFile(file, bucket || "general");
+      setPreview(item.file_url);
+      onUpload(item.file_url);
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : "Upload failed");
+    } finally {
       setUploading(false);
-      return;
     }
-
-    const { data } = supabase.storage.from(bucket).getPublicUrl(filePath);
-    setPreview(data.publicUrl);
-    onUpload(data.publicUrl);
-    setUploading(false);
   }
 
   function handleSelectFromMedia(url: string) {
@@ -77,6 +70,7 @@ export default function ImageUploader({ bucket, currentImage, onUpload }: ImageU
         isOpen={showPicker}
         onClose={() => setShowPicker(false)}
         onSelectImage={handleSelectFromMedia}
+        defaultCategory={bucket}
       />
     </div>
   );

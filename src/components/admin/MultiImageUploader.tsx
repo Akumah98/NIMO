@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { createClient } from "@/lib/supabase/client";
+import { uploadMediaFile } from "@/lib/services/mediaService";
 import { MediaModalPicker } from "./media/MediaModalPicker";
 
 interface MultiImageUploaderProps {
@@ -26,20 +26,17 @@ export default function MultiImageUploader({
     if (!fileList || fileList.length === 0) return;
 
     setUploading(true);
-    const supabase = createClient();
-
-    for (const file of Array.from(fileList)) {
-      const ext = file.name.split(".").pop();
-      const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-      const { error } = await supabase.storage.from(bucket).upload(path, file);
-
-      if (!error) {
-        const { data } = supabase.storage.from(bucket).getPublicUrl(path);
-        onAddImage(data.publicUrl);
+    try {
+      for (const file of Array.from(fileList)) {
+        const item = await uploadMediaFile(file, bucket || "events");
+        onAddImage(item.file_url);
       }
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setUploading(false);
+      e.target.value = "";
     }
-    setUploading(false);
-    e.target.value = "";
   }
 
   return (
@@ -83,6 +80,7 @@ export default function MultiImageUploader({
       <MediaModalPicker
         isOpen={showPicker}
         onClose={() => setShowPicker(false)}
+        defaultCategory={bucket || "events"}
         onSelectImage={(url) => {
           onAddImage(url);
           setShowPicker(false);
@@ -91,4 +89,3 @@ export default function MultiImageUploader({
     </div>
   );
 }
-

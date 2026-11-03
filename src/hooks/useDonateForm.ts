@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import type { DonationFrequency, PaymentMethod } from "@/types/donation";
 import { useDonationCurrency } from "./useDonationCurrency";
 import { useDirectPayModal } from "./useDirectPayModal";
+import { validateDonationInput } from "@/lib/utils/donationUtils";
 
 interface UseDonateFormProps {
   initialCause: string;
@@ -23,34 +24,23 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
   const currencyState = useDonationCurrency();
   const modal = useDirectPayModal();
   const numericAmount = Number(amount) || 0;
-  const isValidAmount = numericAmount > 0;
 
   const handleSubmit = async (e?: FormEvent) => {
     if (e) e.preventDefault();
     setError(null);
 
-    if (!isValidAmount) {
-      setError("Please enter a donation amount.");
-      return;
-    }
-    if (!paymentMethod) {
-      setError("Please select a payment method above to continue.");
-      return;
-    }
-    if (!donorName.trim() || !donorEmail.trim()) {
-      setError("Please provide your full name and email address.");
-      return;
-    }
+    const validationError = validateDonationInput({
+      numericAmount,
+      paymentMethod,
+      donorName,
+      donorEmail,
+      donorPhone,
+      xafEquivalent: currencyState.calculateXafEquivalent(numericAmount),
+    });
+    if (validationError) return setError(validationError);
+
     if (paymentMethod === "card") {
       window.location.href = `/contact?subject=International+Card+Donation+(${currencyState.currency})`;
-      return;
-    }
-    if (currencyState.calculateXafEquivalent(numericAmount) < 100) {
-      setError("Mobile Money prompts require an amount equivalent to at least 100 XAF.");
-      return;
-    }
-    if (!donorPhone.trim()) {
-      setError("Please enter your mobile phone number to receive the prompt.");
       return;
     }
 
@@ -72,10 +62,7 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
       });
 
       const data = await res.json();
-      if (!res.ok || !data.externalId) {
-        throw new Error(data.error || "Failed to trigger payment prompt");
-      }
-
+      if (!res.ok || !data.externalId) throw new Error(data.error || "Failed to trigger payment prompt");
       modal.startPrompting(data.externalId);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
@@ -85,26 +72,10 @@ export function useDonateForm({ initialCause }: UseDonateFormProps) {
   };
 
   return {
-    amount,
-    numericAmount,
-    isValidAmount,
-    cause,
-    frequency,
-    paymentMethod,
-    donorName,
-    donorEmail,
-    donorPhone,
-    loading,
-    error,
-    modal,
-    currencyState,
-    setAmount,
-    setCause,
-    setFrequency,
-    setPaymentMethod,
-    setDonorName,
-    setDonorEmail,
-    setDonorPhone,
-    handleSubmit,
+    amount, numericAmount, isValidAmount: numericAmount > 0,
+    cause, frequency, paymentMethod, donorName, donorEmail, donorPhone,
+    loading, error, modal, currencyState,
+    setAmount, setCause, setFrequency, setPaymentMethod,
+    setDonorName, setDonorEmail, setDonorPhone, handleSubmit,
   };
 }

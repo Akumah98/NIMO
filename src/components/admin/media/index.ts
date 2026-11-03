@@ -3,3 +3,6 @@ export { MediaGrid } from "./MediaGrid";
 export { MediaUploadZone } from "./MediaUploadZone";
 export { MediaCategoryFilter } from "./MediaCategoryFilter";
 export { MediaModalPicker } from "./MediaModalPicker";
+export { MediaImagePreview } from "./MediaImagePreview";
+export { MediaFilePreview } from "./MediaFilePreview";
+export { MediaCardActions } from "./MediaCardActions";

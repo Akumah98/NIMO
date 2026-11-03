@@ -1,20 +1,13 @@
 "use client";
 
+import mediaCategories from "@/data/mediaCategories.json";
+
 interface MediaCategoryFilterProps {
   currentCategory: string;
   onSelectCategory: (category: string) => void;
   search: string;
   onSearchChange: (search: string) => void;
 }
-
-const CATEGORIES = [
-  { id: "all", label: "All Media" },
-  { id: "general", label: "General" },
-  { id: "background", label: "Backgrounds" },
-  { id: "posts", label: "Posts & News" },
-  { id: "events", label: "Events" },
-  { id: "reports", label: "Reports" },
-];
 
 export function MediaCategoryFilter({
   currentCategory,
@@ -25,7 +18,7 @@ export function MediaCategoryFilter({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex flex-wrap gap-1.5">
-        {CATEGORIES.map((cat) => {
+        {mediaCategories.map((cat) => {
           const isActive = currentCategory === cat.id;
           return (
             <button
@@ -49,11 +42,11 @@ export function MediaCategoryFilter({
           type="text"
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
-          placeholder="Search by file name..."
+          placeholder="Search assets or reports..."
           className="min-h-11 w-full rounded-xl border border-border bg-bg-alt px-3.5 py-2 pl-9 text-xs text-text placeholder-text-light focus:border-primary focus:outline-hidden"
         />
         <svg
-          className="absolute left-3 top-3 h-4 w-4 text-text-light"
+          className="absolute left-3 top-3.5 h-4 w-4 text-text-light"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

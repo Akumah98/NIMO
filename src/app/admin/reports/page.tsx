@@ -26,7 +26,7 @@ export default function AdminReportsPage() {
     {
       key: "category",
       label: "Category",
-      render: (r: Report) => <Badge>{r.category || "—"}</Badge>,
+      render: (r: Report) => <Badge>{r.category || "General"}</Badge>,
     },
     {
       key: "published_date",
@@ -35,30 +35,35 @@ export default function AdminReportsPage() {
     },
     {
       key: "file_url",
-      label: "File",
+      label: "Document File",
       render: (r: Report) => (
         <a
           href={r.file_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs text-primary hover:underline"
+          className="inline-flex items-center gap-1.5 rounded-md bg-primary-light px-2.5 py-1 text-xs font-semibold text-primary hover:bg-primary hover:text-white transition-colors"
         >
-          View PDF
+          <span>📄 View PDF</span>
         </a>
       ),
     },
   ];
 
-  if (loading) return <p className="text-text-light">Loading...</p>;
+  if (loading) return <p className="text-text-light">Loading reports...</p>;
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-text">Reports & Documents</h1>
-          <p className="text-sm text-text-light">{reports.length} total reports</p>
+          <h1 className="text-2xl font-bold text-text">Resources & Reports</h1>
+          <p className="text-sm text-text-light">{reports.length} total publications & files</p>
         </div>
-        <Button href="/admin/reports/new">+ Upload Report</Button>
+        <div className="flex flex-wrap items-center gap-2.5">
+          <Button variant="outline" href="/admin/media">
+            📁 Media & Files Library
+          </Button>
+          <Button href="/admin/reports/new">+ Upload New Report</Button>
+        </div>
       </div>
 
       <DataTable columns={columns} data={reports} onDelete={handleDelete} />

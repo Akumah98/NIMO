@@ -14,36 +14,24 @@ export function useAdminMedia() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [, startTransition] = useTransition();
 
-  async function loadMedia(cat = category) {
-    setLoading(true);
-    setError("");
-    const items = await fetchMediaItems(cat);
-    setMedia(items);
-    setLoading(false);
-  }
-
   useEffect(() => {
-    let isMounted = true;
-    const fetchInitial = async () => {
-      const items = await fetchMediaItems("all");
-      if (isMounted) {
+    let active = true;
+    fetchMediaItems("all").then((items) => {
+      if (active) {
         setMedia(items);
         setLoading(false);
       }
-    };
-    fetchInitial();
-    return () => {
-      isMounted = false;
-    };
+    });
+    return () => { active = false; };
   }, []);
 
   async function uploadFiles(files: FileList | File[]) {
     setUploading(true);
     setError("");
     try {
-      const fileList = Array.from(files);
-      for (const file of fileList) {
-        const item = await uploadMediaFile(file, category === "all" ? "general" : category);
+      for (const file of Array.from(files)) {
+        const uploadCat = category === "all" || category === "files" ? "general" : category;
+        const item = await uploadMediaFile(file, uploadCat);
         setMedia((prev) => [item, ...prev]);
       }
     } catch (err: unknown) {
@@ -54,7 +42,7 @@ export function useAdminMedia() {
   }
 
   async function deleteItem(item: MediaItem) {
-    if (!confirm(`Delete image "${item.name}"?`)) return;
+    if (!confirm(`Delete asset "${item.name}"?`)) return;
     try {
       await deleteMediaItem(item.id, item.file_path);
       setMedia((prev) => prev.filter((m) => m.id !== item.id));
@@ -71,8 +59,12 @@ export function useAdminMedia() {
 
   const filteredMedia = media.filter((item) => {
     const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase());
-    const matchesCat = category === "all" || item.category === category;
-    return matchesSearch && matchesCat;
+    const isDoc = item.category === "reports" || item.category === "resources" ||
+      item.mime_type?.includes("pdf") || /\.(pdf|docx?|xlsx?)$/i.test(item.file_url || item.name);
+
+    if (category === "all") return matchesSearch;
+    if (category === "files") return matchesSearch && isDoc;
+    return matchesSearch && item.category === category;
   });
 
   return {
@@ -81,17 +73,12 @@ export function useAdminMedia() {
     uploading,
     error,
     category,
-    setCategory: (cat: string) => {
-      startTransition(() => {
-        setCategory(cat);
-      });
-    },
+    setCategory: (cat: string) => startTransition(() => setCategory(cat)),
     search,
     setSearch,
     copiedId,
     uploadFiles,
     deleteItem,
     copyUrl,
-    reload: loadMedia,
   };
 }

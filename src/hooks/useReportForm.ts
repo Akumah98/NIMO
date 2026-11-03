@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { uploadMediaFile } from "@/lib/services/mediaService";
 import { slugify } from "@/lib/utils";
 
 export function useReportForm() {
@@ -13,51 +14,51 @@ export function useReportForm() {
   const [category, setCategory] = useState("research");
   const [publishedDate, setPublishedDate] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [selectedFileUrl, setSelectedFileUrl] = useState("");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!file) {
-      setError("Please select a PDF file to upload.");
+    if (!file && !selectedFileUrl) {
+      setError("Please select or upload a document file.");
       return;
     }
 
     setSaving(true);
     setError("");
 
-    const supabase = createClient();
-    const fileExt = file.name.split(".").pop();
-    const fileName = `${Date.now()}-${slugify(title)}.${fileExt}`;
+    try {
+      let finalUrl = selectedFileUrl;
 
-    const { error: uploadError } = await supabase.storage.from("reports").upload(fileName, file);
+      if (file) {
+        const item = await uploadMediaFile(file, "reports");
+        finalUrl = item.file_url;
+      }
 
-    if (uploadError) {
-      setError("File upload failed: " + uploadError.message);
+      const supabase = createClient();
+      const { error: insertError } = await supabase.from("reports").insert({
+        title,
+        slug: slugify(title),
+        description: description || null,
+        file_url: finalUrl,
+        category,
+        published_date: publishedDate || null,
+        published: true,
+      });
+
+      if (insertError) {
+        setError(insertError.message);
+        setSaving(false);
+        return;
+      }
+
+      router.push("/admin/reports");
+      router.refresh();
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to upload report file");
       setSaving(false);
-      return;
     }
-
-    const { data: urlData } = supabase.storage.from("reports").getPublicUrl(fileName);
-
-    const { error: insertError } = await supabase.from("reports").insert({
-      title,
-      slug: slugify(title),
-      description: description || null,
-      file_url: urlData.publicUrl,
-      category,
-      published_date: publishedDate || null,
-      published: true,
-    });
-
-    if (insertError) {
-      setError(insertError.message);
-      setSaving(false);
-      return;
-    }
-
-    router.push("/admin/reports");
-    router.refresh();
   }
 
   return {
@@ -71,6 +72,8 @@ export function useReportForm() {
     setPublishedDate,
     file,
     setFile,
+    selectedFileUrl,
+    setSelectedFileUrl,
     saving,
     error,
     handleSubmit,
