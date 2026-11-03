@@ -9,7 +9,6 @@ export default function HeroSection() {
         alt="Development and Research for Communities Background"
         fill
         priority
-        quality={75}
         className="object-cover object-top scale-105 transition-transform duration-1000 ease-out"
         sizes="100vw"
       />
