@@ -19,6 +19,7 @@ export default function ImpactSection() {
         src="/hero1-bg.jpg"
         alt="NIMO community impact and outreach"
         fill
+        quality={60}
         className="object-cover object-center opacity-25"
         sizes="100vw"
       />

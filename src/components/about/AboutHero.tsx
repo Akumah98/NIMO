@@ -8,6 +8,7 @@ export default function AboutHero() {
         alt="About NIMO - Community Outreach in South West Cameroon"
         fill
         priority
+        quality={75}
         className="object-cover object-center scale-105 transition-transform duration-1000"
         sizes="100vw"
       />
