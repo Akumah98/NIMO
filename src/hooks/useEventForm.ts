@@ -16,9 +16,13 @@ export function useEventForm(event?: Event) {
   const [category, setCategory] = useState<string>(event?.category || "outreach");
   const [eventDate, setEventDate] = useState(event?.event_date || "");
   const [coverImage, setCoverImage] = useState(event?.cover_image || "");
+  const [images, setImages] = useState<string[]>(event?.images || []);
   const [published, setPublished] = useState(event?.published ?? true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+
+  const addImage = (url: string) => setImages((prev) => [...prev, url]);
+  const removeImage = (idx: number) => setImages((prev) => prev.filter((_, i) => i !== idx));
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -36,6 +40,7 @@ export function useEventForm(event?: Event) {
       category,
       event_date: eventDate || null,
       cover_image: coverImage || null,
+      images,
       published,
       updated_at: new Date().toISOString(),
     };
@@ -68,6 +73,10 @@ export function useEventForm(event?: Event) {
     setEventDate,
     coverImage,
     setCoverImage,
+    images,
+    setImages,
+    addImage,
+    removeImage,
     published,
     setPublished,
     saving,

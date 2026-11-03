@@ -62,7 +62,7 @@ export default function PostForm({ post }: PostFormProps) {
 
       <div>
         <label className="mb-1.5 block text-sm font-medium text-text">Content</label>
-        <RichTextEditor value={body} onChange={setBody} />
+        <RichTextEditor value={body} onChange={setBody} availableImages={[coverImage].filter(Boolean)} />
       </div>
 
       <PublishToggle published={published} onChange={setPublished} />

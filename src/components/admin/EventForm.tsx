@@ -1,6 +1,7 @@
 "use client";
 
 import ImageUploader from "./ImageUploader";
+import MultiImageUploader from "./MultiImageUploader";
 import RichTextEditor from "./RichTextEditor";
 import { FormActionButtons } from "./FormActionButtons";
 import { PublishToggle } from "./PublishToggle";
@@ -27,12 +28,17 @@ export default function EventForm({ event }: EventFormProps) {
     setEventDate,
     coverImage,
     setCoverImage,
+    images,
+    addImage,
+    removeImage,
     published,
     setPublished,
     saving,
     error,
     handleSubmit,
   } = useEventForm(event);
+
+  const availablePhotos = [coverImage, ...images].filter(Boolean);
 
   return (
     <form onSubmit={handleSubmit} className="max-w-3xl space-y-5">
@@ -56,13 +62,21 @@ export default function EventForm({ event }: EventFormProps) {
       />
 
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-text">Cover Image</label>
+        <label className="mb-1.5 block text-sm font-medium text-text">Outer Cover Image (Card & Banner)</label>
         <ImageUploader bucket="events" currentImage={coverImage} onUpload={setCoverImage} />
       </div>
 
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-text">Content</label>
-        <RichTextEditor value={body} onChange={setBody} />
+        <div className="flex items-center justify-between mb-1.5">
+          <label className="text-sm font-medium text-text">Event Photos & Gallery</label>
+          <span className="text-xs text-text-light">{images.length} photos</span>
+        </div>
+        <MultiImageUploader bucket="events" images={images} onAddImage={addImage} onRemoveImage={removeImage} />
+      </div>
+
+      <div>
+        <label className="mb-1.5 block text-sm font-medium text-text">Event Story & Write-up</label>
+        <RichTextEditor value={body} onChange={setBody} availableImages={availablePhotos} />
       </div>
 
       <PublishToggle published={published} onChange={setPublished} />
