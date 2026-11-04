@@ -32,7 +32,7 @@ export default async function EventsPage({ searchParams }: Props) {
     .order("event_date", { ascending: false });
 
   if (category) {
-    query = query.ilike("category", category);
+    query = query.ilike("category", `%${category}%`);
   }
 
   const { data: events, count } = await query.range(offset, offset + EVENTS_PER_PAGE - 1);

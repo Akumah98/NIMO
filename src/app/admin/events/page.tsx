@@ -5,6 +5,7 @@ import DataTable from "@/components/admin/DataTable";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import { formatDate } from "@/lib/utils";
+import { formatEventCategory, parseEventCategories } from "@/lib/utils/categoryUtils";
 import { useAdminEvents } from "@/hooks/useAdminEvents";
 import type { Event } from "@/types";
 
@@ -27,8 +28,16 @@ export default function AdminEventsPage() {
     },
     {
       key: "category",
-      label: "Category",
-      render: (e: Event) => <Badge variant="primary">{e.category}</Badge>,
+      label: "Categories",
+      render: (e: Event) => (
+        <div className="flex flex-wrap gap-1">
+          {parseEventCategories(e.category).map((cat) => (
+            <Badge key={cat} variant="primary">
+              {formatEventCategory(cat)}
+            </Badge>
+          ))}
+        </div>
+      ),
     },
     {
       key: "event_date",

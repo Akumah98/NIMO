@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Badge from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
-import { formatEventCategory } from "@/lib/utils/categoryUtils";
+import { formatEventCategory, parseEventCategories } from "@/lib/utils/categoryUtils";
 import { parseGalleryPhoto, type GalleryPhoto } from "@/lib/utils/galleryUtils";
 import type { Event } from "@/types";
 import { EventBodyRenderer } from "./EventBodyRenderer";
@@ -18,6 +18,7 @@ interface EventDetailViewProps {
 export function EventDetailView({ event }: EventDetailViewProps) {
   const [activePhoto, setActivePhoto] = useState<GalleryPhoto | null>(null);
 
+  const categories = parseEventCategories(event.category);
   const galleryPhotos: GalleryPhoto[] = (event.images || []).map((img) =>
     parseGalleryPhoto(img, event.title)
   );
@@ -34,10 +35,14 @@ export function EventDetailView({ event }: EventDetailViewProps) {
   return (
     <article className="px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
-        <div className="flex items-center gap-3">
-          <Badge variant="primary">{formatEventCategory(event.category)}</Badge>
+        <div className="flex flex-wrap items-center gap-2">
+          {categories.map((cat) => (
+            <Badge key={cat} variant="primary">
+              {formatEventCategory(cat)}
+            </Badge>
+          ))}
           {event.event_date && (
-            <time className="text-sm text-text-light">{formatDate(event.event_date)}</time>
+            <time className="text-sm text-text-light ml-auto sm:ml-2">{formatDate(event.event_date)}</time>
           )}
         </div>
 

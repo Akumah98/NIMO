@@ -17,7 +17,7 @@ interface EventFormProps {
 export default function EventForm({ event }: EventFormProps) {
   const {
     isEditing, title, setTitle, excerpt, setExcerpt, body, setBody,
-    category, setCategory, eventDate, setEventDate, coverImage, setCoverImage,
+    categories, toggleCategory, eventDate, setEventDate, coverImage, setCoverImage,
     images, addImage, removeImage, updateCaption,
     published, setPublished, saving, error, handleSubmit,
   } = useEventForm(event);
@@ -38,8 +38,8 @@ export default function EventForm({ event }: EventFormProps) {
       </div>
 
       <EventMetaFields
-        category={category}
-        onCategoryChange={setCategory}
+        categories={categories}
+        onToggleCategory={toggleCategory}
         eventDate={eventDate}
         onEventDateChange={setEventDate}
         excerpt={excerpt}
