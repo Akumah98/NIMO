@@ -78,7 +78,6 @@ export default function MultiImageUploader({
       <MediaModalPicker
         isOpen={showPicker}
         onClose={() => setShowPicker(false)}
-        defaultCategory={bucket || "events"}
         onSelectImage={(url) => {
           onAddImage(url);
           setShowPicker(false);

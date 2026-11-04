@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState } from "react";
 import { useAdminMedia } from "@/hooks/useAdminMedia";
 import { MediaCategoryFilter } from "./MediaCategoryFilter";
 import { MediaGrid } from "./MediaGrid";
 import { MediaUploadZone } from "./MediaUploadZone";
+import { MediaPickerFooter } from "./MediaPickerFooter";
 
 interface MediaModalPickerProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectImage: (url: string) => void;
-  defaultCategory?: string;
   title?: string;
   subtitle?: string;
 }
@@ -19,31 +19,24 @@ export function MediaModalPicker({
   isOpen,
   onClose,
   onSelectImage,
-  defaultCategory,
   title = "Media & Files Library",
-  subtitle = "Select an existing asset or upload a new one",
+  subtitle = "Choose an existing photo or upload a new one",
 }: MediaModalPickerProps) {
+  const [selectedUrl, setSelectedUrl] = useState<string>("");
   const {
-    media,
-    loading,
-    uploading,
-    error,
-    category,
-    setCategory,
-    search,
-    setSearch,
-    copiedId,
-    uploadFiles,
-    copyUrl,
+    media, loading, uploading, error,
+    category, setCategory, search, setSearch,
+    copiedId, uploadFiles, copyUrl,
   } = useAdminMedia();
 
-  useEffect(() => {
-    if (isOpen && defaultCategory) {
-      setCategory(defaultCategory);
-    }
-  }, [isOpen, defaultCategory, setCategory]);
-
   if (!isOpen) return null;
+
+  const handleConfirm = () => {
+    if (selectedUrl) {
+      onSelectImage(selectedUrl);
+      onClose();
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -60,9 +53,7 @@ export function MediaModalPicker({
             className="flex h-11 w-11 items-center justify-center rounded-lg text-text-light hover:bg-bg-alt hover:text-text"
             aria-label="Close modal"
           >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <span className="text-2xl leading-none">&times;</span>
           </button>
         </div>
 
@@ -79,12 +70,19 @@ export function MediaModalPicker({
             loading={loading}
             copiedId={copiedId}
             onCopyUrl={copyUrl}
+            selectedUrl={selectedUrl}
             onSelect={(url) => {
-              onSelectImage(url);
-              onClose();
+              if (selectedUrl === url) handleConfirm();
+              else setSelectedUrl(url);
             }}
           />
         </div>
+
+        <MediaPickerFooter
+          selectedUrl={selectedUrl}
+          onCancel={onClose}
+          onConfirm={handleConfirm}
+        />
       </div>
     </div>
   );

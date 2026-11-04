@@ -70,7 +70,6 @@ export default function ImageUploader({ bucket, currentImage, onUpload }: ImageU
         isOpen={showPicker}
         onClose={() => setShowPicker(false)}
         onSelectImage={handleSelectFromMedia}
-        defaultCategory={bucket}
       />
     </div>
   );

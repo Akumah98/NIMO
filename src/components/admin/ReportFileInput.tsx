@@ -61,7 +61,6 @@ export function ReportFileInput({
       <MediaModalPicker
         isOpen={showPicker}
         onClose={() => setShowPicker(false)}
-        defaultCategory="files"
         title="Select Resource or Report File"
         subtitle="Choose from existing PDF documents or upload a new one"
         onSelectImage={(url) => {

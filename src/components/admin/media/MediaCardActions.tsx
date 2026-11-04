@@ -17,26 +17,19 @@ export function MediaCardActions({
   onDelete,
   onSelect,
 }: MediaCardActionsProps) {
+  // In selection/picker mode, card selection is handled via the top green checkbox
+  if (onSelect) return null;
+
   return (
     <div className="flex items-center gap-1.5 border-t border-border pt-2">
-      {onSelect ? (
-        <button
-          type="button"
-          onClick={() => onSelect(item.file_url)}
-          className="flex h-11 flex-1 items-center justify-center rounded-lg bg-primary text-xs font-semibold text-white transition hover:bg-primary-dark"
-        >
-          Select Asset
-        </button>
-      ) : (
-        <button
-          type="button"
-          onClick={() => onCopyUrl(item.file_url, item.id)}
-          className="flex h-11 flex-1 items-center justify-center gap-1 rounded-lg border border-border bg-bg text-xs font-medium text-text transition hover:border-primary hover:text-primary"
-          aria-label="Copy asset link"
-        >
-          {isCopied ? "Copied!" : "Copy Link"}
-        </button>
-      )}
+      <button
+        type="button"
+        onClick={() => onCopyUrl(item.file_url, item.id)}
+        className="flex h-11 flex-1 items-center justify-center gap-1 rounded-lg border border-border bg-bg text-xs font-medium text-text transition hover:border-primary hover:text-primary"
+        aria-label="Copy asset link"
+      >
+        {isCopied ? "Copied!" : "Copy Link"}
+      </button>
 
       {onDelete && (
         <button
@@ -58,4 +51,3 @@ export function MediaCardActions({
     </div>
   );
 }
-

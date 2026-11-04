@@ -11,6 +11,7 @@ interface MediaCardProps {
   onCopyUrl: (url: string, id: string) => void;
   onDelete?: (item: MediaItem) => void;
   onSelect?: (url: string) => void;
+  selectedUrl?: string;
 }
 
 function formatBytes(bytes?: number) {
@@ -20,7 +21,15 @@ function formatBytes(bytes?: number) {
   return `${(bytes / 1048576).toFixed(1)} MB`;
 }
 
-export function MediaCard({ item, copiedId, onCopyUrl, onDelete, onSelect }: MediaCardProps) {
+export function MediaCard({
+  item,
+  copiedId,
+  onCopyUrl,
+  onDelete,
+  onSelect,
+  selectedUrl,
+}: MediaCardProps) {
+  const isSelected = !!selectedUrl && selectedUrl === item.file_url;
   const isDoc =
     item.mime_type?.includes("pdf") ||
     item.mime_type?.includes("document") ||
@@ -29,15 +38,38 @@ export function MediaCard({ item, copiedId, onCopyUrl, onDelete, onSelect }: Med
     /\.(pdf|docx?|xlsx?|pptx?)$/i.test(item.file_url || item.name);
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-bg-alt shadow-xs transition hover:shadow-md">
-      {isDoc ? (
-        <MediaFilePreview item={item} onSelect={onSelect} />
-      ) : (
-        <MediaImagePreview item={item} onSelect={onSelect} />
-      )}
+    <div
+      onClick={() => onSelect?.(item.file_url)}
+      className={`group relative flex flex-col overflow-hidden rounded-xl border bg-bg-alt shadow-xs transition ${
+        isSelected
+          ? "border-green-600 ring-2 ring-green-600/40 shadow-md"
+          : "border-border hover:shadow-md hover:border-primary/40"
+      } ${onSelect ? "cursor-pointer" : ""}`}
+    >
+      <div className="relative">
+        {isDoc ? (
+          <MediaFilePreview item={item} onSelect={onSelect} />
+        ) : (
+          <MediaImagePreview item={item} onSelect={onSelect} />
+        )}
+
+        {onSelect && (
+          <div className="absolute top-2.5 right-2.5 z-10">
+            {isSelected ? (
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-green-600 text-white shadow-md ring-2 ring-white">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+            ) : (
+              <div className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-white/80 bg-black/30 backdrop-blur-xs transition group-hover:border-white group-hover:bg-black/50" />
+            )}
+          </div>
+        )}
+      </div>
 
       <div className="flex flex-1 flex-col justify-between p-3">
-        <div className="mb-2">
+        <div>
           <p className="truncate text-xs font-semibold text-text" title={item.name}>
             {item.name}
           </p>
