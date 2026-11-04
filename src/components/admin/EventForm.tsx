@@ -1,13 +1,11 @@
 "use client";
 
 import ImageUploader from "./ImageUploader";
-import MultiImageUploader from "./MultiImageUploader";
 import RichTextEditor from "./RichTextEditor";
 import { FormActionButtons } from "./FormActionButtons";
 import { PublishToggle } from "./PublishToggle";
 import { EventMetaFields } from "./EventMetaFields";
 import { useEventForm } from "@/hooks/useEventForm";
-import { extractPhotoUrl } from "@/lib/utils/galleryUtils";
 import type { Event } from "@/types";
 
 interface EventFormProps {
@@ -16,14 +14,25 @@ interface EventFormProps {
 
 export default function EventForm({ event }: EventFormProps) {
   const {
-    isEditing, title, setTitle, excerpt, setExcerpt, body, setBody,
-    categories, toggleCategory, eventDate, setEventDate, coverImage, setCoverImage,
-    images, addImage, removeImage, updateCaption,
-    published, setPublished, saving, error, handleSubmit,
+    isEditing,
+    title,
+    setTitle,
+    excerpt,
+    setExcerpt,
+    body,
+    setBody,
+    categories,
+    toggleCategory,
+    eventDate,
+    setEventDate,
+    coverImage,
+    setCoverImage,
+    published,
+    setPublished,
+    saving,
+    error,
+    handleSubmit,
   } = useEventForm(event);
-
-  const cleanPhotos = images.map(extractPhotoUrl);
-  const availablePhotos = [coverImage, ...cleanPhotos].filter(Boolean);
 
   return (
     <form onSubmit={handleSubmit} className="max-w-3xl space-y-5">
@@ -52,22 +61,8 @@ export default function EventForm({ event }: EventFormProps) {
       </div>
 
       <div>
-        <div className="flex items-center justify-between mb-1.5">
-          <label className="text-sm font-medium text-text">Event Photos & Gallery</label>
-          <span className="text-xs text-text-light">{images.length} photos</span>
-        </div>
-        <MultiImageUploader
-          bucket="events"
-          images={images}
-          onAddImage={addImage}
-          onRemoveImage={removeImage}
-          onUpdateCaption={updateCaption}
-        />
-      </div>
-
-      <div>
         <label className="mb-1.5 block text-sm font-medium text-text">Event Story & Write-up</label>
-        <RichTextEditor value={body} onChange={setBody} availableImages={availablePhotos} />
+        <RichTextEditor value={body} onChange={setBody} availableImages={[coverImage].filter(Boolean)} />
       </div>
 
       <PublishToggle published={published} onChange={setPublished} />

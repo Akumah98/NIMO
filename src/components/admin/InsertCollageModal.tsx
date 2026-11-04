@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { InsertCollageControls } from "./InsertCollageControls";
+import { InsertCollagePhotoSelector } from "./InsertCollagePhotoSelector";
 
 interface InsertCollageModalProps {
   isOpen: boolean;
@@ -20,6 +20,7 @@ export function InsertCollageModal({
   const [selectedUrls, setSelectedUrls] = useState<string[]>([]);
   const [cols, setCols] = useState<"3" | "2" | "asymmetric">("3");
   const [aspect, setAspect] = useState<"square" | "video" | "standard" | "compact">("square");
+  const [caption, setCaption] = useState<string>("");
 
   if (!isOpen) return null;
 
@@ -31,9 +32,14 @@ export function InsertCollageModal({
 
   const handleConfirm = () => {
     if (selectedUrls.length < 2) return;
-    const items = selectedUrls.map((url, i) => `![Collage photo ${i + 1}](${url})`).join("\n");
-    onInsert(`\n:::collage cols="${cols}" aspect="${aspect}"\n${items}\n:::\n`);
+    const cleanCap = caption.trim();
+    const items = selectedUrls
+      .map((url) => (cleanCap ? `![${cleanCap}](${url})` : `![](${url})`))
+      .join("\n");
+    const capAttr = cleanCap ? ` caption="${cleanCap}"` : "";
+    onInsert(`\n:::collage cols="${cols}" aspect="${aspect}"${capAttr}\n${items}\n:::\n`);
     setSelectedUrls([]);
+    setCaption("");
     onClose();
   };
 
@@ -45,32 +51,22 @@ export function InsertCollageModal({
           <button type="button" onClick={onClose} className="text-text-light hover:text-text">&times;</button>
         </div>
 
-        <div>
-          <div className="flex justify-between items-center mb-1.5">
-            <label className="text-xs font-semibold text-text">Select 2 or 3 Photos</label>
-            <span className="text-2xs text-primary font-bold">{selectedUrls.length} / 3 selected</span>
-          </div>
-          {availableImages.length > 0 ? (
-            <div className="grid grid-cols-4 gap-2 max-h-36 overflow-y-auto p-1">
-              {availableImages.map((url, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => toggleUrl(url)}
-                  className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                    selectedUrls.includes(url) ? "border-primary ring-2 ring-primary/30" : "border-border"
-                  }`}
-                >
-                  <Image src={url} alt="Option" fill unoptimized className="object-cover" />
-                  {selectedUrls.includes(url) && (
-                    <div className="absolute inset-0 bg-primary/30 flex items-center justify-center text-white font-bold">✓</div>
-                  )}
-                </button>
-              ))}
-            </div>
-          ) : (
-            <p className="text-xs text-text-light">Upload photos in the Gallery section above first.</p>
-          )}
+        <InsertCollagePhotoSelector
+          availableImages={availableImages}
+          selectedUrls={selectedUrls}
+          onToggleUrl={toggleUrl}
+          onSelectFromMedia={(urls) => setSelectedUrls(urls)}
+        />
+
+        <div className="flex flex-col gap-1">
+          <label className="text-xs font-semibold text-text">Image Description / Caption (Optional)</label>
+          <input
+            type="text"
+            value={caption}
+            onChange={(e) => setCaption(e.target.value)}
+            placeholder="e.g. Field teams distributing seedlings during the climate session..."
+            className="min-h-11 rounded-lg border border-border bg-bg px-3 text-xs text-text focus:border-primary focus:outline-hidden"
+          />
         </div>
 
         <InsertCollageControls
@@ -81,9 +77,16 @@ export function InsertCollageModal({
         />
 
         <div className="flex justify-end gap-2 pt-2 border-t border-border">
-          <button type="button" onClick={onClose} className="min-h-11 px-4 text-xs font-semibold text-text-light">Cancel</button>
-          <button type="button" disabled={selectedUrls.length < 2} onClick={handleConfirm} className="min-h-11 rounded-lg bg-primary px-5 text-xs font-bold text-white disabled:opacity-50">
-            Insert Collage ({selectedUrls.length})
+          <button type="button" onClick={onClose} className="min-h-11 px-4 text-xs font-semibold text-text-light">
+            Cancel
+          </button>
+          <button
+            type="button"
+            disabled={selectedUrls.length < 2}
+            onClick={handleConfirm}
+            className="min-h-11 rounded-lg bg-green-600 px-5 text-xs font-bold text-white shadow-xs transition hover:bg-green-700 disabled:opacity-40"
+          >
+            ✓ Insert Collage ({selectedUrls.length})
           </button>
         </div>
       </div>

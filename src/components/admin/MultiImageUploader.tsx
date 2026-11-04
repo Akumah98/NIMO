@@ -78,8 +78,9 @@ export default function MultiImageUploader({
       <MediaModalPicker
         isOpen={showPicker}
         onClose={() => setShowPicker(false)}
-        onSelectImage={(url) => {
-          onAddImage(url);
+        multiple
+        onSelectImages={(urls) => {
+          urls.forEach((url) => onAddImage(url));
           setShowPicker(false);
         }}
       />

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { InsertImageOptions } from "./InsertImageOptions";
+import { InsertImagePhotoPicker } from "./InsertImagePhotoPicker";
+import { MediaModalPicker } from "./media/MediaModalPicker";
 
 interface InsertImageModalProps {
   isOpen: boolean;
@@ -21,18 +22,20 @@ export function InsertImageModal({
   const [placement, setPlacement] = useState<"full" | "left" | "right">("full");
   const [aspect, setAspect] = useState<"video" | "square" | "standard" | "natural">("video");
   const [caption, setCaption] = useState<string>("");
+  const [showMediaPicker, setShowMediaPicker] = useState<boolean>(false);
 
   if (!isOpen) return null;
 
   const handleConfirm = () => {
     if (!selectedUrl) return;
-    const cleanCap = caption.trim() || "Event photo";
-    const snippet = `\n![${cleanCap}](${selectedUrl} "placement:${placement};aspect:${aspect}")\n`;
-    onInsert(snippet);
+    const cleanCap = caption.trim();
+    onInsert(`\n![${cleanCap}](${selectedUrl} "placement:${placement};aspect:${aspect}")\n`);
     setSelectedUrl("");
     setCaption("");
     onClose();
   };
+
+  const imagesToShow = Array.from(new Set([selectedUrl, ...availableImages].filter(Boolean)));
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
@@ -42,33 +45,12 @@ export function InsertImageModal({
           <button type="button" onClick={onClose} className="text-text-light hover:text-text">&times;</button>
         </div>
 
-        <div>
-          <label className="block text-xs font-semibold text-text mb-1.5">Choose Photo</label>
-          {availableImages.length > 0 ? (
-            <div className="flex gap-2 overflow-x-auto pb-2">
-              {availableImages.map((url, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setSelectedUrl(url)}
-                  className={`relative h-16 w-16 shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
-                    selectedUrl === url ? "border-primary ring-2 ring-primary/20" : "border-border"
-                  }`}
-                >
-                  <Image src={url} alt="Option" fill unoptimized className="object-cover" />
-                </button>
-              ))}
-            </div>
-          ) : (
-            <input
-              type="url"
-              placeholder="Paste image URL here..."
-              value={selectedUrl}
-              onChange={(e) => setSelectedUrl(e.target.value)}
-              className="min-h-11 w-full rounded-lg border border-border px-3.5 py-2 text-sm text-text"
-            />
-          )}
-        </div>
+        <InsertImagePhotoPicker
+          imagesToShow={imagesToShow}
+          selectedUrl={selectedUrl}
+          onSelectUrl={setSelectedUrl}
+          onOpenMediaPicker={() => setShowMediaPicker(true)}
+        />
 
         <InsertImageOptions
           placement={placement}
@@ -80,11 +62,27 @@ export function InsertImageModal({
         />
 
         <div className="flex justify-end gap-2 pt-2 border-t border-border">
-          <button type="button" onClick={onClose} className="min-h-11 px-4 text-xs font-semibold text-text-light">Cancel</button>
-          <button type="button" disabled={!selectedUrl} onClick={handleConfirm} className="min-h-11 rounded-lg bg-primary px-5 text-xs font-bold text-white disabled:opacity-50">
-            Insert Photo
+          <button type="button" onClick={onClose} className="min-h-11 px-4 text-xs font-semibold text-text-light">
+            Cancel
+          </button>
+          <button
+            type="button"
+            disabled={!selectedUrl}
+            onClick={handleConfirm}
+            className="min-h-11 rounded-lg bg-green-600 px-5 text-xs font-bold text-white shadow-xs hover:bg-green-700 disabled:opacity-40"
+          >
+            ✓ Insert Photo
           </button>
         </div>
+
+        <MediaModalPicker
+          isOpen={showMediaPicker}
+          onClose={() => setShowMediaPicker(false)}
+          onSelectImage={(url) => {
+            setSelectedUrl(url);
+            setShowMediaPicker(false);
+          }}
+        />
       </div>
     </div>
   );

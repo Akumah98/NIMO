@@ -11,6 +11,7 @@ interface MediaCardProps {
   onCopyUrl: (url: string, id: string) => void;
   onDelete?: (item: MediaItem) => void;
   onSelect?: (url: string) => void;
+  selectedUrls?: string[];
   selectedUrl?: string;
 }
 
@@ -27,9 +28,12 @@ export function MediaCard({
   onCopyUrl,
   onDelete,
   onSelect,
+  selectedUrls,
   selectedUrl,
 }: MediaCardProps) {
-  const isSelected = !!selectedUrl && selectedUrl === item.file_url;
+  const isSelected = selectedUrls
+    ? selectedUrls.includes(item.file_url)
+    : !!selectedUrl && selectedUrl === item.file_url;
   const isDoc =
     item.mime_type?.includes("pdf") ||
     item.mime_type?.includes("document") ||

@@ -4,7 +4,13 @@ export type ContentBlock =
   | { type: "quote"; text: string }
   | { type: "list"; items: string[] }
   | { type: "image"; url: string; caption: string; placement: "full" | "left" | "right"; aspect: string }
-  | { type: "collage"; items: { url: string; caption?: string }[]; cols: "3" | "2" | "asymmetric"; aspect: "square" | "video" | "standard" | "compact" };
+  | {
+      type: "collage";
+      items: { url: string; caption?: string }[];
+      cols: "3" | "2" | "asymmetric";
+      aspect: "square" | "video" | "standard" | "compact";
+      caption?: string;
+    };
 
 export function parseEventBody(raw: string): ContentBlock[] {
   if (!raw) return [];
@@ -18,24 +24,36 @@ export function parseEventBody(raw: string): ContentBlock[] {
     if (line.startsWith(":::collage")) {
       const colMatch = line.match(/cols="([^"]+)"/);
       const aspectMatch = line.match(/aspect="([^"]+)"/);
+      const captionMatch = line.match(/caption="([^"]+)"/);
       const cols = (colMatch?.[1] || "3") as "3" | "2" | "asymmetric";
       const aspect = (aspectMatch?.[1] || "square") as "square" | "video" | "standard" | "compact";
+      const collageCaption = captionMatch?.[1]?.trim() || undefined;
       const items: { url: string; caption?: string }[] = [];
       i++;
 
       while (i < lines.length && !lines[i].trim().startsWith(":::")) {
         const imgMatch = lines[i].match(/!\[(.*?)\]\((.*?)\)/);
-        if (imgMatch) items.push({ caption: imgMatch[1], url: imgMatch[2].trim() });
+        if (imgMatch) {
+          const rawCap = imgMatch[1]?.trim();
+          const isDummy = /^collage photo \d+$/i.test(rawCap);
+          items.push({
+            caption: !isDummy && rawCap ? rawCap : collageCaption,
+            url: imgMatch[2].trim(),
+          });
+        }
         i++;
       }
-      if (items.length > 0) blocks.push({ type: "collage", items, cols, aspect });
+      if (items.length > 0) {
+        blocks.push({ type: "collage", items, cols, aspect, caption: collageCaption });
+      }
       i++;
       continue;
     }
 
     const singleImg = line.match(/^!\[(.*?)\]\((.*?)(?:\s+"(.*?)")?\)$/);
     if (singleImg) {
-      const caption = singleImg[1] || "";
+      const rawCap = singleImg[1]?.trim() || "";
+      const caption = /^event photo$/i.test(rawCap) ? "" : rawCap;
       const url = singleImg[2] || "";
       const meta = singleImg[3] || "";
       const placementMatch = meta.match(/placement:([a-z]+)/);
@@ -67,4 +85,3 @@ export function parseEventBody(raw: string): ContentBlock[] {
   }
   return blocks;
 }
-

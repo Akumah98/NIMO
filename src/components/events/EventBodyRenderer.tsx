@@ -44,6 +44,7 @@ export function EventBodyRenderer({ body, onImageClick }: EventBodyRendererProps
               items={block.items}
               cols={block.cols}
               aspect={block.aspect}
+              caption={block.caption}
               onImageClick={(url, caption) => onImageClick({ url, caption: caption || "" })}
             />
           );
@@ -75,10 +76,9 @@ export function EventBodyRenderer({ body, onImageClick }: EventBodyRendererProps
                   <span className="opacity-0 group-hover:opacity-100 rounded-full bg-black/60 p-2 text-white text-xs">🔍 Click to zoom</span>
                 </div>
               </div>
-              {block.caption && (
-                <figcaption className="text-center text-xs text-text-light mt-2 italic flex items-center justify-center gap-1.5 px-2">
-                  <span className="text-primary not-italic">💬</span>
-                  <span>{block.caption}</span>
+              {block.caption && !/^event photo$/i.test(block.caption.trim()) && (
+                <figcaption className="mt-2 text-center text-xs font-medium italic text-text-light px-4">
+                  {block.caption}
                 </figcaption>
               )}
             </figure>

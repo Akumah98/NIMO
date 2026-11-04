@@ -10,6 +10,7 @@ interface MediaGridProps {
   onCopyUrl: (url: string, id: string) => void;
   onDelete?: (item: MediaItem) => void;
   onSelect?: (url: string) => void;
+  selectedUrls?: string[];
   selectedUrl?: string;
 }
 
@@ -20,6 +21,7 @@ export function MediaGrid({
   onCopyUrl,
   onDelete,
   onSelect,
+  selectedUrls,
   selectedUrl,
 }: MediaGridProps) {
   if (loading) {
@@ -59,6 +61,7 @@ export function MediaGrid({
           onCopyUrl={onCopyUrl}
           onDelete={onDelete}
           onSelect={onSelect}
+          selectedUrls={selectedUrls}
           selectedUrl={selectedUrl}
         />
       ))}

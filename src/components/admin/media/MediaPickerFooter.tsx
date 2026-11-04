@@ -1,21 +1,38 @@
 "use client";
 
 interface MediaPickerFooterProps {
-  selectedUrl: string;
+  selectedUrls: string[];
+  multiple?: boolean;
   onCancel: () => void;
   onConfirm: () => void;
 }
 
 export function MediaPickerFooter({
-  selectedUrl,
+  selectedUrls,
+  multiple,
   onCancel,
   onConfirm,
 }: MediaPickerFooterProps) {
+  const count = selectedUrls.length;
+  const statusText =
+    count === 0
+      ? multiple
+        ? "Tap photos to select multiple"
+        : "Click any photo to select"
+      : count === 1
+      ? multiple
+        ? "1 photo selected"
+        : "1 photo selected (tap again or click Insert)"
+      : `${count} photos selected`;
+
+  const buttonLabel =
+    count > 1
+      ? `✓ Insert Selected (${count} Photos)`
+      : "✓ Insert Selected Photo";
+
   return (
     <div className="flex items-center justify-between border-t border-border bg-bg-alt px-5 py-3">
-      <span className="text-xs font-medium text-text-light">
-        {selectedUrl ? "1 photo selected (tap again or click Insert)" : "Click any photo to select"}
-      </span>
+      <span className="text-xs font-medium text-text-light">{statusText}</span>
       <div className="flex items-center gap-2">
         <button
           type="button"
@@ -26,11 +43,11 @@ export function MediaPickerFooter({
         </button>
         <button
           type="button"
-          disabled={!selectedUrl}
+          disabled={count === 0}
           onClick={onConfirm}
           className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-green-600 px-5 py-2 text-xs font-bold text-white shadow-xs transition hover:bg-green-700 disabled:opacity-40"
         >
-          ✓ Insert Selected Photo
+          {buttonLabel}
         </button>
       </div>
     </div>

@@ -5,10 +5,10 @@ import Image from "next/image";
 import Badge from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
 import { formatEventCategory, parseEventCategories } from "@/lib/utils/categoryUtils";
-import { parseGalleryPhoto, type GalleryPhoto } from "@/lib/utils/galleryUtils";
+import { parseEventBody } from "@/lib/services/eventContentParser";
+import type { GalleryPhoto } from "@/lib/utils/galleryUtils";
 import type { Event } from "@/types";
 import { EventBodyRenderer } from "./EventBodyRenderer";
-import { EventGallery } from "./EventGallery";
 import { EventLightbox } from "./EventLightbox";
 
 interface EventDetailViewProps {
@@ -17,15 +17,23 @@ interface EventDetailViewProps {
 
 export function EventDetailView({ event }: EventDetailViewProps) {
   const [activePhoto, setActivePhoto] = useState<GalleryPhoto | null>(null);
-
   const categories = parseEventCategories(event.category);
-  const galleryPhotos: GalleryPhoto[] = (event.images || []).map((img) =>
-    parseGalleryPhoto(img, event.title)
-  );
+
+  const storyPhotos: GalleryPhoto[] = [];
+  const blocks = parseEventBody(event.body);
+  for (const b of blocks) {
+    if (b.type === "image") {
+      storyPhotos.push({ url: b.url, caption: b.caption || event.title });
+    } else if (b.type === "collage") {
+      for (const item of b.items) {
+        storyPhotos.push({ url: item.url, caption: item.caption || b.caption || event.title });
+      }
+    }
+  }
 
   const allPhotos: GalleryPhoto[] = [
-    ...(event.cover_image ? [{ url: event.cover_image, caption: `${event.title} (Cover Photo)` }] : []),
-    ...galleryPhotos,
+    ...(event.cover_image ? [{ url: event.cover_image, caption: event.title }] : []),
+    ...storyPhotos,
   ];
 
   const activeIndex = activePhoto
@@ -70,8 +78,6 @@ export function EventDetailView({ event }: EventDetailViewProps) {
         )}
 
         <EventBodyRenderer body={event.body} onImageClick={setActivePhoto} />
-
-        <EventGallery images={event.images} title={event.title} onImageClick={setActivePhoto} />
 
         <EventLightbox
           photos={allPhotos}
