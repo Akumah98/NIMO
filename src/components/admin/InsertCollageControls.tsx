@@ -24,7 +24,7 @@ export function InsertCollageControls({
         >
           <option value="3">3-Photo Row (Equal)</option>
           <option value="2">2-Photo Row (Equal)</option>
-          <option value="asymmetric">Asymmetric (1 Big + 2 Small)</option>
+          <option value="asymmetric">Featured (1 Big Top + 2 Small Bottom)</option>
         </select>
       </div>
       <div>
