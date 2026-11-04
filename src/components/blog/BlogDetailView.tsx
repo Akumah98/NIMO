@@ -95,3 +95,4 @@ export function BlogDetailView({ post }: BlogDetailViewProps) {
     </article>
   );
 }
+
