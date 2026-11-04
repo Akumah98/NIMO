@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Badge from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
+import { formatEventCategory } from "@/lib/utils/categoryUtils";
 import { parseGalleryPhoto, type GalleryPhoto } from "@/lib/utils/galleryUtils";
 import type { Event } from "@/types";
 import { EventBodyRenderer } from "./EventBodyRenderer";
@@ -34,7 +35,7 @@ export function EventDetailView({ event }: EventDetailViewProps) {
     <article className="px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
         <div className="flex items-center gap-3">
-          <Badge variant="primary">{event.category}</Badge>
+          <Badge variant="primary">{formatEventCategory(event.category)}</Badge>
           {event.event_date && (
             <time className="text-sm text-text-light">{formatDate(event.event_date)}</time>
           )}

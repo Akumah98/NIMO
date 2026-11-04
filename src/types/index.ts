@@ -6,7 +6,7 @@ export interface Event {
   body: string;
   cover_image: string | null;
   images: string[];
-  category: "recent" | "outreach" | "other";
+  category: string;
   published: boolean;
   event_date: string | null;
   created_at: string;

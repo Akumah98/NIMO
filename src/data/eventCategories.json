@@ -1,0 +1,10 @@
+[
+  { "id": "climate", "label": "Climate" },
+  { "id": "environment", "label": "Environment" },
+  { "id": "outreach", "label": "Outreach" },
+  { "id": "research", "label": "Research" },
+  { "id": "child-protection", "label": "Child Protection" },
+  { "id": "education", "label": "Education" },
+  { "id": "gbv", "label": "Gender & GBV" },
+  { "id": "other", "label": "Other" }
+]

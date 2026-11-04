@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Badge from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
+import { formatEventCategory } from "@/lib/utils/categoryUtils";
 import type { Event } from "@/types";
 
 interface EventCardProps {
@@ -27,7 +28,7 @@ export default function EventCard({ event }: EventCardProps) {
       )}
 
       <div className="flex items-center gap-2">
-        <Badge variant="primary">{event.category}</Badge>
+        <Badge variant="primary">{formatEventCategory(event.category)}</Badge>
         {event.event_date && (
           <span className="text-xs text-text-light">
             {formatDate(event.event_date)}

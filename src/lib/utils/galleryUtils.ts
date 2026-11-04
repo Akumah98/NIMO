@@ -22,3 +22,4 @@ export function extractPhotoUrl(raw: string): string {
   if (!raw) return "";
   return raw.includes("|") ? raw.split("|")[0].trim() : raw.trim();
 }
+

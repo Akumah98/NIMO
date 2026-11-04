@@ -1,3 +1,7 @@
+"use client";
+
+import eventCategories from "@/data/eventCategories.json";
+
 interface EventMetaFieldsProps {
   category: string;
   onCategoryChange: (cat: string) => void;
@@ -23,11 +27,13 @@ export function EventMetaFields({
           <select
             value={category}
             onChange={(e) => onCategoryChange(e.target.value)}
-            className="min-h-11 rounded-lg border border-border px-4 py-2.5 text-sm focus:border-primary focus:outline-hidden"
+            className="min-h-11 rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-text focus:border-primary focus:outline-hidden"
           >
-            <option value="recent">Recent</option>
-            <option value="outreach">Outreach</option>
-            <option value="other">Other</option>
+            {eventCategories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.label}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -37,7 +43,7 @@ export function EventMetaFields({
             type="date"
             value={eventDate}
             onChange={(e) => onEventDateChange(e.target.value)}
-            className="min-h-11 rounded-lg border border-border px-4 py-2.5 text-sm focus:border-primary focus:outline-hidden"
+            className="min-h-11 rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-text focus:border-primary focus:outline-hidden"
           />
         </div>
       </div>
@@ -48,8 +54,8 @@ export function EventMetaFields({
           value={excerpt}
           onChange={(e) => onExcerptChange(e.target.value)}
           rows={2}
-          placeholder="Short summary..."
-          className="rounded-lg border border-border px-4 py-2.5 text-sm focus:border-primary focus:outline-hidden"
+          placeholder="Short summary for preview cards & search..."
+          className="rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-text focus:border-primary focus:outline-hidden"
         />
       </div>
     </>
