@@ -59,12 +59,14 @@ export function InsertCollageModal({
         />
 
         <div className="flex flex-col gap-1">
-          <label className="text-xs font-semibold text-text">Image Description / Caption (Optional)</label>
+          <label className="text-xs font-semibold text-text">
+            Caption / Description (One single caption for all photos)
+          </label>
           <input
             type="text"
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
-            placeholder="e.g. Field teams distributing seedlings during the climate session..."
+            placeholder="e.g. Field teams distributing seedlings during the outreach workshop..."
             className="min-h-11 rounded-lg border border-border bg-bg px-3 text-xs text-text focus:border-primary focus:outline-hidden"
           />
         </div>
