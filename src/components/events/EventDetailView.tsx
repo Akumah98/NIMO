@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Badge from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
+import { parseGalleryPhoto, type GalleryPhoto } from "@/lib/utils/galleryUtils";
 import type { Event } from "@/types";
 import { EventBodyRenderer } from "./EventBodyRenderer";
 import { EventGallery } from "./EventGallery";
@@ -14,10 +15,20 @@ interface EventDetailViewProps {
 }
 
 export function EventDetailView({ event }: EventDetailViewProps) {
-  const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [activePhoto, setActivePhoto] = useState<GalleryPhoto | null>(null);
 
-  const allPhotos = [event.cover_image, ...(event.images || [])].filter(Boolean) as string[];
-  const activeIndex = activeImage ? allPhotos.indexOf(activeImage) : null;
+  const galleryPhotos: GalleryPhoto[] = (event.images || []).map((img) =>
+    parseGalleryPhoto(img, event.title)
+  );
+
+  const allPhotos: GalleryPhoto[] = [
+    ...(event.cover_image ? [{ url: event.cover_image, caption: `${event.title} (Cover Photo)` }] : []),
+    ...galleryPhotos,
+  ];
+
+  const activeIndex = activePhoto
+    ? allPhotos.findIndex((p) => p.url === activePhoto.url)
+    : null;
 
   return (
     <article className="px-4 py-16 sm:px-6 lg:px-8">
@@ -33,7 +44,7 @@ export function EventDetailView({ event }: EventDetailViewProps) {
 
         {event.cover_image && (
           <div
-            onClick={() => setActiveImage(event.cover_image)}
+            onClick={() => setActivePhoto({ url: event.cover_image!, caption: event.title })}
             className="group relative mt-8 aspect-video overflow-hidden rounded-2xl border border-border shadow-md cursor-pointer"
           >
             <Image
@@ -52,18 +63,17 @@ export function EventDetailView({ event }: EventDetailViewProps) {
           </div>
         )}
 
-        <EventBodyRenderer body={event.body} onImageClick={setActiveImage} />
+        <EventBodyRenderer body={event.body} onImageClick={setActivePhoto} />
 
-        <EventGallery images={event.images} title={event.title} onImageClick={setActiveImage} />
+        <EventGallery images={event.images} title={event.title} onImageClick={setActivePhoto} />
 
         <EventLightbox
-          images={allPhotos}
+          photos={allPhotos}
           currentIndex={activeIndex !== -1 ? activeIndex : null}
-          onClose={() => setActiveImage(null)}
-          onNavigate={(idx) => setActiveImage(allPhotos[idx] || null)}
+          onClose={() => setActivePhoto(null)}
+          onNavigate={(idx) => setActivePhoto(allPhotos[idx] || null)}
         />
       </div>
     </article>
   );
 }
-

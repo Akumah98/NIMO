@@ -7,6 +7,7 @@ import { FormActionButtons } from "./FormActionButtons";
 import { PublishToggle } from "./PublishToggle";
 import { EventMetaFields } from "./EventMetaFields";
 import { useEventForm } from "@/hooks/useEventForm";
+import { extractPhotoUrl } from "@/lib/utils/galleryUtils";
 import type { Event } from "@/types";
 
 interface EventFormProps {
@@ -15,30 +16,14 @@ interface EventFormProps {
 
 export default function EventForm({ event }: EventFormProps) {
   const {
-    isEditing,
-    title,
-    setTitle,
-    excerpt,
-    setExcerpt,
-    body,
-    setBody,
-    category,
-    setCategory,
-    eventDate,
-    setEventDate,
-    coverImage,
-    setCoverImage,
-    images,
-    addImage,
-    removeImage,
-    published,
-    setPublished,
-    saving,
-    error,
-    handleSubmit,
+    isEditing, title, setTitle, excerpt, setExcerpt, body, setBody,
+    category, setCategory, eventDate, setEventDate, coverImage, setCoverImage,
+    images, addImage, removeImage, updateCaption,
+    published, setPublished, saving, error, handleSubmit,
   } = useEventForm(event);
 
-  const availablePhotos = [coverImage, ...images].filter(Boolean);
+  const cleanPhotos = images.map(extractPhotoUrl);
+  const availablePhotos = [coverImage, ...cleanPhotos].filter(Boolean);
 
   return (
     <form onSubmit={handleSubmit} className="max-w-3xl space-y-5">
@@ -71,7 +56,13 @@ export default function EventForm({ event }: EventFormProps) {
           <label className="text-sm font-medium text-text">Event Photos & Gallery</label>
           <span className="text-xs text-text-light">{images.length} photos</span>
         </div>
-        <MultiImageUploader bucket="events" images={images} onAddImage={addImage} onRemoveImage={removeImage} />
+        <MultiImageUploader
+          bucket="events"
+          images={images}
+          onAddImage={addImage}
+          onRemoveImage={removeImage}
+          onUpdateCaption={updateCaption}
+        />
       </div>
 
       <div>

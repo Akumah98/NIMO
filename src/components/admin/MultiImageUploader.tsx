@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { uploadMediaFile } from "@/lib/services/mediaService";
 import { MediaModalPicker } from "./media/MediaModalPicker";
+import { GalleryImageItem } from "./GalleryImageItem";
 
 interface MultiImageUploaderProps {
   bucket: string;
   images: string[];
   onAddImage: (url: string) => void;
   onRemoveImage: (index: number) => void;
+  onUpdateCaption?: (index: number, caption: string) => void;
 }
 
 export default function MultiImageUploader({
@@ -17,6 +18,7 @@ export default function MultiImageUploader({
   images,
   onAddImage,
   onRemoveImage,
+  onUpdateCaption,
 }: MultiImageUploaderProps) {
   const [uploading, setUploading] = useState(false);
   const [showPicker, setShowPicker] = useState(false);
@@ -42,19 +44,15 @@ export default function MultiImageUploader({
   return (
     <div className="flex flex-col gap-3">
       {images.length > 0 && (
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
-          {images.map((img, idx) => (
-            <div key={idx} className="group relative aspect-square rounded-lg border border-border overflow-hidden bg-bg-alt">
-              <Image src={img} alt={`Gallery ${idx + 1}`} fill unoptimized className="object-cover" />
-              <button
-                type="button"
-                onClick={() => onRemoveImage(idx)}
-                className="absolute top-1.5 right-1.5 h-7 w-7 rounded-full bg-red-600 text-white flex items-center justify-center opacity-90 hover:opacity-100 shadow-xs"
-                title="Remove image"
-              >
-                &times;
-              </button>
-            </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          {images.map((imgStr, idx) => (
+            <GalleryImageItem
+              key={idx}
+              imageStr={imgStr}
+              index={idx}
+              onRemove={onRemoveImage}
+              onUpdateCaption={onUpdateCaption}
+            />
           ))}
         </div>
       )}

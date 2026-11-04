@@ -11,7 +11,7 @@ interface EventCollageRowProps {
   items: CollageItem[];
   cols: "3" | "2" | "asymmetric";
   aspect?: "square" | "video" | "standard" | "compact";
-  onImageClick: (url: string) => void;
+  onImageClick: (url: string, caption?: string) => void;
 }
 
 export function EventCollageRow({
@@ -38,7 +38,7 @@ export function EventCollageRow({
           return (
             <div
               key={idx}
-              onClick={() => onImageClick(item.url)}
+              onClick={() => onImageClick(item.url, item.caption)}
               className={`group relative ${aspectClass} ${spanClass} cursor-pointer overflow-hidden rounded-xl bg-bg-alt border border-border/80 shadow-2xs transition-all hover:border-primary/40`}
             >
               <Image
@@ -58,11 +58,11 @@ export function EventCollageRow({
         })}
       </div>
       {items.some((i) => i.caption) && (
-        <figcaption className="text-center text-xs text-text-light mt-1.5 italic">
-          {items.map((i) => i.caption).filter(Boolean).join(" • ")}
+        <figcaption className="text-center text-xs text-text-light mt-2 italic flex items-center justify-center gap-1.5 flex-wrap px-2">
+          <span className="text-primary not-italic">💬</span>
+          <span>{items.map((i) => i.caption).filter(Boolean).join(" • ")}</span>
         </figcaption>
       )}
     </figure>
   );
 }
-

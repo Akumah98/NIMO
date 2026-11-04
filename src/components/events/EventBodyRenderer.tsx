@@ -3,10 +3,11 @@
 import Image from "next/image";
 import { parseEventBody, type ContentBlock } from "@/lib/services/eventContentParser";
 import { EventCollageRow } from "./EventCollageRow";
+import type { GalleryPhoto } from "@/lib/utils/galleryUtils";
 
 interface EventBodyRendererProps {
   body: string;
-  onImageClick: (url: string) => void;
+  onImageClick: (photo: GalleryPhoto) => void;
 }
 
 export function EventBodyRenderer({ body, onImageClick }: EventBodyRendererProps) {
@@ -38,7 +39,13 @@ export function EventBodyRenderer({ body, onImageClick }: EventBodyRendererProps
         }
         if (block.type === "collage") {
           return (
-            <EventCollageRow key={idx} items={block.items} cols={block.cols} aspect={block.aspect} onImageClick={onImageClick} />
+            <EventCollageRow
+              key={idx}
+              items={block.items}
+              cols={block.cols}
+              aspect={block.aspect}
+              onImageClick={(url, caption) => onImageClick({ url, caption: caption || "" })}
+            />
           );
         }
         if (block.type === "image") {
@@ -49,22 +56,30 @@ export function EventBodyRenderer({ body, onImageClick }: EventBodyRendererProps
                             "my-6 w-full clear-both";
 
           const aspectClass = block.aspect === "square" ? "aspect-square" :
-                              block.aspect === "standard" ? "aspect-[4/3]" :
-                              "aspect-video";
+                              block.aspect === "standard" ? "aspect-[4/3]" : "aspect-video";
 
           return (
             <figure key={idx} className={wrapClass}>
               <div
-                onClick={() => onImageClick(block.url)}
+                onClick={() => onImageClick({ url: block.url, caption: block.caption })}
                 className={`group relative ${aspectClass} w-full cursor-pointer overflow-hidden rounded-xl bg-bg-alt border border-border shadow-2xs hover:border-primary/40`}
               >
-                <Image src={block.url} alt={block.caption || "Event image"} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 100vw, 600px" />
+                <Image
+                  src={block.url}
+                  alt={block.caption || "Event image"}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, 600px"
+                />
                 <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20 flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 rounded-full bg-black/60 p-2 text-white text-xs">🔍</span>
+                  <span className="opacity-0 group-hover:opacity-100 rounded-full bg-black/60 p-2 text-white text-xs">🔍 Click to zoom</span>
                 </div>
               </div>
               {block.caption && (
-                <figcaption className="text-center text-xs text-text-light mt-1.5 italic">{block.caption}</figcaption>
+                <figcaption className="text-center text-xs text-text-light mt-2 italic flex items-center justify-center gap-1.5 px-2">
+                  <span className="text-primary not-italic">💬</span>
+                  <span>{block.caption}</span>
+                </figcaption>
               )}
             </figure>
           );
@@ -74,4 +89,3 @@ export function EventBodyRenderer({ body, onImageClick }: EventBodyRendererProps
     </div>
   );
 }
-

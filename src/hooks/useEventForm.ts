@@ -23,6 +23,15 @@ export function useEventForm(event?: Event) {
 
   const addImage = (url: string) => setImages((prev) => [...prev, url]);
   const removeImage = (idx: number) => setImages((prev) => prev.filter((_, i) => i !== idx));
+  const updateCaption = (idx: number, caption: string) => {
+    setImages((prev) =>
+      prev.map((item, i) => {
+        if (i !== idx) return item;
+        const cleanUrl = item.includes("|") ? item.split("|")[0] : item;
+        return caption.trim() ? `${cleanUrl}|${caption.trim()}` : cleanUrl;
+      })
+    );
+  };
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -30,11 +39,9 @@ export function useEventForm(event?: Event) {
     setError("");
 
     const supabase = createClient();
-    const slug = slugify(title);
-
     const payload = {
       title,
-      slug,
+      slug: slugify(title),
       excerpt: excerpt || null,
       body,
       category,
@@ -60,27 +67,9 @@ export function useEventForm(event?: Event) {
   }
 
   return {
-    isEditing,
-    title,
-    setTitle,
-    excerpt,
-    setExcerpt,
-    body,
-    setBody,
-    category,
-    setCategory,
-    eventDate,
-    setEventDate,
-    coverImage,
-    setCoverImage,
-    images,
-    setImages,
-    addImage,
-    removeImage,
-    published,
-    setPublished,
-    saving,
-    error,
-    handleSubmit,
+    isEditing, title, setTitle, excerpt, setExcerpt, body, setBody,
+    category, setCategory, eventDate, setEventDate, coverImage, setCoverImage,
+    images, setImages, addImage, removeImage, updateCaption,
+    published, setPublished, saving, error, handleSubmit,
   };
 }
